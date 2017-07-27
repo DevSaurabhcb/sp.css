@@ -5,6 +5,4 @@ Beautifully designed buttons based on material design colors<br/>
 Add sp-btn class to initiate button , add another class btn-{colorName} .<br/>
 Color names are green , teal , indigo , red , pink , purple , deeppurple , blue , skyblue , orange , brown , bluegrey<br/>
 add another class clickable to have clicked effect. <br/>
-=> ```diff 
-add class sp-ripple to add ripple effect to any element.
-```<br/>
+=> add class sp-ripple to add ripple effect to any element.<br/>
