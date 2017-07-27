@@ -5,27 +5,27 @@ No extra framework needed  just add sp.css and sp.js files in your html documen
 Beautifully designed buttons based on material design colors<br/>
 **Buttons**
 
-```
+```html
 <button class="sp-btn btn-indigo clickable sp-ripple">Beautiful!!</button>
 ```
 
 Add 
-```
+```css
 sp-btn
 ``` 
 
 class to initiate button , add another class
 
-```
-{colorName}
+```css
+btn-{colorName}
 ```
 
 Color names are 
 
-```
-green ,  
-teal ,  
-indigo ,  
+```css
+green ,  
+teal , 
+indigo ,  
 red ,  
 pink ,  
 purple ,  
@@ -39,15 +39,15 @@ bluegrey
 
 add another class 
 
-```
+```css
 clickable
 ```
 to have clicked effect. <br/>
 **To add ripple effect**<br/>
 Just add sp-ripple class to add ripple effect to element.
-```
+```html
 <button class="sp-ripple">Click me</button>
 ```
-```
+```html
 <div class="sp-ripple">See any element can have ripple effect</div>
 ```
