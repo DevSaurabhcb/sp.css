@@ -1,6 +1,6 @@
 # SP.css
 Small lightweighet framework to develop beautiful design , made by combination of Vanilla javascript and pure css <br/>
-> Created by Master Saurabh <br/
+> Created by Master Saurabh <br/>
 No extra framework needed  just add sp.css and sp.js files in your html document and start designing.<br/>
 Beautifully designed buttons based on material design colors<br/>
 **Buttons**
