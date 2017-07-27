@@ -1,0 +1,130 @@
+*{
+box-sizing:border-box;
+}
+body::-webkit-scrollbar {
+    width: 1em;
+}
+ 
+body::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+ 
+body::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
+}
+.sp-btn {
+min-width:80px;
+text-align:center;
+height:40px;
+color: white;
+border-radius:3px;
+border:none;
+font-weight:bold;
+line-height:34px;
+box-shadow:3px 3px 1em slategrey;
+}
+.sp-btn.btn-green {
+background-color:#2e7d32;
+border-bottom:10px solid #1b5e20;
+}
+.sp-btn.btn-teal {
+background-color:#009688;
+border-bottom:10px solid #00695c;
+}
+.sp-btn.btn-indigo {
+background-color:#3f51b5;
+border-bottom:10px solid #1a237e;
+}
+.sp-btn.btn-red {
+background-color:#f44336;
+border-bottom:10px solid #c62828;
+}
+.sp-btn.btn-pink {
+background-color:#e91e63;
+border-bottom:10px solid #ad1457;
+}
+.sp-btn.btn-purple {
+background-color:#9c27b0;
+border-bottom:10px solid #6a1b9a;
+}
+.sp-btn.btn-deeppurple {
+background-color:#673ab7;
+border-bottom:10px solid #4527a0;
+}
+.sp-btn.btn-blue {
+background-color:#2196f3;
+border-bottom:10px solid #1565c0;
+}
+.sp-btn.btn-skyblue {
+background-color:#039be5;
+border-bottom:10px solid #0277bd;
+}
+.sp-btn.btn-orange {
+background-color:#ef6c00;
+border-bottom:10px solid #e65100;
+}
+.sp-btn.btn-brown {
+background-color:#795548;
+border-bottom:10px solid #4e342e;
+}
+.sp-btn.btn-bluegrey {
+background-color:#607d8b;
+border-bottom:10px solid #37474f;
+}
+.sp-btn.clickable:active {
+transform:translateY(4px);
+}
+.btn-green.clickable:active{
+border-bottom:6px;;
+}
+.btn-teal.clickable:active{
+border-bottom:6px;;
+}
+.btn-indigo.clickable:active{
+border-bottom:6px;;
+}
+.btn-red.clickable:active{
+border-bottom:6px;;
+}
+.btn-pink.clickable:active{
+border-bottom:6px;;
+}
+.btn-purple.clickable:active{
+border-bottom:6px;;
+}
+.btn-deeppurple.clickable:active{
+border-bottom:6px;;
+}
+.btn-blue.clickable:active{
+border-bottom:6px;;
+}
+.btn-skyblue.clickable:active{
+border-bottom:6px;;
+}
+.btn-orange.clickable:active{
+border-bottom:6px;;
+}
+.btn-brown.clickable:active{
+border-bottom:6px;;
+}
+.btn-bluegrey.clickable:active{
+border-bottom:6px;;
+}
+.sp-ripple{
+overflow:hidden!important;
+position:relative!important;
+}
+.ripple {
+transform:scale(0);
+border-radius:50%;
+background-color:rgba(255,255,255,0.7);
+position:absolute;
+animation:ripple 0.5s linear 1;
+}
+@keyframes ripple {
+to{
+transform:scale(2.5);
+opacity:0;
+}
+}
