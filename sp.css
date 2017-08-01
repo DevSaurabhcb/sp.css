@@ -360,7 +360,7 @@ border-color:#19b4cc;
 }
 .sp-warning {
 color:#111;
-backgrounds-color:#ffbf00;
+background-color:#ffbf00;
 border-color:#ffbf00;
 }
 /*outline (border) colors*/
@@ -393,4 +393,47 @@ color:#d63545;
 background-color:transparent;
 background-image:none;
 border-color:#d63545;
+}
+/*Border classes*/
+.border-1{
+border-width:1px;
+}
+.border-1{
+border-width:2px;
+}
+.border-3{
+border-width:3px;
+}
+.border-4{
+border-width:4px;
+}
+.border-5{
+border-width:5px;
+}
+.border-6{
+border-width:6px;
+}
+.border-7{
+border-width:7px;
+}
+.border-8{
+border-width:8px;
+}
+.border-9{
+border-width:9px;
+}
+.border-10{
+border-width:10px;
+}
+.border-solid {
+border-style:solid;
+}
+.border-dashed {
+border-style:dashed;
+}
+.border-dotted{
+border-style:dotted;
+}
+.border-doubled {
+border-style:double;
 }
