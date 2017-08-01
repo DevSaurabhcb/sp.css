@@ -86,6 +86,18 @@ sp.createToast("Hey toast!",2);
 The first parameter gives the text of toast and second gives time in seconds for the toast to be shown<br/>
 
 **Outline**<br/>
-This class adds the same color for text and border and makes the background transparent . 5
+This class adds the same color for text and border and makes the background transparent . Add class sp-outline-primary , on the place of primary You can also type warning , info , danger or success
 
 ```html
+<button class="sp-btn sp-outline-info border-2 border-solid">Cool!</button>
+```
+
+```html
+<div class="sp-outline-warning border-4 border-dashed">And isn't it great.</div>
+```
+
+**Border classes**<br/>
+Add classes border-( 1 to 10 ) to give border-width and border-solid , border-dashed , border-dotted or border-doubled for border style
+```html
+<p class="border-3 border-doubled sp-outline-primary">Hello world awesome day</p>
+```
