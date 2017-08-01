@@ -24,9 +24,11 @@ createToast : function(text,duration){
 var toast = document.createElement('div');
 this.text = text ;
 this.duration = duration;
-this.duration = (typeof this.duration !== 'undefined') ?  this.duration : 2;
-toast.style.height = "30px";
-toast.style.backgroundColor = "rgba(0,0,0,0.5)";
+this.duration = (typeof this.duration !== 'undefined') ?  this.duration : 1.5;
+toast.style.minHeight = "30px";
+toast.style.maxWidth = "95%";
+toast.style.wordWrap = "break-word";
+toast.style.backgroundColor = "rgba(0,0,0,0.7)";
 toast.style.color = "#fff";
 toast.style.padding = "5px 10px";
 toast.style.position= "fixed";
