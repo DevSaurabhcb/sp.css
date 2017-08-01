@@ -53,28 +53,29 @@ Just add sp-ripple class to add ripple effect to element.
 ```html
 <div class="sp-ripple">See any element can have ripple effect</div>
 ```
-<br/>
+
+
 **Badge**<br/>
 The add a badge just add class sp-badge followed by a badge color (the badge colors are same as btn-colors) except it gets additional class badge-nocolor . Add data-badge attribute which contains the value of badge
 ```html
 <span data-badge="9+" class="sp-badge badge-red">Inbox</span>
 ```
-<br/>
+
 **Box shadows**<br/>
 Add class sp-shadow_1 or sp-shadow_2 or sp-shadow_3 or sp-shadow_4 or sp-shadow_5 to add material based box shadow
 
 ```html
 <button class="sp-btn btn-green sp-shadow_3">Check me</button>
 ```
-<br/>
+
 **Background colors**<br/>
 Added 5 classes , sp-primary , sp-info , sp-danger , sp-warning and sp-success
 ```html
 <div class="sp-primary sp-shadow_2">Hey check me , am i not great</div>
 ```
-<br/>
 
-###Toasts
+
+**Toasts**<br/>
 create an android like toast (a message box for a few seconds just above the bottom):
 using javaseipt
 
