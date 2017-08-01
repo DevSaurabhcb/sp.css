@@ -77,7 +77,7 @@ Added 5 classes , sp-primary , sp-info , sp-danger , sp-warning and sp-success
 
 **Toasts**<br/>
 create an android like toast (a message box for a few seconds just above the bottom):
-using javaseipt
+using javascript
 
 ```javascript
 //calling toast
