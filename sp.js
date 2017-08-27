@@ -13,7 +13,12 @@ this.appendChild(circle);
 
 var d = Math.max(this.clientWidth,this.clientHeight);
 circle.style.width = circle.style.height = d+"px";
-
+if(this.style.background=="#fff"||this.style.background=="white"||this.style.background=="transparent"||this.style.backgroundColor=="#fff"||this.style.backgroundColor=="white"||this.style.backgroundColor=="transparent"){
+circle.style.backgroundColor="rgba(0,0,0,0.2)";
+}
+else{
+circle.style.backgroundColor="rgba(255,255,255,0.7)";
+}
 circle.style.left = e.clientX - this.offsetLeft - d/2+"px";
 circle.style.top = e.clientY - this.offsetTop - d/2+"px";
 circle.classList.add("ripple");
