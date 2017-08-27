@@ -24,7 +24,7 @@ font-weight:bold;
 color: white;
 border-radius:3px;
 border:none;
-line-height:30px;
+line-height:20px;
 }
 .sp-btn.btn-green {
 background-color:#2e7d32;
@@ -82,15 +82,14 @@ height:35px;
 border-bottom:6px;
 }
 .sp-ripple{
-overflow:hidden!important;
-position:relative!important;
+overflow:hidden;
+position:relative;
 }
 .ripple {
 transform:scale(0);
 border-radius:50%;
-background-color:rgba(255,255,255,0.7);
 position:absolute;
-animation:ripple 0.5s linear 1;
+animation:ripple 0.5s linear 0s 1;
 }
 @keyframes ripple {
 to{
@@ -130,7 +129,8 @@ content: attr(data-badge);
 border-radius:50%;
 position:absolute;
 right:0;
-top:0;background:#2e7d32;
+top:0;
+background:#2e7d32;
 padding:0.2em;
 color:#fff;
 text-align:center;
@@ -146,7 +146,8 @@ content: attr(data-badge);
 border-radius:50%;
 position:absolute;
 right:0;
-top:0;background:#009688;
+top:0;
+background:#009688;
 padding:0.2em;
 color:#fff;
 text-align:center;
@@ -363,6 +364,66 @@ color:#111;
 background-color:#ffbf00;
 border-color:#ffbf00;
 }
+.sp-indigo {
+color:#fff;
+background-color:#3f51b5;
+border-color:#3f51b5;
+}
+.sp-green {
+color:#fff;
+background-color:#2e7d32;
+border-color:#2e7d32;
+}
+.sp-teal {
+color:#fff;
+background-color:#009688;
+border-color:#009688;
+}
+.sp-red {
+color:#fff;
+background-color:#f44336;
+border-color:#f44336;
+}
+.sp-pink {
+color:#fff;
+background-color:#e91e63;
+border-color:#e91e63;
+}
+.sp-purple {
+color:#fff;
+background-color:#9c27b0;
+border-color:#9c27b0;
+}
+.sp-deeppurple {
+color:#fff;
+background-color:#673ab7;
+border-color:#673ab7;
+}
+.sp-blue {
+color:#fff;
+background-color:#2196f3;
+border-color:#2196f3;
+}
+.sp-skyblue {
+color:#fff;
+background-color:#039be5;
+border-color:#039be5;
+}
+.sp-orange {
+color:#fff;
+background-color:#ef6c00;
+border-color:#ef6c00;
+}
+.sp-brown {
+color:#fff;
+background-color:#795548;
+border-color:#795548;
+}
+.sp-bluegrey {
+color:#fff;
+background-color:#607d8b;
+border-color:#607d8b;
+}
 /*outline (border) colors*/
 .sp-outline-primary {
 color:#007bff;
@@ -398,7 +459,7 @@ border-color:#d63545;
 .border-1{
 border-width:1px;
 }
-.border-1{
+.border-2{
 border-width:2px;
 }
 .border-3{
