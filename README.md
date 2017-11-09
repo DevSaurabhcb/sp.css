@@ -232,7 +232,6 @@ skyblue ,
 orange ,  
 brown , 
 bluegrey,
-black,
 primary,
 danger,
 success,
@@ -249,3 +248,32 @@ Our scrollbar currently works only in chrome browsers . To create one you need t
 •••some content here•••
 </div>
 ```
+
+**Tezt classes**
+
+Add "text-center" class to align the text to center.
+
+Add classes "text-shadow | text-shadow_black | text-shadow_white" to add text shadows of 1px.
+
+Add "text-" followed by following possible color values
+
+```css
+green ,  
+teal , 
+indigo ,  
+red ,  
+pink ,  
+purple ,  
+deeppurple ,  
+blue ,  
+skyblue ,  
+orange ,  
+brown , 
+bluegrey,
+primary,
+danger,
+success,
+info,
+warning
+```
+
