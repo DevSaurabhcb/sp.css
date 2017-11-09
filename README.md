@@ -91,7 +91,13 @@ blue ,
 skyblue ,  
 orange ,  
 brown , 
-bluegrey
+bluegrey,
+default,
+primary,
+danger,
+success,
+info,
+warning
 ```
 
 add another class 
@@ -124,7 +130,31 @@ Add class sp-shadow_1 or sp-shadow_2 or sp-shadow_3 or sp-shadow_4 or sp-shadow_
 ```
 
 **Background colors**<br/>
-Added 5 classes , sp-primary , sp-info , sp-danger , sp-warning and sp-success
+To set background color set the class "sp-" followed by following color names 
+
+```css
+green ,  
+teal , 
+indigo ,  
+red ,  
+pink ,  
+purple ,  
+deeppurple ,  
+blue ,  
+skyblue ,  
+orange ,  
+brown , 
+bluegrey,
+white,
+black,
+primary,
+danger,
+success,
+info,
+warning
+```
+
+
 ```html
 <div class="sp-primary sp-shadow_2">Hey check me , am i not great</div>
 ```
@@ -156,4 +186,14 @@ This class adds the same color for text and border and makes the background tran
 Add classes border-( 1 to 10 ) to give border-width and border-solid , border-dashed , border-dotted or border-doubled for border style
 ```html
 <p class="border-3 border-doubled sp-outline-primary">Hello world awesome day</p>
+```
+
+**SP-SCROLLBAR**
+
+Our scrollbar currently works only in chrome browsers . To create one you need to add a class "sp-scrollbar" to any of your element.
+
+```html
+<div class="sp-scrollbar">
+•••some content here•••
+</div>
 ```
