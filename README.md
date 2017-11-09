@@ -209,6 +209,37 @@ Add classes border-( 1 to 10 ) to give border-width and border-solid , border-da
 <p class="border-3 border-doubled sp-outline-primary">Hello world awesome day</p>
 ```
 
+Add classes border(solid|dashed|dotted|doubled) to have border style
+
+```html
+<div class="border-2 border-dotted border-red">
+ 
+</div>
+```
+
+Add classes "border-" followed by following posible values to color the borders 
+
+```css
+green ,  
+teal , 
+indigo ,  
+red ,  
+pink ,  
+purple ,  
+deeppurple ,  
+blue ,  
+skyblue ,  
+orange ,  
+brown , 
+bluegrey,
+black,
+primary,
+danger,
+success,
+info,
+warning
+```
+
 **SP-SCROLLBAR**
 
 Our scrollbar currently works only in chrome browsers . To create one you need to add a class "sp-scrollbar" to any of your element.
