@@ -454,9 +454,10 @@ template {
 *{
 box-sizing:border-box;
 outline:none;
+word-wrap:break-word;
 }
 html,body{
-margin:0;url("")
+margin:0;
 padding:0;
 width:100%;
 }
@@ -467,7 +468,7 @@ body {
 font-family: 'Roboto', sans-serif;
 font-size:16px;
 -webkit-font-smoothing:antialised;
-line-height:21px;
+line-height:1.5;
 }
 .sp-container {
 padding:0px 15px;
@@ -517,7 +518,7 @@ padding:2px 4px;
 border-radius:4px;
 font-size:90%;
 background-color:#000;
-color:green;
+color:#0D9705;
 }
 kbd {
 font-size:90%;
@@ -552,6 +553,9 @@ margin-left:0;
 }
 .pull-right{
 margin-right:0;
+}
+.font-20 {
+font-size:20px;
 }
 .font-2x {
 font-size:28px;
