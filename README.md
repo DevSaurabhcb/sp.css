@@ -249,7 +249,7 @@ Our scrollbar currently works only in chrome browsers . To create one you need t
 </div>
 ```
 
-**Tezt classes**
+**Text classes**
 
 Add "text-center" class to align the text to center.
 
