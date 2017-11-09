@@ -172,7 +172,28 @@ $().createToast("Hey toast!",2);
 The first parameter gives the text of toast and second gives time in seconds for the toast to be shown<br/>
 
 **Outline**<br/>
-This class adds the same color for text and border and makes the background transparent . Add class sp-outline-primary , on the place of primary You can also type warning , info , danger or success
+This class adds the same color for text and border and makes the background transparent . Add class "sp-outline-" followed by following possible values 
+
+```css
+green ,  
+teal , 
+indigo ,  
+red ,  
+pink ,  
+purple ,  
+deeppurple ,  
+blue ,  
+skyblue ,  
+orange ,  
+brown , 
+bluegrey,
+black,
+primary,
+danger,
+success,
+info,
+warning
+```
 
 ```html
 <button class="sp-btn sp-outline-info border-2 border-solid">Cool!</button>
