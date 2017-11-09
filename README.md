@@ -277,4 +277,4 @@ info,
 warning
 ```
 
-For more please visit http://www.saurabhgq/sp/
+For more please visit http://www.saurabh.gq/sp/
