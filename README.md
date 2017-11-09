@@ -5,6 +5,61 @@ Small lightweight framework to develop beautiful design , made by combination of
 
 No extra framework needed  just add sp.css and sp.js files in your html document and start designing.<br/>
 Beautifully designed buttons based on material design colors<br/>
+
+**Basic utilities**
+
+Start your code with sp-container
+
+```html
+<div class="sp-container">
+  
+</div>
+```
+Or sp-container-full to avoid different size according to screen.
+
+Add small attribute or class or element to size them 85% of current font size.
+
+Add class 'full-width' or attribute to set the width to 100%.
+
+Add class 'center' or attribute to centerize an element.
+
+Add pull-left or pull-right classes to set left or right margins to 0.
+
+Add classes 'font-2x','font-3x','font-4x','font-5x' to set the size of font in multiples of the current font size. The class 'font-20' has been added to size the font to 20px.
+
+Add class 'sp-curved-border' to set border-radius property to 4px.
+
+Add class 'sp-no-curved-border' to remove border-radius.
+
+Add class 'sp-circle' to set border-radius to 50%.
+
+Add class or attribute 'bold' to bold the typeface.
+
+Add class or attribute 'block' / 'padding' to block/give padding to the element.
+
+**Grid system**
+
+To use our grid system you must add a class 'sp-row' to a container div box.
+
+```html
+<div class="sp-row">
+  
+</div>
+```
+
+Our grid system can show upto 12 columns in a row and they are classified as per the window's screen width.
+The grid system has four tiers : xs (phones), sm (tablets), md (desktops), and lg (larger desktops).
+The sum of all the columns value should be 12 to make a good grid.
+
+```html
+<div class="col-xs-6 col-sm-4">
+</div>
+<div class="col-xs-6 col-sm-4">
+</div>
+<div class="col-xs-6 col-sm-4">
+</div>
+```
+
 **Buttons**
 
 ```html
@@ -81,7 +136,7 @@ using javascript
 
 ```javascript
 //calling toast
-sp.createToast("Hey toast!",2);
+$().createToast("Hey toast!",2);
 ```
 
 The first parameter gives the text of toast and second gives time in seconds for the toast to be shown<br/>
