@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>SP.css demo</title>
+<meta name="viewport" content="width=device-width"/>
+<link rel="stylesheet" href="../sp.css"/>
+</head>
+<body class="scrollbar">
+<div class="material-nav" id="nav">
+<div class="material-nav_header bg-pink">
+
+</div>
+<div class="material-nav_content">
+
+</div>
+</div>
+<div class="container">
+<div class="header shadow1 bg-pink fixed ripple">
+<i class="material-icons left-icon material-nav_opener ripple-dark" data-target="nav">menu</i>Hello world
+</div>
+<div class="page">
+	<div class="fab">
+		<button class="fab-btn btn-red ripple shadow2">&times;</button>
+		<div class="fab-content bg-red">Hello there</div>
+	</div>
+	<div class="article border red dashed w1 all ripple-dark bg-yellow">
+		Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+	</div>
+	<form autocomplete="false" class="form">
+		<input type="text" name="cow" placeholder="Input osme" class="input">
+		<input type="checkbox" name="wow">Tyre
+	<div class="material-input">
+		<input type="text" name="name" required>
+		<label>Name</label>
+		<span class="bar"></span>
+	</div>
+	<div class="material-input">
+		<input type="text" name="name" required>
+		<label>Name</label>
+		<span class="bar"></span>
+	</div>
+	<div class="material-input">
+		<input type="text" name="name" required>
+		<label>Name</label>
+		<span class="bar"></span>
+	</div>
+	<div class="material-input">
+		<input type="text" name="name" required>
+		<label>Name</label>
+		<span class="bar"></span>
+	</div>
+	<div class="material-input">
+		<input type="text" name="name" required>
+		<label>Name</label>
+		<span class="bar"></span>
+	</div>
+	<div class="material-input">
+		<input type="text" name="name" required>
+		<label>Name</label>
+		<span class="bar"></span>
+	</div> 
+	</form>
+	<div class="article">
+		Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
+		The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham
+	</div>
+	<table class="table hover borderless shadow5 inset hover">
+    <thead>
+      <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>John</td>
+        <td>Doe</td>
+        <td>john@example.com</td>
+      </tr>
+      <tr>
+        <td>Mary</td>
+        <td>Moe</td>
+        <td>mary@example.com</td>
+      </tr>
+      <tr>
+        <td>July</td>
+        <td>Dooley</td>
+        <td>july@example.com</td>
+      </tr>
+    </tbody>
+  </table>
+	<ul class="list">
+	<li class="list-item bg-success disabled badge badge-red badge-overlap" data-badge='78'>First item</li>
+	<li class="list-item bg-red">Second item</li>
+	<li class="list-item bg-info">Third item</li>
+	<li class="list-item bg-warning">Fourth item</li>
+	</ul><br>
+  <h2>Click circle below for ripples</h2><br>
+	<div class="box-300 bg-red ripple-auto center circle"></div><br>
+	<button class="btn btn-red btn-lg clickable ripple badge badge-purple badge-lg" data-badge='35'>Hello world</button>
+	<button class="btn btn-blue badge badge-green" data-badge='5'>Hello world</button>
+	<button class="btn btn-skyblue">Hello world</button>
+	<button class="btn btn-pink">Hello world</button>
+	<button class="btn btn-green">Hello world</button>
+	<button class="btn btn-yellow">Hello world</button>
+	<button class="btn btn-black">Hello world</button>
+	<button class="btn btn-brown">Hello world</button>
+	<button class="btn btn-purple">Hello world</button>
+	<button class="btn btn-white">Hello world</button>
+	<button class="btn btn-deeppurple">Hello world</button>
+	<button class="btn btn-danger">Hello world</button>
+	<button class="btn btn-orange">Hello world</button>
+	<button class="btn btn-info">Hello world</button>
+	<button class="btn btn-primary">Hello world</button>
+	<button class="btn btn-warning">Hello world</button>
+
+	<br><br>
+</div>
+</div>
+
+<script type="text/javascript" src="../sp.js"></script>
+<script type="text/javascript">
+$().createToast('Hello world',5,{
+	'button':{
+		'text':'UNDO',
+		'background':'#000',
+		'color':'green'
+	}
+});
+</script>
+</body>
+</html>
