@@ -2386,17 +2386,15 @@ color: blue;
 }
 /*end of grid*/
 .scrollbar::-webkit-scrollbar {
-    width: 1em;
+    width: 10px;
 }
- 
 .scrollbar::-webkit-scrollbar-track {
-  background-color:#eee;
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.2);
+  background-color:#fff;
+  -webkit-box-shadow: inset 2px 0 6px rgba(0,0,0,0.2);
 }
- 
 .scrollbar::-webkit-scrollbar-thumb {
-  background-color: #333;
-  outline: 1px solid #000;
+  background-color: rgba(0,0,0,0.7);
+  -webkit-box-shadow: inset 5px 0 16px rgb(0,0,0);
 }
 .btn {
 background:0 0;
@@ -2815,7 +2813,7 @@ border-radius:50%;
 vertical-align:middle;
 line-height:50px;
 border: none;
-transition: 0.3s ease-out bottom;
+transition: 0.3s ease-out all;
 }
 .fab .fab-content {
 display:block;
@@ -2827,6 +2825,12 @@ transition: 0.3s ease-out bottom;
 }
 .fab-content.active {
   bottom: 80px!important;
+}
+.fab-btn.animate.right.doanim {
+  transform: rotate(90deg);
+}
+.fab-btn.animate.left.doanim {
+  transform: rotate(-90deg);
 }
 .fab-btn.btn-steelblue {
 color:#fff;
@@ -2977,13 +2981,16 @@ max-width:100%;
 /*sp forms section*/
 /*sp mat input*/
 .material-input {
+  display: block;
   position: relative;
-  min-height: 56px;
+  height: 56px;
   background: transparent;
   width: 100%;
   margin: 24px 0;
 }
 .material-input label {
+  color:#999; 
+  font-size:18px;
   display: block;
   width: 100%;
   height: 56px;
@@ -2991,15 +2998,14 @@ max-width:100%;
   line-height: 56px;
   position: absolute;
   z-index: 4;
-  font-size: 16px;
   transition: all 0.2s ease;
   left: 0;
   top: 0;
 }
-.material-input input {
+.material-input input{
   border:none;
   width: 100%;
-  height: 56px;
+  max-height: 56px;
   line-height: 56px;
   font-size: 16px;
   background: transparent;
@@ -3010,12 +3016,38 @@ max-width:100%;
   left: 0;
   top: 0;
 }
+.material-input textarea {
+  font-size:18px;
+  padding:10px 24px 0px 24px;
+  display:block;
+  width:100%;
+  border:none;
+  outline: none;
+  resize: none;
+}
+.material-input textarea ~ label {
+  color:#999; 
+  font-size:18px;
+  font-weight:normal;
+  position:absolute;
+  pointer-events:none;
+  left:5px;
+  top:10px;
+  transition:0.2s ease all; 
+  -moz-transition:0.2s ease all; 
+  -webkit-transition:0.2s ease all;
+}
+/* active state */
+.material-input textarea:focus ~ label, .material-input textarea:valid ~ label {
+  top:-20px;
+  font-size:14px;
+}
 .material-input .bar  { position:absolute; display:block; width:calc(100% - 48px); bottom: 0; right: 24px;}
 .material-input .bar:before,.material-input .bar:after   {
   content:'';
   height:2px; 
   width:0;
-  bottom:1px; 
+  bottom:0px; 
   position:absolute;
   transition:0.2s ease all;
   background:#eee;
@@ -3029,202 +3061,202 @@ max-width:100%;
   width: 50%;
 }
 /* active state */
-.material-input input:focus ~ label, .material-input input:valid ~ label {
+.material-input input:focus ~ label, .material-input input:valid ~ label, .material-input textarea:focus ~ label, .material-input textarea:valid ~ label {
   color: #325d81;
-  font-size: 14px;
-  height: 14px;
-  line-height: 14px;
+  font-size: 12px;
+  height: 12px;
+  line-height: 12px;
 }
-.material-input input:focus ~ .bar:before, .material-input input:focus ~ .bar:after {
+.material-input input:focus ~ .bar:before, .material-input input:focus ~ .bar:after, .material-input textarea:focus ~ .bar:before, .material-input textarea:focus ~ .bar:after {
   background: #3f51b5;
 }
-.material-input.primary input:focus ~ label, .material-input.primary input:valid ~ label {
+.material-input.primary input:focus ~ label, .material-input.primary input:valid ~ label, .material-input.primary textarea:focus ~ label, .material-input.primary textarea:valid ~ label {
   color: #007bff;
-  font-size: 14px;
-  height: 14px;
-  line-height: 14px;
+  font-size: 12px;
+  height: 12px;
+  line-height: 12px;
 }
-.material-input.primary input:focus ~ .bar:before, .material-input.primary input:focus ~ .bar:after {
+.material-input.primary input:focus ~ .bar:before, .material-input.primary input:focus ~ .bar:after, .material-input.primary textarea:focus ~ .bar:before, .material-input.primary textarea:focus ~ .bar:after {
   background: #007bff;
 }
-.material-input.danger input:focus ~ label, .material-input.danger input:valid ~ label {
+.material-input.danger input:focus ~ label, .material-input.danger input:valid ~ label, .material-input.danger textarea:focus ~ label, .material-input.danger textarea:valid ~ label {
   color: #dc3545;
-  font-size: 14px;
-  height: 14px;
-  line-height: 14px;
+  font-size: 12px;
+  height: 12px;
+  line-height: 12px;
 }
-.material-input.danger input:focus ~ .bar:before, .material-input.danger input:focus ~ .bar:after {
+.material-input.danger input:focus ~ .bar:before, .material-input.danger input:focus ~ .bar:after, .material-input.danger textarea:focus ~ .bar:before, .material-input.danger textarea:focus ~ .bar:after  {
   background: #dc3545;
 }
-.material-input.success input:focus ~ label, .material-input.success input:valid ~ label {
+.material-input.success input:focus ~ label, .material-input.success input:valid ~ label, .material-input.success textarea:focus ~ label, .material-input.success textarea:valid ~ label {
   color: #28a445;
-  font-size: 14px;
-  height: 14px;
-  line-height: 14px;
+  font-size: 12px;
+  height: 12px;
+  line-height: 12px;
 }
-.material-input.success input:focus ~ .bar:before, .material-input.success input:focus ~ .bar:after {
+.material-input.success input:focus ~ .bar:before, .material-input.success input:focus ~ .bar:after, .material-input.success textarea:focus ~ .bar:before, .material-input.success textarea:focus ~ .bar:after  {
   background: #28a445;
 }
-.material-input.info input:focus ~ label, .material-input.info input:valid ~ label {
+.material-input.info input:focus ~ label, .material-input.info input:valid ~ label, .material-input.info textarea:focus ~ label, .material-input.info textarea:valid ~ label {
   color: #19b4cc;
-  font-size: 14px;
-  height: 14px;
-  line-height: 14px;
+  font-size: 12px;
+  height: 12px;
+  line-height: 12px;
 }
-.material-input.info input:focus ~ .bar:before, .material-input.info input:focus ~ .bar:after {
+.material-input.info input:focus ~ .bar:before, .material-input.info input:focus ~ .bar:after, .material-input.info textarea:focus ~ .bar:before, .material-input.info textarea:focus ~ .bar:after  {
   background: #19b4cc;
 }
-.material-input.warning input:focus ~ label, .material-input.warning input:valid ~ label {
+.material-input.warning input:focus ~ label, .material-input.warning input:valid ~ label, .material-input.warning textarea:focus ~ label, .material-input.warning textarea:valid ~ label {
   color: #ffbf00;
-  font-size: 14px;
-  height: 14px;
-  line-height: 14px;
+  font-size: 12px;
+  height: 12px;
+  line-height: 12px;
 }
-.material-input.warning input:focus ~ .bar:before, .material-input.warning input:focus ~ .bar:after {
+.material-input.warning input:focus ~ .bar:before, .material-input.warning input:focus ~ .bar:after, .material-input.warning textarea:focus ~ .bar:before, .material-input.warning textarea:focus ~ .bar:after  {
   background: #ffbf00;
 }
-.material-input.indigo input:focus ~ label, .material-input.indigo input:valid ~ label {
+.material-input.indigo input:focus ~ label, .material-input.indigo input:valid ~ label, .material-input.indigo textarea:focus ~ label, .material-input.indigo textarea:valid ~ label {
   color: #3f51b5;
-  font-size: 14px;
-  height: 14px;
-  line-height: 14px;
+  font-size: 12px;
+  height: 12px;
+  line-height: 12px;
 }
-.material-input.indigo input:focus ~ .bar:before, .material-input.indigo input:focus ~ .bar:after {
+.material-input.indigo input:focus ~ .bar:before, .material-input.indigo input:focus ~ .bar:after , .material-input.indigo textarea:focus ~ .bar:before, .material-input.indigo textarea:focus ~ .bar:after {
   background: #3f51b5;
 }
-.material-input.green input:focus ~ label, .material-input.green input:valid ~ label {
+.material-input.green input:focus ~ label, .material-input.green input:valid ~ label, .material-input.green textarea:focus ~ label, .material-input.green textarea:valid ~ label {
   color: #4caf50;
-  font-size: 14px;
-  height: 14px;
-  line-height: 14px;
+  font-size: 12px;
+  height: 12px;
+  line-height: 12px;
 }
-.material-input.green input:focus ~ .bar:before, .material-input.green input:focus ~ .bar:after {
+.material-input.green input:focus ~ .bar:before, .material-input.green input:focus ~ .bar:after , .material-input.green textarea:focus ~ .bar:before, .material-input.green textarea:focus ~ .bar:after {
   background: #4caf50;
 }
-.material-input.teal input:focus ~ label, .material-input.teal input:valid ~ label {
+.material-input.teal input:focus ~ label, .material-input.teal input:valid ~ label, .material-input.teal textarea:focus ~ label, .material-input.teal textarea:valid ~ label {
   color: #009688;
-  font-size: 14px;
-  height: 14px;
-  line-height: 14px;
+  font-size: 12px;
+  height: 12px;
+  line-height: 12px;
 }
-.material-input.teal input:focus ~ .bar:before, .material-input.teal input:focus ~ .bar:after {
+.material-input.teal input:focus ~ .bar:before, .material-input.teal input:focus ~ .bar:after, .material-input.teal textarea:focus ~ .bar:before, .material-input.teal textarea:focus ~ .bar:after  {
   background: #009688;
-}.material-input.red input:focus ~ label, .material-input.red input:valid ~ label {
+}.material-input.red input:focus ~ label, .material-input.red input:valid ~ label, .material-input.red textarea:focus ~ label, .material-input.red textarea:valid ~ label {
   color: #f44336;
-  font-size: 14px;
-  height: 14px;
-  line-height: 14px;
+  font-size: 12px;
+  height: 12px;
+  line-height: 12px;
 }
-.material-input.red input:focus ~ .bar:before, .material-input.red input:focus ~ .bar:after {
+.material-input.red input:focus ~ .bar:before, .material-input.red input:focus ~ .bar:after, .material-input.red textarea:focus ~ .bar:before, .material-input.red textarea:focus ~ .bar:after  {
   background: #f44336;
 }
-.material-input.pink input:focus ~ label, .material-input.pink input:valid ~ label {
+.material-input.pink input:focus ~ label, .material-input.pink input:valid ~ label, .material-input.pink textarea:focus ~ label, .material-input.pink textarea:valid ~ label {
   color: #e91e63;
-  font-size: 14px;
-  height: 14px;
-  line-height: 14px;
+  font-size: 12px;
+  height: 12px;
+  line-height: 12px;
 }
-.material-input.pink input:focus ~ .bar:before, .material-input.pink input:focus ~ .bar:after {
+.material-input.pink input:focus ~ .bar:before, .material-input.pink input:focus ~ .bar:after , .material-input.pink textarea:focus ~ .bar:before, .material-input.pink textarea:focus ~ .bar:after {
   background: #e91e63;
 }
-.material-input.purple input:focus ~ label, .material-input.purple input:valid ~ label {
+.material-input.purple input:focus ~ label, .material-input.purple input:valid ~ label, .material-input.purple textarea:focus ~ label, .material-input.purple textarea:valid ~ label {
   color: #9c27b0;
-  font-size: 14px;
-  height: 14px;
-  line-height: 14px;
+  font-size: 12px;
+  height: 12px;
+  line-height: 12px;
 }
-.material-input.purple input:focus ~ .bar:before, .material-input.purple input:focus ~ .bar:after {
+.material-input.purple input:focus ~ .bar:before, .material-input.purple input:focus ~ .bar:after, .material-input.purple textarea:focus ~ .bar:before, .material-input.purple textarea:focus ~ .bar:after  {
   background: #9c27b0;
 }
-.material-input.deeppurple input:focus ~ label, .material-input.deeppurple input:valid ~ label {
+.material-input.deeppurple input:focus ~ label, .material-input.deeppurple input:valid ~ label, .material-input.deeppurple textarea:focus ~ label, .material-input.deeppurple textarea:valid ~ label {
   color: #673ab7;
-  font-size: 14px;
-  height: 14px;
-  line-height: 14px;
+  font-size: 12px;
+  height: 12px;
+  line-height: 12px;
 }
-.material-input.deeppurple input:focus ~ .bar:before, .material-input.deeppueple input:focus ~ .bar:after {
+.material-input.deeppurple input:focus ~ .bar:before, .material-input.deeppueple input:focus ~ .bar:after, .material-input.deeppurple textarea:focus ~ .bar:before, .material-input.deeppurple textarea:focus ~ .bar:after  {
   background: #673ab7;
 }
-.material-input.blue input:focus ~ label, .material-input.blue input:valid ~ label {
+.material-input.blue input:focus ~ label, .material-input.blue input:valid ~ label, .material-input.blue textarea:focus ~ label, .material-input.blue textarea:valid ~ label {
   color: #2196f3;
-  font-size: 14px;
-  height: 14px;
-  line-height: 14px;
+  font-size: 12px;
+  height: 12px;
+  line-height: 12px;
 }
-.material-input.blue input:focus ~ .bar:before, .material-input.blue input:focus ~ .bar:after {
+.material-input.blue input:focus ~ .bar:before, .material-input.blue input:focus ~ .bar:after, .material-input.blue textarea:focus ~ .bar:before, .material-input.blue textarea:focus ~ .bar:after  {
   background: #2196f3;
 }
-.material-input.skyblue input:focus ~ label, .material-input.skyblue input:valid ~ label {
+.material-input.skyblue input:focus ~ label, .material-input.skyblue input:valid ~ label, .material-input.skyblue textarea:focus ~ label, .material-input.skyblue textarea:valid ~ label {
   color: #03a9f4;
-  font-size: 14px;
-  height: 14px;
-  line-height: 14px;
+  font-size: 12px;
+  height: 12px;
+  line-height: 12px;
 }
-.material-input.skyblue input:focus ~ .bar:before, .material-input.skyblue input:focus ~ .bar:after {
+.material-input.skyblue input:focus ~ .bar:before, .material-input.skyblue input:focus ~ .bar:after , .material-input.skyblue textarea:focus ~ .bar:before, .material-input.slyblue textarea:focus ~ .bar:after {
   background: #03a9f4;
 }
-.material-input.orange input:focus ~ label, .material-input.orange input:valid ~ label {
+.material-input.orange input:focus ~ label, .material-input.orange input:valid ~ label, .material-input.orange textarea:focus ~ label, .material-input.orange textarea:valid ~ label {
   color: #ff9800;
-  font-size: 14px;
-  height: 14px;
-  line-height: 14px;
+  font-size: 12px;
+  height: 12px;
+  line-height: 12px;
 }
-.material-input.orange input:focus ~ .bar:before, .material-input.orange input:focus ~ .bar:after {
+.material-input.orange input:focus ~ .bar:before, .material-input.orange input:focus ~ .bar:after, .material-input.orange textarea:focus ~ .bar:before, .material-input.orange textarea:focus ~ .bar:after  {
   background: #ff9800;
 }
-.material-input.brown input:focus ~ label, .material-input.brown input:valid ~ label {
+.material-input.brown input:focus ~ label, .material-input.brown input:valid ~ label, .material-input.brown textarea:focus ~ label, .material-input.brown textarea:valid ~ label {
   color: #795548;
-  font-size: 14px;
-  height: 14px;
-  line-height: 14px;
+  font-size: 12px;
+  height: 12px;
+  line-height: 12px;
 }
-.material-input.brown input:focus ~ .bar:before, .material-input.brown input:focus ~ .bar:after {
+.material-input.brown input:focus ~ .bar:before, .material-input.brown input:focus ~ .bar:after, .material-input.brown textarea:focus ~ .bar:before, .material-input.brown textarea:focus ~ .bar:after  {
   background: #795548;
 }
-.material-input.bluegrey input:focus ~ label, .material-input.bluegrey input:valid ~ label {
+.material-input.bluegrey input:focus ~ label, .material-input.bluegrey input:valid ~ label, .material-input.bluegrey textarea:focus ~ label, .material-input.bluegrey textarea:valid ~ label {
   color: #607d8b;
-  font-size: 14px;
-  height: 14px;
-  line-height: 14px;
+  font-size: 12px;
+  height: 12px;
+  line-height: 12px;
 }
-.material-input.bluegrey input:focus ~ .bar:before, .material-input.bluegrey input:focus ~ .bar:after {
+.material-input.bluegrey input:focus ~ .bar:before, .material-input.bluegrey input:focus ~ .bar:after, .material-input.bluegrey textarea:focus ~ .bar:before, .material-input.bluegrey textarea:focus ~ .bar:after  {
   background: #607d8b;
 }
-.material-input.white input:focus ~ label, .material-input.white input:valid ~ label {
+.material-input.white input:focus ~ label, .material-input.white input:valid ~ label, .material-input.white textarea:focus ~ label, .material-input.white textarea:valid ~ label {
   color: #fff;
-  font-size: 14px;
-  height: 14px;
-  line-height: 14px;
+  font-size: 12px;
+  height: 12px;
+  line-height: 12px;
 }
-.material-input.white input:focus ~ .bar:before, .material-input.white input:focus ~ .bar:after {
+.material-input.white input:focus ~ .bar:before, .material-input.white input:focus ~ .bar:after, .material-input.white textarea:focus ~ .bar:before, .material-input.white textarea:focus ~ .bar:after  {
   background: #fff;
 }
 .material-input.white input {
   color: #fff;
 }
-.material-input.yellow input:focus ~ label, .material-input.yellow input:valid ~ label {
+.material-input.yellow input:focus ~ label, .material-input.yellow input:valid ~ label, .material-input.yellow textarea:focus ~ label, .material-input.yellow textarea:valid ~ label {
   color: #ffeb3b;
-  font-size: 14px;
-  height: 14px;
-  line-height: 14px;
+  font-size: 12px;
+  height: 12px;
+  line-height: 12px;
 }
-.material-input.yellow input:focus ~ .bar:before, .material-input.yellow input:focus ~ .bar:after {
+.material-input.yellow input:focus ~ .bar:before, .material-input.yellow input:focus ~ .bar:after, .material-input.yellow textarea:focus ~ .bar:before, .material-input.yellow textarea:focus ~ .bar:after  {
   background: #ffeb3b;
 }
-.material-input.steelblue input:focus ~ label, .material-input.steelblue input:valid ~ label {
+.material-input.steelblue input:focus ~ label, .material-input.steelblue input:valid ~ label, .material-input.steelblue textarea:focus ~ label, .material-input.steelblue textarea:valid ~ label {
   color: #4682b4;
-  font-size: 14px;
-  height: 14px;
-  line-height: 14px;
+  font-size: 12px;
+  height: 12px;
+  line-height: 12px;
 }
-.material-input.steelblue input:focus ~ .bar:before, .material-input.steelblue input:focus ~ .bar:after {
+.material-input.steelblue input:focus ~ .bar:before, .material-input.steelblue input:focus ~ .bar:after, .material-input.steelblue textarea:focus ~ .bar:before, .material-input.steelblue textarea:focus ~ .bar:after  {
   background: #4682b4;
 }
-.material-input.black input:focus ~ label, .material-input.black input:valid ~ label {
+.material-input.black input:focus ~ label, .material-input.black input:valid ~ label, .material-input.black textarea:focus ~ label, .material-input.black textarea:valid ~ label {
   color: #000;
-  font-size: 14px;
-  height: 14px;
-  line-height: 14px;
+  font-size: 12px;
+  height: 12px;
+  line-height: 12px;
 }
 .material-input.black input:focus ~ .bar:before, .material-input.black input:focus ~ .bar:after {
   background: #000;
@@ -3250,6 +3282,9 @@ max-width:100%;
  background-color:#fff;
  background-image:none;
  transition: 0.2s all linear;
+ }
+ textarea.input {
+  height: 70px;
  }
 .input:hover, .input:active{
 z-index:5;
@@ -3534,6 +3569,126 @@ top: 16px;
   cursor: not-allowed;
   pointer-events: none;
 }
+/*accordian*/
+.accordion {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 16px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 16px;
+  transition: 0.4s;
+}
+.panel {
+  padding: 0 16px;
+  background-color: white;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
+.accordion:after {
+  content: '\02795';
+  font-size: 13px;
+  float: right;
+  margin-left: 5px;
+}
+.accordion.active:after {
+    content: "\2796";
+}
+/*the cards*/
+.card {
+  position: relative;
+  width: 100%;
+  border-radius: 4px;
+  border: 1px solid #eee;
+  padding: 16px;
+}
+.card .topright {
+  position: absolute;
+  z-index: 2;
+  right: 10px;
+  top: 10px;
+  border-radius: 100%;
+  font-size: 10px;
+  font-weight: 600;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+}
+.card img, .card img.bottom {
+  width: calc(100% + 32px);
+  border-radius: 4px 4px 0 0;
+  margin: -16px;
+}
+.card img.bottom {
+  border-radius: 0 0 4px 4px;
+}
+.card .title {
+  font-size: 18px;
+  font-weight: 650;
+}
+.card .text {
+  margin: 16px 0;
+  padding: 0;
+  font-size: 15px;
+  font-weight: 300;
+}
+.card .hoverable {
+  position: absolute;
+  background-color: #fff;
+  font-size: 15px;
+  font-weight: 300;
+  top: 1500px;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  opacity: 0;
+  transition: 0.3s top ease-out, 0.5s opacity linear;
+}
+.card:hover .hoverable {
+  top: -16px;
+  opacity: 1;
+}
+.card button {
+  margin-left: -10px;
+  transform: scale(0.9);
+}
+/*tabs and all*/
+.tabs {
+  overflow: hidden;
+}
+/* Style the buttons that are used to open the tab content */
+.tabs button {
+  float: left;
+  border: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  background-color: inherit;
+  border:none;
+}
+.tabs button:hover {
+  background-color: rgba(255,255,255,.5);
+}
+.tabs button.active {
+  background-color: #fff;
+}
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+  animation: fadeEffect 0.5s;
+}
+@keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
 /*responsiveness comes here*/
 @media screen and (min-width: 600px){
 .container {
@@ -3559,6 +3714,624 @@ top: 16px;
 left:0;
 z-index:1;
 }
+}
+/*Border classes*/
+.border-none{
+border:none;
+}
+.left.border.w1{
+border-left-width:1px;
+}
+.left.border.w2{
+border-left-width:2px;
+}
+.left.border.w3{
+border-left-width:3px;
+}
+.left.border.w4{
+border-left-width:4px;
+}
+.left.border.w5{
+border-left-width:5px;
+}
+.left.border.w6{
+border-left-width:6px;
+}
+.left.border.w7{
+border-left-width:7px;
+}
+.left.border.w8{
+border-left-width:8px;
+}
+.left.border.w9{
+border-left-width:9px;
+}
+.left.border.w10{
+border-left-width:10px;
+}
+.left.border.solid {
+border-left-style:solid;
+}
+.left.border.dashed {
+border-left-style:dashed;
+}
+.left.border.dotted{
+border-left-style:dotted;
+}
+.left.border.doubled {
+border-left-style:double;
+}
+.left.border.green {
+border-left-color:#2e7d32;
+}
+.left.border.teal {
+border-left-color:#009688;
+}
+.left.border.indigo {
+border-left-color:#3f51b5;
+}
+.left.border.red {
+border-left-color:#f44336;
+}
+.left.border.pink {
+border-left-color:#e91e63;
+}
+.left.border.purple {
+border-left-color:#9c27b0;
+}
+.left.border.deeppurple {
+border-left-color:#673ab7;
+}
+.left.border.blue {
+border-left-color:#2196f3;
+}
+.left.border.skyblue {
+border-left-color:#039be5;
+}
+.left.border.orange {
+border-left-color:#ef6c00;
+}
+.left.border.brown {
+border-left-color:#795548;
+}
+.left.border.bluegrey {
+border-left-color:#607d8b;
+}
+.left.border.primary {
+border-left-color:#007bff;
+}
+.left.border.warning {
+border-left-color:#ffbf00;
+}
+.left.border.info {
+border-left-color:#19b4cc;
+}
+.left.border.success {
+border-left-color:#28a445;
+}
+.left.border.danger {
+border-left-color:#d63545;
+}
+.left.border.black {
+border-left-color:#000;
+}
+.left.border.white {
+border-left-color:#fff;
+}
+.left.border.yellow{
+border-left-color:#ffff00;
+}
+.left.border.steelblue{
+border-left-color:#4682b4;
+}
+.top.border.w1{
+border-top-width:1px;
+}
+.top.border.w2{
+border-top-width:2px;
+}
+.top.border.w3{
+border-top-width:3px;
+}
+.top.border.w4{
+border-top-width:4px;
+}
+.top.border.w5{
+border-top-width:5px;
+}
+.top.border.w6{
+border-top-width:6px;
+}
+.top.border.w7{
+border-top-width:7px;
+}
+.top.border.w8{
+border-top-width:8px;
+}
+.top.border.w9{
+border-top-width:9px;
+}
+.top.border.w10{
+border-top-width:10px;
+}
+.top.border.solid {
+border-top-style:solid;
+}
+.top.border.dashed {
+border-top-style:dashed;
+}
+.top.border.dotted{
+border-top-style:dotted;
+}
+.top.border.doubled {
+border-top-style:double;
+}
+.top.border.green {
+border-top-color:#2e7d32;
+}
+.top.border.teal {
+border-top-color:#009688;
+}
+.top.border.indigo {
+border-top-color:#3f51b5;
+}
+.top.border.red {
+border-top-color:#f44336;
+}
+.top.border.pink {
+border-top-color:#e91e63;
+}
+.top.border.purple {
+border-top-color:#9c27b0;
+}
+.top.border.deeppurple {
+border-top-color:#673ab7;
+}
+.top.border.blue {
+border-top-color:#2196f3;
+}
+.top.border.skyblue {
+border-top-color:#039be5;
+}
+.top.border.orange {
+border-top-color:#ef6c00;
+}
+.top.border.brown {
+border-top-color:#795548;
+}
+.top.border.bluegrey {
+border-top-color:#607d8b;
+}
+.top.border.primary {
+border-top-color:#007bff;
+}
+.top.border.warning {
+border-top-color:#ffbf00;
+}
+.top.border.info {
+border-top-color:#19b4cc;
+}
+.top.border.success {
+border-top-color:#28a445;
+}
+.top.border.danger {
+border-top-color:#d63545;
+}
+.top.border.white {
+border-top-color:#fff;
+}
+.top.border.black {
+border-top-color:#000;
+}
+.top.border.yellow{
+border-top-color:#ffff00;
+}
+.top.border.steelblue{
+border-top-color:#4682b4;
+}
+.right.border.w1{
+border-right-width:1px;
+}
+.right.border.w2{
+border-right-width:2px;
+}
+.right.border.w3{
+border-right-width:3px;
+}
+.right.border.w4{
+border-right-width:4px;
+}
+.right.border.w5{
+border-right-width:5px;
+}
+.right.border.w6{
+border-right-width:6px;
+}
+.right.border.w7{
+border-right-width:7px;
+}
+.right.border.w8{
+border-right-width:8px;
+}
+.right.border.w9{
+border-right-width:9px;
+}
+.right.border.w10{
+border-right-width:10px;
+}
+.right.border.solid {
+border-right-style:solid;
+}
+.right.border.dashed {
+border-right-style:dashed;
+}
+.right.border.dotted{
+border-right-style:dotted;
+}
+.right.border.doubled {
+border-right-style:double;
+}
+.right.border.green {
+border-right-color:#2e7d32;
+}
+.right.border.teal {
+border-right-color:#009688;
+}
+.right.border.indigo {
+border-right-color:#3f51b5;
+}
+.right.border.red {
+border-right-color:#f44336;
+}
+.right.border.pink {
+border-right-color:#e91e63;
+}
+.right.border.purple {
+border-right-color:#9c27b0;
+}
+.right.border.deeppurple {
+border-right-color:#673ab7;
+}
+.right.border.blue {
+border-right-color:#2196f3;
+}
+.right.border.skyblue {
+border-right-color:#039be5;
+}
+.right.border.orange {
+border-right-color:#ef6c00;
+}
+.right.border.brown {
+border-right-color:#795548;
+}
+.right.border.bluegrey {
+border-right-color:#607d8b;
+}
+.right.border.primary {
+border-right-color:#007bff;
+}
+.right.border.warning {
+border-right-color:#ffbf00;
+}
+.right.border.info {
+border-right-color:#19b4cc;
+}
+.right.border.success {
+border-right-color:#28a445;
+}
+.right.border.danger {
+border-right-color:#d63545;
+}
+.right.border.white {
+border-right-color:#fff;
+}
+.right.border.black {
+border-right-color:#000;
+}
+.right.border.yellow{
+border-right-color:#ffff00;
+}
+.right.border.steelblue{
+border-right-color:#4682b4;
+}
+.bottom.border.w1{
+border-bottom-width:1px;
+}
+.bottom.border.w2{
+border-bottom-width:2px;
+}
+.bottom.border.w3{
+border-bottom-width:3px;
+}
+.bottom.border.w4{
+border-bottom-width:4px;
+}
+.bottom.border.w5{
+border-bottom-width:5px;
+}
+.bottom.border.w6{
+border-bottom-width:6px;
+}
+.bottom.border.w7{
+border-bottom-width:7px;
+}
+.bottom.border.w8{
+border-bottom-width:8px;
+}
+.bottom.border.w9{
+border-bottom-width:9px;
+}
+.bottom.border.w10{
+border-bottom-width:10px;
+}
+.bottom.border.solid {
+border-bottom-style:solid;
+}
+.bottom.border.dashed {
+border-bottom-style:dashed;
+}
+.bottom.border.dotted{
+border-bottom-style:dotted;
+}
+.bottom.border.doubled {
+border-bottom-style:double;
+}
+.bottom.border.green {
+border-bottom-color:#2e7d32;
+}
+.bottom.border.teal {
+border-bottom-color:#009688;
+}
+.bottom.border.indigo {
+border-bottom-color:#3f51b5;
+}
+.bottom.border.red {
+border-bottom-color:#f44336;
+}
+.bottom.border.pink {
+border-bottom-color:#e91e63;
+}
+.bottom.border.purple {
+border-bottom-color:#9c27b0;
+}
+.bottom.border.deeppurple {
+border-bottom-color:#673ab7;
+}
+.bottom.border.blue {
+border-bottom-color:#2196f3;
+}
+.bottom.border.skyblue {
+border-bottom-color:#039be5;
+}
+.bottom.border.orange {
+border-bottom-color:#ef6c00;
+}
+.bottom.border.brown {
+border-bottom-color:#795548;
+}
+.bottom.border.bluegrey {
+border-bottom-color:#607d8b;
+}
+.bottom.border.primary {
+border-bottom-color:#007bff;
+}
+.bottom.border.warning {
+border-bottom-color:#ffbf00;
+}
+.bottom.border.info {
+border-bottom-color:#19b4cc;
+}
+.bottom.border.success {
+border-bottom-color:#28a445;
+}
+.bottom.border.danger {
+border-bottom-color:#d63545;
+}
+.bottom.border.black {
+border-bottom-color:#000;
+}
+.bottom.border.white {
+border-bottom-color:#fff;
+}
+.bottom.border.yellow{
+border-bottom-color:#ffff00;
+}
+.bottom.border.steelblue{
+border-bottom-color:#4682b4;
+}
+.all.border.w1{
+border-width:1px;
+}
+.all.border.w2{
+border-width:2px;
+}
+.all.border.w3{
+border-width:3px;
+}
+.all.border.w4{
+border-width:4px;
+}
+.all.border.w5{
+border-width:5px;
+}
+.all.border.w6{
+border-width:6px;
+}
+.all.border.w7{
+border-width:7px;
+}
+.all.border.w8{
+border-width:8px;
+}
+.all.border.w9{
+border-width:9px;
+}
+.all.border.w10{
+border-width:10px;
+}
+.all.border.solid {
+border-style:solid;
+}
+.all.border.dashed {
+border-style:dashed;
+}
+.all.border.dotted{
+border-style:dotted;
+}
+.all.border.doubled {
+border-style:double;
+}
+.all.border.green {
+border-color:#2e7d32;
+}
+.all.border.teal {
+border-color:#009688;
+}
+.all.border.indigo {
+border-color:#3f51b5;
+}
+.all.border.red {
+border-color:#f44336;
+}
+.all.border.pink {
+border-color:#e91e63;
+}
+.all.border.purple {
+border-color:#9c27b0;
+}
+.all.border.deeppurple {
+border-color:#673ab7;
+}
+.all.border.blue {
+border-color:#2196f3;
+}
+.all.border.skyblue {
+border-color:#039be5;
+}
+.all.border.orange {
+border-color:#ef6c00;
+}
+.all.border.brown {
+border-color:#795548;
+}
+.all.border.bluegrey {
+border-color:#607d8b;
+}
+.all.border.primary {
+border-color:#007bff;
+}
+.all.border.warning {
+border-color:#ffbf00;
+}
+.all.border.info {
+border-color:#19b4cc;
+}
+.all.border.success {
+border-color:#28a445;
+}
+.all.border.danger {
+border-color:#d63545;
+}
+.all.border.black {
+border-color:#000;
+}
+.all.border.white {
+border-color:#fff;
+}
+.all.border.yellow{
+border-color:#ffff00;
+}
+.all.border.steelblue{
+border-color:#4682b4;
+}
+/*outline (border) colors*/
+[class*='outline-']{
+background-color:transparent;
+background-image:none;
+}
+.outline-primary {
+color:#007bff;
+border-color:#007bff;
+}
+.outline-warning {
+color:#ffbf00;
+border-color:#ffbf00;
+}
+.outline-info {
+color:#19b4cc;
+border-color:#19b4cc;
+}
+.outline-success {
+color:#28a445;
+border-color:#28a445;
+}
+.outline-danger {
+color:#dc3545;
+border-color:#dc3545;
+}
+.outline-green {
+color:#2e7d32;
+border-color:#2e7d32;
+}
+.outline-teal {
+color:#009688;
+border-color:#009688;
+}
+.outline-indigo {
+color:#3f51b5;
+border-color:#3f51b5;
+}
+.outline-red {
+color:#f44336;
+border-color:#f44336;
+}
+.outline-pink {
+color:#e91e63;
+border-color:#e91e63;
+}
+.outline-purple {
+color:#9c27b0;
+border-color:#9c27b0;
+}
+.outline-deeppurple {
+color:#673ab7;
+border-color:#673ab7;
+}
+.outline-blue {
+color:#2196f3;
+border-color:#2196f3;
+}
+.outline-skyblue {
+color:#039be5;
+border-color:#039be5;
+}
+.outline-orange {
+color:#ef6c00;
+border-color:#ef6c00;
+}
+.outline-brown {
+color:#795548;
+border-color:#795548;
+}
+.outline-bluegrey {
+color:#607d8b;
+border-color:#607d8b;
+}
+.outline-black {
+color:#000;
+border-color:#000;
+}
+.outline-white {
+color:#fff;
+border-color:#fff;
+}
+.outline-yellow {
+color:#ffff00;
+border-color:#ffff00;
+}
+.outline-steelblue {
+color:#4682b4;
+border-color:#4682b4;
 }
 /*the background colors*/
 .bg-primary {
@@ -4393,662 +5166,6 @@ color:#ffff00;
 .text-steelblue {
 color:#4682b4;
 }
-/*Border classes*/
-.border-none{
-border:none;
-}
-.left.border.w1{
-border-left-width:1px;
-}
-.left.border.w2{
-border-left-width:2px;
-}
-.left.border.w3{
-border-left-width:3px;
-}
-.left.border.w4{
-border-left-width:4px;
-}
-.left.border.w5{
-border-left-width:5px;
-}
-.left.border.w6{
-border-left-width:6px;
-}
-.left.border.w7{
-border-left-width:7px;
-}
-.left.border.w8{
-border-left-width:8px;
-}
-.left.border.w9{
-border-left-width:9px;
-}
-.left.border.w10{
-border-left-width:10px;
-}
-.left.border.solid {
-border-left-style:solid;
-}
-.left.border.dashed {
-border-left-style:dashed;
-}
-.left.border.dotted{
-border-left-style:dotted;
-}
-.left.border.doubled {
-border-left-style:double;
-}
-.left.border.green {
-border-left-color:#2e7d32;
-}
-.left.border.teal {
-border-left-color:#009688;
-}
-.left.border.indigo {
-border-left-color:#3f51b5;
-}
-.left.border.red {
-border-left-color:#f44336;
-}
-.left.border.pink {
-border-left-color:#e91e63;
-}
-.left.border.purple {
-border-left-color:#9c27b0;
-}
-.left.border.deeppurple {
-border-left-color:#673ab7;
-}
-.left.border.blue {
-border-left-color:#2196f3;
-}
-.left.border.skyblue {
-border-left-color:#039be5;
-}
-.left.border.orange {
-border-left-color:#ef6c00;
-}
-.left.border.brown {
-border-left-color:#795548;
-}
-.left.border.bluegrey {
-border-left-color:#607d8b;
-}
-.left.border.primary {
-border-left-color:#007bff;
-}
-.left.border.warning {
-border-left-color:#ffbf00;
-}
-.left.border.info {
-border-left-color:#19b4cc;
-}
-.left.border.success {
-border-left-color:#28a445;
-}
-.left.border.danger {
-border-left-color:#d63545;
-}
-.left.border.black {
-border-left-color:#000;
-}
-.left.border.white {
-border-left-color:#fff;
-}
-.left.border.yellow{
-border-left-color:#ffff00;
-}
-.left.border.steelblue{
-border-left-color:#4682b4;
-}
-.top.border.w1{
-border-top-width:1px;
-}
-.top.border.w2{
-border-top-width:2px;
-}
-.top.border.w3{
-border-top-width:3px;
-}
-.top.border.w4{
-border-top-width:4px;
-}
-.top.border.w5{
-border-top-width:5px;
-}
-.top.border.w6{
-border-top-width:6px;
-}
-.top.border.w7{
-border-top-width:7px;
-}
-.top.border.w8{
-border-top-width:8px;
-}
-.top.border.w9{
-border-top-width:9px;
-}
-.top.border.w10{
-border-top-width:10px;
-}
-.top.border.solid {
-border-top-style:solid;
-}
-.top.border.dashed {
-border-top-style:dashed;
-}
-.top.border.dotted{
-border-top-style:dotted;
-}
-.top.border.doubled {
-border-top-style:double;
-}
-.top.border.green {
-border-top-color:#2e7d32;
-}
-.top.border.teal {
-border-top-color:#009688;
-}
-.top.border.indigo {
-border-top-color:#3f51b5;
-}
-.top.border.red {
-border-top-color:#f44336;
-}
-.top.border.pink {
-border-top-color:#e91e63;
-}
-.top.border.purple {
-border-top-color:#9c27b0;
-}
-.top.border.deeppurple {
-border-top-color:#673ab7;
-}
-.top.border.blue {
-border-top-color:#2196f3;
-}
-.top.border.skyblue {
-border-top-color:#039be5;
-}
-.top.border.orange {
-border-top-color:#ef6c00;
-}
-.top.border.brown {
-border-top-color:#795548;
-}
-.top.border.bluegrey {
-border-top-color:#607d8b;
-}
-.top.border.primary {
-border-top-color:#007bff;
-}
-.top.border.warning {
-border-top-color:#ffbf00;
-}
-.top.border.info {
-border-top-color:#19b4cc;
-}
-.top.border.success {
-border-top-color:#28a445;
-}
-.top.border.danger {
-border-top-color:#d63545;
-}
-.top.border.white {
-border-top-color:#fff;
-}
-.top.border.black {
-border-top-color:#000;
-}
-.top.border.yellow{
-border-top-color:#ffff00;
-}
-.top.border.steelblue{
-border-top-color:#4682b4;
-}
-.right.border.w1{
-border-right-width:1px;
-}
-.right.border.w2{
-border-right-width:2px;
-}
-.right.border.w3{
-border-right-width:3px;
-}
-.right.border.w4{
-border-right-width:4px;
-}
-.right.border.w5{
-border-right-width:5px;
-}
-.right.border.w6{
-border-right-width:6px;
-}
-.right.border.w7{
-border-right-width:7px;
-}
-.right.border.w8{
-border-right-width:8px;
-}
-.right.border.w9{
-border-right-width:9px;
-}
-.right.border.w10{
-border-right-width:10px;
-}
-.right.border.solid {
-border-right-style:solid;
-}
-.right.border.dashed {
-border-right-style:dashed;
-}
-.right.border.dotted{
-border-right-style:dotted;
-}
-.right.border.doubled {
-border-right-style:double;
-}
-.right.border.green {
-border-right-color:#2e7d32;
-}
-.right.border.teal {
-border-right-color:#009688;
-}
-.right.border.indigo {
-border-right-color:#3f51b5;
-}
-.right.border.red {
-border-right-color:#f44336;
-}
-.right.border.pink {
-border-right-color:#e91e63;
-}
-.right.border.purple {
-border-right-color:#9c27b0;
-}
-.right.border.deeppurple {
-border-right-color:#673ab7;
-}
-.right.border.blue {
-border-right-color:#2196f3;
-}
-.right.border.skyblue {
-border-right-color:#039be5;
-}
-.right.border.orange {
-border-right-color:#ef6c00;
-}
-.right.border.brown {
-border-right-color:#795548;
-}
-.right.border.bluegrey {
-border-right-color:#607d8b;
-}
-.right.border.primary {
-border-right-color:#007bff;
-}
-.right.border.warning {
-border-right-color:#ffbf00;
-}
-.right.border.info {
-border-right-color:#19b4cc;
-}
-.right.border.success {
-border-right-color:#28a445;
-}
-.right.border.danger {
-border-right-color:#d63545;
-}
-.right.border.white {
-border-right-color:#fff;
-}
-.right.border.black {
-border-right-color:#000;
-}
-.right.border.yellow{
-border-right-color:#ffff00;
-}
-.right.border.steelblue{
-border-right-color:#4682b4;
-}
-.bottom.border.w1{
-border-bottom-width:1px;
-}
-.bottom.border.w2{
-border-bottom-width:2px;
-}
-.bottom.border.w3{
-border-bottom-width:3px;
-}
-.bottom.border.w4{
-border-bottom-width:4px;
-}
-.bottom.border.w5{
-border-bottom-width:5px;
-}
-.bottom.border.w6{
-border-bottom-width:6px;
-}
-.bottom.border.w7{
-border-bottom-width:7px;
-}
-.bottom.border.w8{
-border-bottom-width:8px;
-}
-.bottom.border.w9{
-border-bottom-width:9px;
-}
-.bottom.border.w10{
-border-bottom-width:10px;
-}
-.bottom.border.solid {
-border-bottom-style:solid;
-}
-.bottom.border.dashed {
-border-bottom-style:dashed;
-}
-.bottom.border.dotted{
-border-bottom-style:dotted;
-}
-.bottom.border.doubled {
-border-bottom-style:double;
-}
-.bottom.border.green {
-border-bottom-color:#2e7d32;
-}
-.bottom.border.teal {
-border-bottom-color:#009688;
-}
-.bottom.border.indigo {
-border-bottom-color:#3f51b5;
-}
-.bottom.border.red {
-border-bottom-color:#f44336;
-}
-.bottom.border.pink {
-border-bottom-color:#e91e63;
-}
-.bottom.border.purple {
-border-bottom-color:#9c27b0;
-}
-.bottom.border.deeppurple {
-border-bottom-color:#673ab7;
-}
-.bottom.border.blue {
-border-bottom-color:#2196f3;
-}
-.bottom.border.skyblue {
-border-bottom-color:#039be5;
-}
-.bottom.border.orange {
-border-bottom-color:#ef6c00;
-}
-.bottom.border.brown {
-border-bottom-color:#795548;
-}
-.bottom.border.bluegrey {
-border-bottom-color:#607d8b;
-}
-.bottom.border.primary {
-border-bottom-color:#007bff;
-}
-.bottom.border.warning {
-border-bottom-color:#ffbf00;
-}
-.bottom.border.info {
-border-bottom-color:#19b4cc;
-}
-.bottom.border.success {
-border-bottom-color:#28a445;
-}
-.bottom.border.danger {
-border-bottom-color:#d63545;
-}
-.bottom.border.black {
-border-bottom-color:#000;
-}
-.bottom.border.white {
-border-bottom-color:#fff;
-}
-.bottom.border.yellow{
-border-bottom-color:#ffff00;
-}
-.bottom.border.steelblue{
-border-bottom-color:#4682b4;
-}
-.all.border.w1{
-border-width:1px;
-}
-.all.border.w2{
-border-width:2px;
-}
-.all.border.w3{
-border-width:3px;
-}
-.all.border.w4{
-border-width:4px;
-}
-.all.border.w5{
-border-width:5px;
-}
-.all.border.w6{
-border-width:6px;
-}
-.all.border.w7{
-border-width:7px;
-}
-.all.border.w8{
-border-width:8px;
-}
-.all.border.w9{
-border-width:9px;
-}
-.all.border.w10{
-border-width:10px;
-}
-.all.border.solid {
-border-style:solid;
-}
-.all.border.dashed {
-border-style:dashed;
-}
-.all.border.dotted{
-border-style:dotted;
-}
-.all.border.doubled {
-border-style:double;
-}
-.all.border.green {
-border-color:#2e7d32;
-}
-.all.border.teal {
-border-color:#009688;
-}
-.all.border.indigo {
-border-color:#3f51b5;
-}
-.all.border.red {
-border-color:#f44336;
-}
-.all.border.pink {
-border-color:#e91e63;
-}
-.all.border.purple {
-border-color:#9c27b0;
-}
-.all.border.deeppurple {
-border-color:#673ab7;
-}
-.all.border.blue {
-border-color:#2196f3;
-}
-.all.border.skyblue {
-border-color:#039be5;
-}
-.all.border.orange {
-border-color:#ef6c00;
-}
-.all.border.brown {
-border-color:#795548;
-}
-.all.border.bluegrey {
-border-color:#607d8b;
-}
-.all.border.primary {
-border-color:#007bff;
-}
-.all.border.warning {
-border-color:#ffbf00;
-}
-.all.border.info {
-border-color:#19b4cc;
-}
-.all.border.success {
-border-color:#28a445;
-}
-.all.border.danger {
-border-color:#d63545;
-}
-.all.border.black {
-border-color:#000;
-}
-.all.border.white {
-border-color:#fff;
-}
-.all.border.yellow{
-border-color:#ffff00;
-}
-.all.border.steelblue{
-border-color:#4682b4;
-}
-/*outline (border) colors*/
-.outline-primary {
-background-color:transparent;
-background-image:none;
-color:#007bff;
-border-color:#007bff;
-}
-.outline-warning {
-background-color:transparent;
-background-image:none;
-color:#ffbf00;
-border-color:#ffbf00;
-}
-.outline-info {
-background-color:transparent;
-background-image:none;
-color:#19b4cc;
-border-color:#19b4cc;
-}
-.outline-success {
-background-color:transparent;
-background-image:none;
-color:#28a445;
-border-color:#28a445;
-}
-.outline-danger {
-background-color:transparent;
-background-image:none;
-color:#dc3545;
-border-color:#dc3545;
-}
-.outline-green {
-background-color:transparent;
-background-image:none;
-color:#2e7d32;
-border-color:#2e7d32;
-}
-.outline-teal {
-background-color:transparent;
-background-image:none;
-color:#009688;
-border-color:#009688;
-}
-.outline-indigo {
-background-color:transparent;
-background-image:none;
-color:#3f51b5;
-border-color:#3f51b5;
-}
-.outline-red {
-background-color:transparent;
-background-image:none;
-color:#f44336;
-border-color:#f44336;
-}
-.outline-pink {
-background-color:transparent;
-background-image:none;
-color:#e91e63;
-border-color:#e91e63;
-}
-.outline-purple {
-background-color:transparent;
-background-image:none;
-color:#9c27b0;
-border-color:#9c27b0;
-}
-.outline-deeppurple {
-background-color:transparent;
-background-image:none;
-color:#673ab7;
-border-color:#673ab7;
-}
-.outline-blue {
-background-color:transparent;
-background-image:none;
-color:#2196f3;
-border-color:#2196f3;
-}
-.outline-skyblue {
-background-color:transparent;
-background-image:none;
-color:#039be5;
-border-color:#039be5;
-}
-.outline-orange {
-background-color:transparent;
-background-image:none;
-color:#ef6c00;
-border-color:#ef6c00;
-}
-.outline-brown {
-background-color:transparent;
-background-image:none;
-color:#795548;
-border-color:#795548;
-}
-.outline-bluegrey {
-background-color:transparent;
-background-image:none;
-color:#607d8b;
-border-color:#607d8b;
-}
-.outline-black {
-background-color:transparent;
-background-image:none;
-color:#000;
-border-color:#000;
-}
-.outline-white {
-background-color:transparent;
-background-image:none;
-color:#fff;
-border-color:#fff;
-}
-.outline-yellow {
-background-color:transparent;
-background-image:none;
-color:#ffff00;
-border-color:#ffff00;
-}
-.outline-steelblue {
-background-color:transparent;
-background-image:none;
-color:#4682b4;
-border-color:#4682b4;
-}
 /*the basic properties codes*/
 .full-width , [full-width]{
 width:100%;
@@ -5138,8 +5255,12 @@ margin-top: 5px;
   margin-bottom: 5px;
 }
 .margin {
-  margin-left: 15px;
-  margin-right: 15px;
+  margin-left: 16px;
+  margin-right: 16px;
+}
+.vertical-margin {
+  margin-top: 16px;
+  margin-bottom: 16px;
 }
 .z1 {
   z-index: 1;
