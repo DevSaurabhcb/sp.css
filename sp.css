@@ -2439,9 +2439,9 @@ border-bottom:3px solid #000;
 }
 .btn.btn-green {
 color:#fff;
-background-color:#2e7d32;
-text-shadow:0 1px #1b5e20;
-border-bottom:3px solid #1b5e20;
+background-color:#4caf50;
+text-shadow:0 1px #388e3c;
+border-bottom:3px solid #388e3c;
 }
 .btn.btn-teal {
 color:#fff;
@@ -2828,6 +2828,10 @@ transition: 0.3s ease-out bottom;
 .fab-content.active {
   bottom: 80px!important;
 }
+.fab-btn.btn-steelblue {
+color:#fff;
+background-color:#4682b4;
+}
 .fab-btn.btn-indigo {
 color:#fff;
 background-color:#3f51b5;
@@ -2907,10 +2911,6 @@ background-color:#fff;
 .fav-btn.btn-yellow {
 color:#000;
 background-color:#ffff00;
-}
-.fav-btn.btn-steelblue {
-color:#fff;
-background-color:#4682b4;
 }
 /*sp-material-nav*/
 .material-nav {
@@ -3270,10 +3270,73 @@ position:relative;
 color:#fff;
 padding:0;
 }
-.checkbox:checked , .form input[type="checkbox"]:checked {
+.checkbox:checked {
 background:#3af;
 }
-.checkbox::after , .form input[type="checkbox"]::after {
+.checkbox.primary:checked {
+background:#007bff;
+}
+.checkbox.danger:checked {
+background:#dc3545;
+}
+.checkbox.success:checked {
+background:#28a445;
+}
+.checkbox.info:checked {
+background:#19b4cc;
+}
+.checkbox.warning:checked {
+background:#ffbf00;
+}
+.checkbox.indigo:checked {
+background:#3f51b5;
+}
+.checkbox.green:checked {
+background:#4caf50;
+}
+.checkbox.teal:checked {
+background:#009688;
+}
+.checkbox.red:checked {
+background:#f44336;
+}
+.checkbox.pink:checked {
+background:#e91e63;
+}
+.checkbox.purple:checked {
+background:#9c27b0;
+}
+.checkbox.deeppurple:checked {
+background:#673ab7;
+}
+.checkbox.blue:checked {
+background:#2196f3;
+}
+.checkbox.skyblue:checked {
+background:#03a9f4;
+}
+.checkbox.orange:checked {
+background:#ff9800;
+}
+.checkbox.brown:checked {
+background:#795548;
+}
+.checkbox.bluegrey:checked {
+background:#607d8b;
+}
+.checkbox.white:checked {
+background:#fff;
+}
+.checkbox.black:checked {
+background:#000;
+}
+.checkbox.yellow:checked {
+background:#ffeb3b;
+}
+.checkbox.steelblue:checked {
+background:#4682b4;
+}
+.checkbox::after, .form input[type="checkbox"]::after {
 content:'';
 width:25px;
 height:25px;
