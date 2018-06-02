@@ -61,7 +61,7 @@
   toast.style.background = (typeof this.option.background !== 'undefined') ?  this.option.background : '#000';
   toast.style.color = (typeof this.option.color !== 'undefined') ?  this.option.color : '#fff';
   toast.innerHTML = this.text;
-  toast.style.bottom = "0";
+  toast.style.bottom = (typeof this.option.bottom !== 'undefined') ?  this.option.bottom : '0';
   document.body.appendChild(toast);
 
   $('.fab-btn').css({'bottom':'78px'});
