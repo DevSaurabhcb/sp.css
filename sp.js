@@ -578,9 +578,12 @@ $('.tab').click(function(e){
   document.getElementById(e.target.getAttribute('data-tab')).style.display = "block";
   e.currentTarget.className += " active";
 });
-document.querySelectorAll(".tab[data-default='true']").forEach(function(r){
+var __tab_default_ele = document.querySelectorAll(".tab[data-default='true']");
+if (typeof __tab_default_ele == 'object'){
+Array.prototype.forEach.call(__tab_default_ele,function(r){
   r.click();
 });
+}
 }
 /*material nav opener*/
 function _sp_materialnav(){
