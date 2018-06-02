@@ -3661,6 +3661,7 @@ top: 16px;
 /*tabs and all*/
 .tabs {
   overflow: hidden;
+  width: 100%;
 }
 /* Style the buttons that are used to open the tab content */
 .tabs button {
@@ -3707,6 +3708,14 @@ top: 16px;
 }
 .header {
   padding-left: 64px;
+}
+.full-width {
+  margin-left: -24px;
+  margin-right: -24px;
+}
+.no-margin {
+  margin-left: -24px;
+  margin-right: -24px;
 }
 }
 @media screen and (min-width: 840px){
@@ -5169,6 +5178,15 @@ color:#4682b4;
 /*the basic properties codes*/
 .full-width , [full-width]{
 width:100%;
+margin-left: -16px;
+margin-right: -16px;
+}
+.no-margin {
+  margin-left: -16px;
+  margin-right: -16px;
+}
+.no-margin-top {
+  margin-top: -16px;
 }
 .center , [center]{
 display:block;
