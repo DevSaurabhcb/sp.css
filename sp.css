@@ -3072,63 +3072,42 @@ max-width:100%;
 }
 .material-input.primary input:focus ~ label, .material-input.primary input:valid ~ label, .material-input.primary textarea:focus ~ label, .material-input.primary textarea:valid ~ label {
   color: #007bff;
-  font-size: 12px;
-  height: 12px;
-  line-height: 12px;
 }
 .material-input.primary input:focus ~ .bar:before, .material-input.primary input:focus ~ .bar:after, .material-input.primary textarea:focus ~ .bar:before, .material-input.primary textarea:focus ~ .bar:after {
   background: #007bff;
 }
 .material-input.danger input:focus ~ label, .material-input.danger input:valid ~ label, .material-input.danger textarea:focus ~ label, .material-input.danger textarea:valid ~ label {
   color: #dc3545;
-  font-size: 12px;
-  height: 12px;
-  line-height: 12px;
 }
 .material-input.danger input:focus ~ .bar:before, .material-input.danger input:focus ~ .bar:after, .material-input.danger textarea:focus ~ .bar:before, .material-input.danger textarea:focus ~ .bar:after  {
   background: #dc3545;
 }
 .material-input.success input:focus ~ label, .material-input.success input:valid ~ label, .material-input.success textarea:focus ~ label, .material-input.success textarea:valid ~ label {
   color: #28a445;
-  font-size: 12px;
-  height: 12px;
-  line-height: 12px;
 }
 .material-input.success input:focus ~ .bar:before, .material-input.success input:focus ~ .bar:after, .material-input.success textarea:focus ~ .bar:before, .material-input.success textarea:focus ~ .bar:after  {
   background: #28a445;
 }
 .material-input.info input:focus ~ label, .material-input.info input:valid ~ label, .material-input.info textarea:focus ~ label, .material-input.info textarea:valid ~ label {
   color: #19b4cc;
-  font-size: 12px;
-  height: 12px;
-  line-height: 12px;
 }
 .material-input.info input:focus ~ .bar:before, .material-input.info input:focus ~ .bar:after, .material-input.info textarea:focus ~ .bar:before, .material-input.info textarea:focus ~ .bar:after  {
   background: #19b4cc;
 }
 .material-input.warning input:focus ~ label, .material-input.warning input:valid ~ label, .material-input.warning textarea:focus ~ label, .material-input.warning textarea:valid ~ label {
   color: #ffbf00;
-  font-size: 12px;
-  height: 12px;
-  line-height: 12px;
 }
 .material-input.warning input:focus ~ .bar:before, .material-input.warning input:focus ~ .bar:after, .material-input.warning textarea:focus ~ .bar:before, .material-input.warning textarea:focus ~ .bar:after  {
   background: #ffbf00;
 }
 .material-input.indigo input:focus ~ label, .material-input.indigo input:valid ~ label, .material-input.indigo textarea:focus ~ label, .material-input.indigo textarea:valid ~ label {
   color: #3f51b5;
-  font-size: 12px;
-  height: 12px;
-  line-height: 12px;
 }
 .material-input.indigo input:focus ~ .bar:before, .material-input.indigo input:focus ~ .bar:after , .material-input.indigo textarea:focus ~ .bar:before, .material-input.indigo textarea:focus ~ .bar:after {
   background: #3f51b5;
 }
 .material-input.green input:focus ~ label, .material-input.green input:valid ~ label, .material-input.green textarea:focus ~ label, .material-input.green textarea:valid ~ label {
   color: #4caf50;
-  font-size: 12px;
-  height: 12px;
-  line-height: 12px;
 }
 .material-input.green input:focus ~ .bar:before, .material-input.green input:focus ~ .bar:after , .material-input.green textarea:focus ~ .bar:before, .material-input.green textarea:focus ~ .bar:after {
   background: #4caf50;
@@ -3143,90 +3122,60 @@ max-width:100%;
   background: #009688;
 }.material-input.red input:focus ~ label, .material-input.red input:valid ~ label, .material-input.red textarea:focus ~ label, .material-input.red textarea:valid ~ label {
   color: #f44336;
-  font-size: 12px;
-  height: 12px;
-  line-height: 12px;
 }
 .material-input.red input:focus ~ .bar:before, .material-input.red input:focus ~ .bar:after, .material-input.red textarea:focus ~ .bar:before, .material-input.red textarea:focus ~ .bar:after  {
   background: #f44336;
 }
 .material-input.pink input:focus ~ label, .material-input.pink input:valid ~ label, .material-input.pink textarea:focus ~ label, .material-input.pink textarea:valid ~ label {
   color: #e91e63;
-  font-size: 12px;
-  height: 12px;
-  line-height: 12px;
 }
 .material-input.pink input:focus ~ .bar:before, .material-input.pink input:focus ~ .bar:after , .material-input.pink textarea:focus ~ .bar:before, .material-input.pink textarea:focus ~ .bar:after {
   background: #e91e63;
 }
 .material-input.purple input:focus ~ label, .material-input.purple input:valid ~ label, .material-input.purple textarea:focus ~ label, .material-input.purple textarea:valid ~ label {
   color: #9c27b0;
-  font-size: 12px;
-  height: 12px;
-  line-height: 12px;
 }
 .material-input.purple input:focus ~ .bar:before, .material-input.purple input:focus ~ .bar:after, .material-input.purple textarea:focus ~ .bar:before, .material-input.purple textarea:focus ~ .bar:after  {
   background: #9c27b0;
 }
 .material-input.deeppurple input:focus ~ label, .material-input.deeppurple input:valid ~ label, .material-input.deeppurple textarea:focus ~ label, .material-input.deeppurple textarea:valid ~ label {
   color: #673ab7;
-  font-size: 12px;
-  height: 12px;
-  line-height: 12px;
 }
 .material-input.deeppurple input:focus ~ .bar:before, .material-input.deeppueple input:focus ~ .bar:after, .material-input.deeppurple textarea:focus ~ .bar:before, .material-input.deeppurple textarea:focus ~ .bar:after  {
   background: #673ab7;
 }
 .material-input.blue input:focus ~ label, .material-input.blue input:valid ~ label, .material-input.blue textarea:focus ~ label, .material-input.blue textarea:valid ~ label {
   color: #2196f3;
-  font-size: 12px;
-  height: 12px;
-  line-height: 12px;
 }
 .material-input.blue input:focus ~ .bar:before, .material-input.blue input:focus ~ .bar:after, .material-input.blue textarea:focus ~ .bar:before, .material-input.blue textarea:focus ~ .bar:after  {
   background: #2196f3;
 }
 .material-input.skyblue input:focus ~ label, .material-input.skyblue input:valid ~ label, .material-input.skyblue textarea:focus ~ label, .material-input.skyblue textarea:valid ~ label {
   color: #03a9f4;
-  font-size: 12px;
-  height: 12px;
-  line-height: 12px;
 }
 .material-input.skyblue input:focus ~ .bar:before, .material-input.skyblue input:focus ~ .bar:after , .material-input.skyblue textarea:focus ~ .bar:before, .material-input.slyblue textarea:focus ~ .bar:after {
   background: #03a9f4;
 }
 .material-input.orange input:focus ~ label, .material-input.orange input:valid ~ label, .material-input.orange textarea:focus ~ label, .material-input.orange textarea:valid ~ label {
   color: #ff9800;
-  font-size: 12px;
-  height: 12px;
-  line-height: 12px;
 }
 .material-input.orange input:focus ~ .bar:before, .material-input.orange input:focus ~ .bar:after, .material-input.orange textarea:focus ~ .bar:before, .material-input.orange textarea:focus ~ .bar:after  {
   background: #ff9800;
 }
 .material-input.brown input:focus ~ label, .material-input.brown input:valid ~ label, .material-input.brown textarea:focus ~ label, .material-input.brown textarea:valid ~ label {
   color: #795548;
-  font-size: 12px;
-  height: 12px;
-  line-height: 12px;
 }
 .material-input.brown input:focus ~ .bar:before, .material-input.brown input:focus ~ .bar:after, .material-input.brown textarea:focus ~ .bar:before, .material-input.brown textarea:focus ~ .bar:after  {
   background: #795548;
 }
 .material-input.bluegrey input:focus ~ label, .material-input.bluegrey input:valid ~ label, .material-input.bluegrey textarea:focus ~ label, .material-input.bluegrey textarea:valid ~ label {
   color: #607d8b;
-  font-size: 12px;
-  height: 12px;
-  line-height: 12px;
 }
 .material-input.bluegrey input:focus ~ .bar:before, .material-input.bluegrey input:focus ~ .bar:after, .material-input.bluegrey textarea:focus ~ .bar:before, .material-input.bluegrey textarea:focus ~ .bar:after  {
   background: #607d8b;
 }
 .material-input.white input:focus ~ label, .material-input.white input:valid ~ label, .material-input.white textarea:focus ~ label, .material-input.white textarea:valid ~ label {
   color: #fff;
-  font-size: 12px;
-  height: 12px;
-  line-height: 12px;
 }
 .material-input.white input:focus ~ .bar:before, .material-input.white input:focus ~ .bar:after, .material-input.white textarea:focus ~ .bar:before, .material-input.white textarea:focus ~ .bar:after  {
   background: #fff;
@@ -3236,27 +3185,18 @@ max-width:100%;
 }
 .material-input.yellow input:focus ~ label, .material-input.yellow input:valid ~ label, .material-input.yellow textarea:focus ~ label, .material-input.yellow textarea:valid ~ label {
   color: #ffeb3b;
-  font-size: 12px;
-  height: 12px;
-  line-height: 12px;
 }
 .material-input.yellow input:focus ~ .bar:before, .material-input.yellow input:focus ~ .bar:after, .material-input.yellow textarea:focus ~ .bar:before, .material-input.yellow textarea:focus ~ .bar:after  {
   background: #ffeb3b;
 }
 .material-input.steelblue input:focus ~ label, .material-input.steelblue input:valid ~ label, .material-input.steelblue textarea:focus ~ label, .material-input.steelblue textarea:valid ~ label {
   color: #4682b4;
-  font-size: 12px;
-  height: 12px;
-  line-height: 12px;
 }
 .material-input.steelblue input:focus ~ .bar:before, .material-input.steelblue input:focus ~ .bar:after, .material-input.steelblue textarea:focus ~ .bar:before, .material-input.steelblue textarea:focus ~ .bar:after  {
   background: #4682b4;
 }
 .material-input.black input:focus ~ label, .material-input.black input:valid ~ label, .material-input.black textarea:focus ~ label, .material-input.black textarea:valid ~ label {
   color: #000;
-  font-size: 12px;
-  height: 12px;
-  line-height: 12px;
 }
 .material-input.black input:focus ~ .bar:before, .material-input.black input:focus ~ .bar:after {
   background: #000;
@@ -3292,7 +3232,7 @@ border:1px solid rgba(51, 170, 255 ,.8);
 box-shadow:0px -0.1px 2px rgba(51, 170, 255 ,.3),0px 0.1px 2px rgba(51, 170, 255 ,.3);
 }
 /*sp checkbox*/
-.checkbox , .form input[type="checkbox"] {
+.checkbox {
 appearance: none;
 -moz-appearance: none;
 -webkit-appearance: none;
@@ -3304,6 +3244,7 @@ transition:background 0.09s ease-in-out;
 position:relative;
 color:#fff;
 padding:0;
+cursor: pointer;
 }
 .checkbox:checked {
 background:#3af;
@@ -3390,6 +3331,484 @@ border:none!important;
 .checkbox:checked::after , .form input[type="checkbox"]:checked::after {
 left:15px;
 }
+/*material like checkbox and radio*/
+.material-checkbox {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.material-checkbox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+}
+.material-checkbox:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+.material-checkbox input:checked ~ .checkmark {
+    background-color: #2196F3;
+}
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+.material-checkbox input:checked ~ .checkmark:after {
+    display: block;
+}
+.material-checkbox .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+
+/*tooltips*/
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+}
+.tooltip .text {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 150%;
+    left: 50%;
+    margin-left: -60px;
+}
+.tooltip.top .text::after {
+    content: " ";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: black transparent transparent transparent;
+}
+.tooltip.bottom .text::after {
+    content: " ";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent black transparent;
+}
+.tooltip.right .text::after {
+    content: " ";
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent black transparent transparent;
+}
+.tooltip.left .text::after {
+    content: " ";
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent transparent black;
+}
+.tooltip:hover .text {
+    visibility: visible;
+}
+/*slider range slider*/
+.slider {
+  width: 100%;
+}
+.slider input {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 5px;
+  border-radius: 5px;
+  transition: 0.2s;
+}
+.slider input::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    cursor: pointer;
+}
+.slider input::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    cursor: pointer;
+}
+.slider input.primary::-webkit-slider-thumb {
+    background: #007bff;
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    cursor: pointer;
+}
+.slider input.primary::-moz-range-thumb {
+    background: #007bff;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    cursor: pointer;
+}
+.slider input.danger::-webkit-slider-thumb {
+    background: #dc3545;
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    cursor: pointer;
+}
+.slider input.danger::-moz-range-thumb{
+    background: #dc3545;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    cursor: pointer;
+}
+.slider input.success::-webkit-slider-thumb {
+    background: #28a445;
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    cursor: pointer;
+}
+.slider input.success::-moz-range-thumb{
+    background: #28a445;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    cursor: pointer;
+}
+.slider input.info::-webkit-slider-thumb {
+    background: #19b4cc;
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    cursor: pointer;
+}
+.slider input.info::-moz-range-thumb{
+    background: #19b4cc;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    cursor: pointer;
+}
+.slider input.warning::-webkit-slider-thumb {
+    background: #ffbf00;
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    cursor: pointer;
+}
+.slider input.warning::-moz-range-thumb{
+    background: #ffbf00;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    cursor: pointer;
+}
+.slider input.indigo::-webkit-slider-thumb {
+    background: #3f51b5;
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    cursor: pointer;
+}
+.slider input.indigo::-moz-range-thumb{
+    background: #3f51b5;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    cursor: pointer;
+}
+.slider input.green::-webkit-slider-thumb {
+    background: #4caf50;
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    cursor: pointer;
+}
+.slider input.green::-moz-range-thumb{
+    background: #4caf50;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    cursor: pointer;
+}
+.slider input.teal::-webkit-slider-thumb {
+    background: #009688;
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    cursor: pointer;
+}
+.slider input.teal::-moz-range-thumb{
+    background: #009688;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    cursor: pointer;
+}
+.slider input.red::-webkit-slider-thumb {
+    background: #f44336;
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    cursor: pointer;
+}
+.slider input.red::-moz-range-thumb{
+    background: #f44336;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    cursor: pointer;
+}
+.slider input.pink::-webkit-slider-thumb {
+    background: #e91e63;
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    cursor: pointer;
+}
+.slider input.pink::-moz-range-thumb{
+    background: #e91e63;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    cursor: pointer;
+}
+.slider input.purple::-webkit-slider-thumb {
+    background: #9c27b0;
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    cursor: pointer;
+}
+.slider input.purple::-moz-range-thumb{
+    background: #9c27b0;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    cursor: pointer;
+}
+.slider input.deeppurple::-webkit-slider-thumb {
+    background: #673ab7;
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    cursor: pointer;
+}
+.slider input.deeppurple::-moz-range-thumb{
+    background: #673ab7;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    cursor: pointer;
+}
+.slider input.blue::-webkit-slider-thumb {
+    background: #2196f3;
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    cursor: pointer;
+}
+.slider input.blue::-moz-range-thumb{
+    background: #2196f3;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    cursor: pointer;
+}
+.slider input.skyblue::-webkit-slider-thumb {
+    background: #03a9f4;
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    cursor: pointer;
+}
+.slider input.skyblue::-moz-range-thumb{
+    background: #03a9f4;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    cursor: pointer;
+}
+.slider input.orange::-webkit-slider-thumb {
+    background: #ff9800;
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    cursor: pointer;
+}
+.slider input.orange::-moz-range-thumb {
+    background: #ff9800;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    cursor: pointer;
+}
+.slider input.brown::-webkit-slider-thumb {
+    background: #795548;
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    cursor: pointer;
+}
+.slider input.brown::-moz-range-thumb{
+    background: #795548;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    cursor: pointer;
+}
+.slider input.bluegrey::-webkit-slider-thumb {
+    background: #607d8b;
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    cursor: pointer;
+}
+.slider input.bluegrey::-moz-range-thumb{
+    background: #607d8b;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    cursor: pointer;
+}
+.slider input.white::-webkit-slider-thumb {
+    background: #fff;
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    cursor: pointer;
+}
+.slider input.white::-moz-range-thumb{
+    background: #fff;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    cursor: pointer;
+}
+.slider input.black::-webkit-slider-thumb {
+    background: #000;
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    cursor: pointer;
+}
+.slider input.black::-moz-range-thumb{
+    background: #000;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    cursor: pointer;
+}
+.slider input.yellow::-webkit-slider-thumb {
+    background: #ffeb3b;
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    cursor: pointer;
+}
+.slider input.yellow::-moz-range-thumb{
+    background: #ffeb3b;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    cursor: pointer;
+}
+.slider input.steelblue::-webkit-slider-thumb {
+    background: #4682b4;
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    cursor: pointer;
+}
+.slider input.steelblue::-moz-range-thumb{
+    background: #4682b4;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    cursor: pointer;
+}
 /*style for JavaScript*/
 .sp-toast {
 max-height:56px;
@@ -3422,6 +3841,76 @@ position:fixed;
 z-index:998;
 background-color:rgba(0,0,0,.4);
 }
+/*chips*/
+.chip {
+  display: inline-block;
+  height: 40px;
+  font-size: 14px;
+  background-color: #f1f1f1;
+  border-radius: 20px;
+  line-height: 40px;
+  padding: 0 20px;
+  margin: 10px;
+}
+.chip img {
+  float: left;
+  margin: 0 10px 0 -20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+}
+.chip .close {
+  padding-left: 10px;
+  color: #999;
+  font-weight: bold;
+  float: right;
+  cursor: pointer;
+}
+.chip .close:hover {
+  color: #000;
+}
+/*dropup and dropdown*/
+.dropup, .dropdown {
+  position: relative;
+  display: inline-block;
+}
+.drop-content {
+  display: none;
+  position: absolute;
+  z-index: 1;  
+}
+.dropup:hover .drop-content, .dropdown:hover .drop-content{
+  display: block;
+}
+/*breadcrumb yeah*/
+ul.breadcrumb {
+    padding: 10px 16px;
+    list-style: none;
+    background-color: #f1f1f1;
+}
+ul.breadcrumb li {
+    display: inline;
+    font-size: 16px;
+}
+ul.breadcrumb li+li:before {
+    padding: 8px;
+    color: #000;
+    content: "/\00a0";
+}
+ul.breadcrumb li a {
+    color: #4682b4;
+    text-decoration: none;
+}
+ul.breadcrumb li a:hover {
+    color: #396a93;
+}
+/*sp-sticky class*/
+.sp-sticky {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
 /*sp article */
 .article {
 padding: 24px;
@@ -3451,6 +3940,9 @@ top: 16px;
 position:absolute;
 left:16px;
 top: 16px;
+}
+.autohide {
+  transition: 0.3s top ease;
 }
 .youtube-video{
     overflow:hidden;
@@ -3619,7 +4111,7 @@ top: 16px;
   text-align: center;
   line-height: 40px;
 }
-.card img, .card img.bottom {
+.card img, .card img.bottom, .card video{
   width: calc(100% + 32px);
   border-radius: 4px 4px 0 0;
   margin: -16px;
@@ -4348,37 +4840,37 @@ color:#fff;
 background-color:#007bff;
 border-color:#007bff;
 }
-.bg-primary.lighten-1{
+.bg-primary.lighten1{
 background-color:#3396ff;
 border-color:#3396ff;
 }
-.bg-primary.lighten-2{
+.bg-primary.lighten2{
 background-color:#66b0ff;
 border-color:#66b0ff;
 }
-.bg-primary.lighten-3{
+.bg-primary.lighten3{
 color:#000;
 background-color:#99caff;
 border-color:#99caff;
 }
-.bg-primary.lighten-4{
+.bg-primary.lighten4{
 color:#000;
 background-color:#cce5ff;
 border-color:#cce5ff;
 }
-.bg-primary.darken-1{
+.bg-primary.darken1{
 background-color:#006fe6;
 border-color:#006fe6;
 }
-.bg-primary.darken-2{
+.bg-primary.darken2{
 background-color:#0056b3;
 border-color:#0056b3;
 }
-.bg-primary.darken-3{
+.bg-primary.darken3{
 background-color:#003e80;
 border-color:#003e80;
 }
-.bg-primary.darken-4{
+.bg-primary.darken4{
 background-color:#00254d;
 border-color:#00254d;
 }
@@ -4387,37 +4879,37 @@ color:#fff;
 background-color:#dc3545;
 border-color:#dc3545;
 }
-.bg-danger.lighten-1{
+.bg-danger.lighten1{
 background-color:#dd3c4c;
 border-color:#dd3c4c;
 }
-.bg-danger.lighten-2{
+.bg-danger.lighten2{
 background-color:#e46774;
 border-color:#e46774;
 }
-.bg-danger.lighten-3{
+.bg-danger.lighten3{
 color:#000;
 background-color:#ec939c;
 border-color:#ec939c;
 }
-.bg-danger.lighten-4{
+.bg-danger.lighten4{
 color:#000;
 background-color:#f4bec3;
 border-color:#f4bec3;
 }
-.bg-danger.darken-1{
+.bg-danger.darken1{
 background-color:#c32232;
 border-color:#c32232;
 }
-.bg-danger.darken-2{
+.bg-danger.darken2{
 background-color:#981b27;
 border-color:#981b27;
 }
-.bg-danger.darken-3{
+.bg-danger.darken3{
 background-color:#821722;
 border-color:#821722;
 }
-.bg-danger.darken-4{
+.bg-danger.darken4{
 background-color:#570f16;
 border-color:#570f16;
 }
@@ -4426,37 +4918,37 @@ color:#fff;
 background-color:#28a445;
 border-color:#28a445;
 }
-.bg-success.lighten-1{
+.bg-success.lighten1{
 background-color:#2db94d;
 border-color:#2db94d;
 }
-.bg-success.lighten-2{
+.bg-success.lighten2{
 background-color:#32cd56;
 border-color:#32cd56;
 }
-.bg-success.lighten-3{
+.bg-success.lighten3{
 color:#000;
 background-color:#6fdc89;
 border-color:#6fdc89;
 }
-.bg-success.lighten-4{
+.bg-success.lighten4{
 color:#000;
 background-color:#adebbb;
 border-color:#adebbb;
 }
-.bg-success.darken-1{
+.bg-success.darken1{
 background-color:#23903c;
 border-color:#23903c;
 }
-.bg-success.darken-2{
+.bg-success.darken2{
 background-color:#1e7b34;
 border-color:#1e7b34;
 }
-.bg-success.darken-3{
+.bg-success.darken3{
 background-color:#145222;
 border-color:#145222;
 }
-.bg-success.darken-4{
+.bg-success.darken4{
 background-color:#0f3e1a;
 border-color:#0f3e1a;
 }
@@ -5200,6 +5692,12 @@ margin-right:0;
 }
 .font-20 {
 font-size:20px;
+}
+.no-shadow {
+box-shadow: none!important;
+}
+.no-text-shadow {
+text-shadow: none!important;
 }
 div.box-200 {
 width:200px;
