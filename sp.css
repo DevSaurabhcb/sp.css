@@ -475,6 +475,9 @@ width:100%;
 padding-left:16px;
 padding-right:16px;
 }
+.page {
+  padding-top: 16px; 
+}
 .padding-auto {
 padding-left:16px;
 padding-right:16px;
@@ -2863,7 +2866,7 @@ transition: 0.3s ease-out all;
   font-size: 14px;
   border-radius: 32px;
 }
-.fab .fab-btn.fab-extended .material-icons {
+.fab .fab-btn.fab-extended .material-icons:first-of-type {
   position: absolute;
   left: 16px;
   top: 12px;
@@ -3867,11 +3870,11 @@ font-size: 14px;
 line-height: 36px;
 padding: 6px 16px;
 position: fixed;
-z-index:  26;
-bottom: -58px;
+z-index:  250;
+bottom: 0px;
 left: 50%;
 transform: translateX(-50%);
-transition: 0.3s ease-out bottom;
+transition: 0.3s ease-out all;
 }
 .sp-toast button {
   display: inline-block;
@@ -3973,27 +3976,60 @@ position:absolute;
 top:0;
 left: 0;
 width:100%;
-height:56px;
+min-height:56px;
 line-height:56px;
-padding:0px;
-padding-left:56px;
+padding:0px 16px;
 font-size:20px;
 z-index:240;
 margin:0;
+font-weight: 500;
+}
+.header.bottom {
+bottom: 0;
+top: initial;
+}
+.header.extended {
+padding-top: 72px;
+padding-bottom: 0px;
+font-size: 24px;
+line-height: initial;
+transition: all 0.1s ease-in-out;
 }
 .header .right-icon {
 position:absolute;
-right:16px;
+right: 16px;
 top: 16px;
+font-size: 24px;
+}
+.header .right-icon.second {
+right: 64px;
+}
+.header .right-icon.third {
+right: 112px;
+}
+.header .right-icon.fourth {
+right: 160px;
 }
 .header .left-icon {
 position:absolute;
 left:16px;
 top: 16px;
-border-radius: 100%;
+font-size: 24px;
 }
-.autohide {
+.header .left-icon.second {
+left: 64px;
+}
+.header .left-icon.third {
+left: 112px;
+}
+.header .left-icon.fourth {
+left: 160px;
+}
+.autohideTop {
   transition: 0.3s top ease;
+}
+.autohideBottom {
+  transition: 0.3s bottom ease;
 }
 .youtube-video{
     overflow:hidden;
@@ -4659,50 +4695,36 @@ z-index: 25;
 .dialog-btn:hover {
   color: #0056b3;
 }
-/*responsiveness comes here*/
-@media screen and (min-width: 600px){
-.container {
-  padding-left: 24px;
-  padding-right: 24px;
+/*Bottom navigation section*/
+.bottom-navigation {
+position: fixed;
+z-index: 230;
+width: 100%;
+height: 56px;
+bottom: 0;
+left: 0;
 }
-.header .right-icon,.header .left-icon {
-position:absolute;
-top: 16px;
+.bottom-navigation .wrapper {
+height: 56px;
+margin: 0 auto;
+width: 10px;
 }
-.header .right-icon {
-  right: 24px;
+.bottom-navigation .wrapper .element {
+display: inline-block;
+float: left;
+min-width: 80px;
+height: 56px;
+padding: 8px 12px 12px 12px;
+text-align: center;
+opacity: 0.7;
 }
-.header .left-icon {
- left: 24px;
+.bottom-navigation .wrapper .element.active {
+opacity: 1;
 }
-.header {
-  padding-left: 64px;
-}
-.full-width {
-  margin: 0px;
-  width: 100%;
-}
-.full-height {
-  height: 100%;
-  margin: 0px;
-}
-.no-margin {
-  margin-left: -24px;
-  margin-right: -24px;
-}
-.dialog {
-    min-width: 560px;
-    min-height: 182px;
-  }
-}
-@media screen and (min-width: 840px){
-.material-nav.autoopen{
-  left:0;
-  z-index:1;
-}
-.menu.auto-desktop {
-  width: 280px;  
-}
+.bottom-navigation .title {
+font-size: 12px;
+font-weight: 500;
+line-height: 12px;
 }
 /*Border classes*/
 .border-none{
@@ -6216,9 +6238,13 @@ color: grey;
 }
 /*the basic properties codes*/
 .full-width , [full-width]{
-width:100%;
-margin-left: 0px;
-margin-right: 0px;
+width: calc(100% + 32px);
+margin-left: -16px;
+margin-right: -16px;
+}
+.full-height {
+  height: 100%;
+  margin: 0px;
 }
 .no-margin {
   margin-left: -16px;
@@ -6249,9 +6275,6 @@ left: 0;
 .position-bottom {
 bottom: 0;
 }
-.font-20 {
-font-size:20px;
-}
 .no-shadow {
 box-shadow: none!important;
 }
@@ -6280,6 +6303,9 @@ font-size:70px;
 }
 .font-20 {
 font-size: 20px;
+}
+.font-10 {
+font-size: 10px;
 }
 .font-100 {
 font-weight: 100;
@@ -6442,4 +6468,37 @@ margin-top: 5px;
 }
 .z10 {
   z-index: 10;
+}
+
+/*responsiveness comes here*/
+@media screen and (min-width: 600px){
+  .container {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  .no-margin {
+    margin-left: -24px;
+    margin-right: -24px;
+  }
+  .dialog {
+      min-width: 560px;
+      min-height: 182px;
+  }
+  .full-width , [full-width]{
+  width: calc(100% + 48px);
+  margin-left: -24px;
+  margin-right: -24px;
+  }
+  .bottom-navigation .wrapper .element {
+    width: 168px;
+  }
+}
+@media screen and (min-width: 840px){
+  .material-nav.autoopen{
+    left:0;
+    z-index:1;
+  }
+  .menu.auto-desktop {
+    width: 280px;  
+  }
 }
