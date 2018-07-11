@@ -920,7 +920,6 @@ for (i in eventReplacement) {
     } 
     else {
         __sp_eventMap[i] = eventReplacement[i][1];
-        console.log('hey');
     };
  };
 })();
