@@ -1,3 +1,7 @@
+/* ! sp.css v0.9 under released version for testing purpose |
+  MIT License | github.com/devsaurabhcb/sp.css
+*/
+
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
 @import url('https://fonts.googleapis.com/css?family=Roboto');
@@ -450,7 +454,7 @@ template {
   display: none;
 }
 /*end normalize*/
-
+/* the beginning of sp.css */
 *{
 box-sizing:border-box;
 outline:none;
@@ -2433,7 +2437,7 @@ vertical-align:middle;
 padding: 0 8px;
 }
 .btn.toggle-btn {
-display: inline;
+display: inline-block;
 height: 48px;
 width: 48px;
 font-size: 24px;
@@ -2575,7 +2579,7 @@ background-color:#d63545;
 text-shadow:0 1px #a92330;
 border-bottom:3px solid #a92330;
 }
-.btn.btn-danger {
+.btn.btn-grey {
 color:#000;
 background-color:grey;
 text-shadow:0 1px #aaa;
@@ -2828,10 +2832,10 @@ color:#000;
 .shadow5{
   box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
 }
-[data-hover="shadow"],[class*="shadow"].hover{
+[class*="shadow"].hover{
 transition: box-shadow 0.09s linear;
 }
-[data-hover="shadow"]:hover,[class*="shadow"].hover:hover{
+[class*="shadow"].hover:hover{
   box-shadow: 0 0.5px 2px rgba(0,0,0,0.6), 0 1px 0.5px rgba(0,0,0,.2);
 }
 [class*='shadow'].inset.hover:hover {
@@ -3027,7 +3031,7 @@ min-width:270px;
 max-width:270px;
 height:151.875px;
 }
-.material-nav_user {
+.material-nav_avatar {
 position:absolute;
 left:10px;
 top:10px;
@@ -4189,7 +4193,7 @@ table.borderless tbody + tbody {
 .material-list {
   padding: 8px 0px;
 }
-/*default one line list*/
+/*one line list*/
 .material-list.one-line-list .list-item {
 height: 48px;
 padding: 12px 16px;
@@ -4574,7 +4578,7 @@ border-bottom: 1px solid #ccc;
   text-align: center;
   line-height: 40px;
 }
-.card img, .card img.bottom, .card video{
+.card img, .card img, .card video{
   width: calc(100% + 32px);
   border-radius: 4px 4px 0 0;
   margin: -16px;
@@ -4639,9 +4643,9 @@ border-bottom: 1px solid #ccc;
   padding: 6px 12px;
   border: 1px solid #ccc;
   border-top: none;
-  animation: fadeEffect 0.5s;
+  animation: __fadeEffect 0.5s;
 }
-@keyframes fadeEffect {
+@keyframes __fadeEffect {
     from {opacity: 0;}
     to {opacity: 1;}
 }
@@ -4711,7 +4715,6 @@ width: 10px;
 }
 .bottom-navigation .wrapper .element {
 display: inline-block;
-float: left;
 min-width: 80px;
 height: 56px;
 padding: 8px 12px 12px 12px;
@@ -5915,7 +5918,7 @@ background-color:#ff9800;
 border-color:#ff9800;
 }
 .bg-orange.lighten1 {
-  background-color: #;
+  background-color: #ffa726;
   border-color: #ffa726;
 }
 .bg-orange.lighten2 {
@@ -5945,8 +5948,8 @@ border-color:#ff9800;
   border-color: #ef6c00;
 }
 .bg-orange.darken4 {
-  background-color: #e6bluegrey;
-  border-color: #e6bluegrey;
+  background-color: bluegrey;
+  border-color: bluegrey;
 }
 .bg-brown {
 color:#fff;
@@ -6425,10 +6428,10 @@ text-decoration:line-through;
 .list-style-none {
   list-style-type: none;
 }
-.vertical-child-li-space li, .vertical-space {
+.vertical-space {
 margin-top: 5px;
 }
-.vertical-space-bottom, .vertical-child-space-bottom li{
+.vertical-space-bottom{
   margin-bottom: 5px;
 }
 .margin {

@@ -32,122 +32,135 @@
   }
   /*max z value*/
   self.maxZ = function(){
-  var z = [],
-  eles = document.querySelectorAll("body *");
-  eles.forEach(function(r){
-    var style = window.getComputedStyle(r);
-    if(style.getPropertyValue('z-index')){
-    z.push(style.getPropertyValue('z-index'));
-  }
-  });
-  var largest= -999999;
-  for (i=0; i<=z.length;i++){
-    if (parseInt(z[i])>largest) {
-        var largest=parseInt(z[i]);
+    var z = [],
+    eles = document.querySelectorAll("body *");
+    eles.forEach(function(r){
+      var style = window.getComputedStyle(r);
+      if(style.getPropertyValue('z-index')){
+      z.push(style.getPropertyValue('z-index'));
     }
+    });
+    var largest= -999999;
+    for (i=0; i<=z.length;i++){
+      if (parseInt(z[i])>largest) {
+          var largest=parseInt(z[i]);
+      }
   }
   return largest;
   };
   /*max z end*/
   /*sp toast*/
   self.createToast = function(text,duration,option){
-  var toast = document.createElement('div');
-  this.text = text ;
-  this.duration = (typeof duration !== 'undefined') ?  duration : 2.5;
-  var dur = this.duration;
-  this.option = (typeof option !== 'undefined') ?  option : {};
-  var opt = this.option;
-  toast.classList.add("sp-toast");
-  this.animType = (typeof this.option.animate !== 'undefined') ?  this.option.animate : 'translate';
-  toast.style.background = (typeof this.option.background !== 'undefined') ?  this.option.background : '#000';
-  toast.style.color = (typeof this.option.color !== 'undefined') ?  this.option.color : '#fff';
-  toast.innerHTML = this.text;
-  
-  toast.style.width = (typeof this.option.width !== 'undefined') ?  this.option.width : '100%';
-  toast.style.maxWidth = (typeof this.option.maxWidth !== 'undefined') ?  this.option.maxWidth : '100%';
-  toast.style.borderRadius = (typeof this.option.borderRadius !== 'undefined') ?  this.option.borderRadius : '4px';
-  toast.style.boxShadow = (typeof this.option.boxShadow !== 'undefined') ?  this.option.boxShadow : '0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)';
-  document.body.appendChild(toast);
+    var toast = document.createElement('div');
+    this.text = text ;
+    this.duration = (typeof duration !== 'undefined') ?  duration : 2.5;
+    var dur = this.duration;
+    this.option = (typeof option !== 'undefined') ?  option : {};
+    var opt = this.option;
+    toast.classList.add("sp-toast");
+    this.animType = (typeof this.option.animate !== 'undefined') ?  this.option.animate : 'translate';
+    toast.style.background = (typeof this.option.background !== 'undefined') ?  this.option.background : '#000';
+    toast.style.color = (typeof this.option.color !== 'undefined') ?  this.option.color : '#fff';
+    toast.innerHTML = this.text;
+    
+    toast.style.width = (typeof this.option.width !== 'undefined') ?  this.option.width : '100%';
+    toast.style.maxWidth = (typeof this.option.maxWidth !== 'undefined') ?  this.option.maxWidth : '100%';
+    toast.style.borderRadius = (typeof this.option.borderRadius !== 'undefined') ?  this.option.borderRadius : '4px';
+    toast.style.boxShadow = (typeof this.option.boxShadow !== 'undefined') ?  this.option.boxShadow : '0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)';
+    document.body.appendChild(toast);
 
-  if (typeof this.option.button !== 'undefined') {
-    var button = document.createElement('button');
-    button.style.background = (typeof this.option.button.background !== 'undefined') ?  this.option.button.background : '#000';
-    button.style.color = (typeof this.option.button.color !== 'undefined') ?  this.option.button.color : '#7e57c2';
-    button.style.borderRadius = (typeof this.option.button.borderRadius !== 'undefined') ?  this.option.button.borderRadius : '2px';
-    button.style.boxShadow = (typeof this.option.button.boxShadow !== 'undefined') ?  this.option.button.boxShadow : 'none';
-    button.innerHTML = (typeof this.option.button.text !== 'undefined') ?  this.option.button.text : 'Button';
-    toast.appendChild(button);
-    if(option.button.callback){
-    button.addEventListener('click',function(){option.button.callback();});
+    if (typeof this.option.button !== 'undefined') {
+      var button = document.createElement('button');
+      button.style.background = (typeof this.option.button.background !== 'undefined') ?  this.option.button.background : '#000';
+      button.style.color = (typeof this.option.button.color !== 'undefined') ?  this.option.button.color : '#7e57c2';
+      button.style.borderRadius = (typeof this.option.button.borderRadius !== 'undefined') ?  this.option.button.borderRadius : '2px';
+      button.style.boxShadow = (typeof this.option.button.boxShadow !== 'undefined') ?  this.option.button.boxShadow : 'none';
+      button.innerHTML = (typeof this.option.button.text !== 'undefined') ?  this.option.button.text : 'Button';
+      toast.appendChild(button);
+      if(option.button.callback){
+      button.addEventListener('click',function(){option.button.callback();});
+      }
     }
-  }
 
-  if (this.option.swipeable != false) {
-    $('.sp-toast').swipe('right',function(){
-      document.body.removeChild(toast);
-    });
-  }
-  if (this.animType == 'translate'){
-    toast.style.bottom = "-1000px";
-    setTimeout(function(){toast.style.bottom = (typeof opt.bottom !== 'undefined') ?  opt.bottom : '0';},300);  
-    setTimeout(function(){
-    toast.style.bottom = "-58px";
-    setTimeout(function(){
-    document.body.removeChild(toast);},300);
-    },dur*1000);
-  }
-  else {
-      toast.style.opacity = '0';
-      toast.style.bottom = (typeof opt.bottom !== 'undefined') ?  opt.bottom : '0';
-      setTimeout(function(){toast.style.opacity = '1';},300);
-      setTimeout(function(){toast.style.opacity = '0';
-      setTimeout(function(){document.body.removeChild(toast);},300);
+    if (this.option.swipeable != false) {
+      $('.sp-toast').swipe('right',function(){
+        document.body.removeChild(toast);
+      });
+    }
+    if (this.animType == 'translate'){
+      toast.style.bottom = "-1000px";
+      setTimeout(function(){toast.style.bottom = (typeof opt.bottom !== 'undefined') ?  opt.bottom : '0';},300);  
+      setTimeout(function(){
+      toast.style.bottom = "-58px";
+      setTimeout(function(){
+      document.body.removeChild(toast);},300);
       },dur*1000);
-  }
+    }
+    else {
+        toast.style.opacity = '0';
+        toast.style.bottom = (typeof opt.bottom !== 'undefined') ?  opt.bottom : '0';
+        setTimeout(function(){toast.style.opacity = '1';},300);
+        setTimeout(function(){toast.style.opacity = '0';
+        setTimeout(function(){document.body.removeChild(toast);},300);
+        },dur*1000);
+    }
 
-  return self;
+    return self;
   };
   /*End sp toast*/
   /*events*/
   self.click = function(callback){
-  self.elements.forEach(function(r){
-  r.addEventListener('click',callback);
-  });
-  return self;
+    self.elements.forEach(function(r){
+      r.addEventListener('click',callback);
+    });
+    return self;
   };
   self.rightclick = function(callback){
-  self.elements.forEach(function(r){
-  r.addEventListener("contextmenu",callback);
-  });
-  return false;
+    self.elements.forEach(function(r){
+      r.addEventListener("contextmenu",callback);
+    });
+    return self;
   };
   self.dblclick = function(callback){
-  $(self.selector).on('dblclick',callback);
-  return self;
+    self.elements.forEach(function(r){
+      var counts = 0;
+      r.addEventListener("click",function(){
+        if(counts == 1){
+          callback();
+        }
+        else {
+          counts = 1;
+          setTimeout(function(){counts = 0;},300);
+        }
+      });
+    });
+    return self;
   };
   self.on = function(e,callback){
-  switch(e) {
-  case "swipeleft":
-  $(self.selector).swipe("left",callback);
-  break;
-  case "swiperight":
-  $(self.selector).swipe("right",callback);
-  break;
-  case "swipedown":
-  $(self.selector).swipe("down",callback);
-  break;
-  case "swipeup":
-  $(self.selector).swipe("up",callback);
-  break;
-  case "rightclick":
-  $(self.selector).rightclick(callback);
-  break;
-  default:
-  self.elements.forEach(function(r){
-  r.addEventListener(e,callback);
-  });
-  }
-  return self;
+    switch(e) {
+    case "swipeleft":
+    $(self.selector).swipe("left",callback);
+    break;
+    case "swiperight":
+    $(self.selector).swipe("right",callback);
+    break;
+    case "swipedown":
+    $(self.selector).swipe("down",callback);
+    break;
+    case "swipeup":
+    $(self.selector).swipe("up",callback);
+    break;
+    case "rightclick":
+    $(self.selector).rightclick(callback);
+    case "dblclick":
+    $(self.selector).dblclick(callback);
+    break;
+    default:
+    self.elements.forEach(function(r){
+    r.addEventListener(e,callback);
+    });
+    }
+    return self;
   };
   
   /*now swipe function*/
@@ -208,7 +221,9 @@
       y = yf-yi;
       angle = Math.atan2(y,x)*(180/Math.PI);
       t = t2 - t1;
-      doWhileSwipe({initial:xi,final:xf,traveled:x},{initial:yi,final:yf,traveled:y},angle,direction,t);
+
+//{initial:xi,final:xf,traveled:x},{initial:yi,final:yf,traveled:y},angle,direction,t
+      doWhileSwipe({x:{initial:xi,final:xf,traveled:x},y:{initial:yi,final:yf,traveled:y},angle:angle,direction:direction,time:t});
     }
   }
   }
@@ -244,7 +259,7 @@
   if(dir==direction || dir == "all"){
   t = t2 - t1;
   if (typeof callback == "function") {
-  callback({initial:xi,final:xf,traveled:x},{initial:yi,final:yf,traveled:y},angle,direction,t);
+  callback({x:{initial:xi,final:xf,traveled:x},y:{initial:yi,final:yf,traveled:y},angle:angle,direction:direction,time:t});
   }
   }
   }
@@ -320,15 +335,8 @@
       }
     });
   };
-  self.toggleNoScroll = function(cls){
-        if (cls){
-          self.elements.forEach(function(r){
-          r.classList.toggle(cls);
-          });  
-        }
-        else {
-          document.body.classList.toggle("noscroll");
-        }
+  self.toggleNoScroll = function(){
+    document.body.classList.toggle("noscroll");
   };
   /*custom material dialog box*/
   self.createDialog = function(o,scrimEvt,shadow){
@@ -337,17 +345,7 @@
     this.shadow = shadow;
     this.option =  o;
     var cLoad = (typeof this.option.load !== 'undefined') ? this.option.load : "not given";
-    
-    if (cLoad == "not given"){
-      var cTitle = (typeof this.option.titleColor !== 'undefined') ? this.option.titleColor : "#000";
-      var cText = (typeof this.option.textColor !== 'undefined') ? this.option.textColor : "grey";
-      var cContent = (typeof this.option.contentColor !== 'undefined') ? this.option.contentColor : "#000";
-      var cButton = (typeof this.option.buttonColor !== 'undefined') ? this.option.buttonColor : "#007bff";
-      var cBackground = (typeof this.option.background !== 'undefined') ? this.option.background : "#fff";
-      var cContentBorder = (typeof this.option.contentBorder !== 'undefined') ? this.option.contentBorder : "1px solid #eee";
-      var cScrim = (typeof this.option.scrimColor !== 'undefined') ?  this.option.scrimColor : "rgba(0,0,0,0.4)";
-      var cBorderRadius = (typeof this.option.borderRadius !== 'undefined') ? this.option.borderRadius : "4px";
-    }
+  
     var ele = document.createElement("div");
     ele.classList.add("dialog");
     ele.style.borderRadius = cBorderRadius;
@@ -366,6 +364,15 @@
     document.body.appendChild(scrim);
     
     if (cLoad == "not given"){
+      var cTitle = (typeof this.option.titleColor !== 'undefined') ? this.option.titleColor : "#000";
+      var cText = (typeof this.option.textColor !== 'undefined') ? this.option.textColor : "grey";
+      var cContent = (typeof this.option.contentColor !== 'undefined') ? this.option.contentColor : "#000";
+      var cButton = (typeof this.option.buttonColor !== 'undefined') ? this.option.buttonColor : "#007bff";
+      var cBackground = (typeof this.option.background !== 'undefined') ? this.option.background : "#fff";
+      var cContentBorder = (typeof this.option.contentBorder !== 'undefined') ? this.option.contentBorder : "1px solid #eee";
+      var cScrim = (typeof this.option.scrimColor !== 'undefined') ?  this.option.scrimColor : "rgba(0,0,0,0.4)";
+      var cBorderRadius = (typeof this.option.borderRadius !== 'undefined') ? this.option.borderRadius : "4px";
+
       if (this.option.title !== undefined){
         var eTitle = document.createElement("div");
         eTitle.classList.add("dialog-title");
@@ -388,85 +395,90 @@
         eContent.innerHTML = this.option.content;
         ele.appendChild(eContent);
       }
+
+      if (this.option.button1 !== undefined){
+        var eBtn1 = document.createElement("button");
+        eBtn1.classList.add("dialog-btn");
+        eBtn1.innerHTML = this.option.button1;
+        ele.appendChild(eBtn1);
+        if (this.option.action1 === "cancel"){eBtn1.addEventListener("click",function(){
+          document.body.removeChild(ele);
+          document.body.removeChild(scrim);$().toggleNoScroll();});}
+        else if (typeof this.option.action1 === "function"){
+          eBtn1.addEventListener('click',function(){
+            o.action1(ele.querySelector('.dialog-content'));
+            document.body.removeChild(ele);
+            document.body.removeChild(scrim);$().toggleNoScroll();});
+        }
+        else if($().isValidURL(this.option.action1)){
+          eBtn1.addEventListener('click',function(){
+            window.open(o.action1,'_self');
+            document.body.removeChild(ele);
+            document.body.removeChild(scrim);$().toggleNoScroll();});
+        }
+        else {}
+      }
+      if (this.option.button2 !== undefined){
+        var eBtn2 = document.createElement("button");
+        eBtn2.classList.add("dialog-btn");
+        eBtn2.innerHTML = this.option.button2;
+        ele.appendChild(eBtn2);
+        if (this.option.action2 === "cancel"){eBtn2.addEventListener("click",function(){
+          document.body.removeChild(ele);
+          document.body.removeChild(scrim);$().toggleNoScroll();});}
+        else if (typeof this.option.action2 === "function"){
+          eBtn2.addEventListener('click',function(){
+            o.action2(ele.querySelector('.dialog-content'));
+            document.body.removeChild(ele);
+            document.body.removeChild(scrim);$().toggleNoScroll();});
+        }
+        else if($().isValidURL(this.option.action2)){
+          eBtn2.addEventListener('click',function(){
+            window.open(o.action2,'_self');
+            document.body.removeChild(ele);
+            document.body.removeChild(scrim);$().toggleNoScroll();});
+        }
+        else {}
+      }
+      if (this.option.button3 !== undefined){
+        var eBtn3 = document.createElement("button");
+        eBtn3.classList.add("dialog-btn");
+        eBtn3.innerHTML = this.option.button3;
+        ele.appendChild(eBtn3);
+        if (this.option.action3 === "cancel"){eBtn3.addEventListener("click",function(){
+          document.body.removeChild(ele);
+          document.body.removeChild(scrim);$().toggleNoScroll();});}
+        else if (typeof this.option.action3 === "function"){
+          eBtn3.addEventListener('click',function(){
+            o.action3(ele.querySelector('.dialog-content'));
+            document.body.removeChild(ele);
+            document.body.removeChild(scrim);$().toggleNoScroll();});
+        }
+        else if($().isValidURL(this.option.action3)){
+          eBtn3.addEventListener('click',function(){
+            window.open(o.action3,'_self');
+            document.body.removeChild(ele);
+            document.body.removeChild(scrim);$().toggleNoScroll();});
+        }
+        else {}
+      }
+      if (ele.querySelectorAll(".dialog-btn")){
+      Array.prototype.forEach.call(ele.querySelectorAll(".dialog-btn"),function(e){
+        e.style.color = cButton;
+      });
     }
-    if (this.option.button1 !== undefined){
-      var eBtn1 = document.createElement("button");
-      eBtn1.classList.add("dialog-btn");
-      eBtn1.innerHTML = this.option.button1;
-      ele.appendChild(eBtn1);
-      if (this.option.action1 === "cancel"){eBtn1.addEventListener("click",function(){
-        document.body.removeChild(ele);
-        document.body.removeChild(scrim);$().toggleNoScroll();});}
-      else if (typeof this.option.action1 === "function"){
-        eBtn1.addEventListener('click',function(){
-          o.action1(ele.querySelector('.dialog-content'));
-          document.body.removeChild(ele);
-          document.body.removeChild(scrim);$().toggleNoScroll();});
-      }
-      else if($().isValidURL(this.option.action1)){
-        eBtn1.addEventListener('click',function(){
-          window.open(o.action1,'_self');
-          document.body.removeChild(ele);
-          document.body.removeChild(scrim);$().toggleNoScroll();});
-      }
-      else {}
+    else {
+      ele.innerHTML = cLoad;
     }
-    if (this.option.button2 !== undefined){
-      var eBtn2 = document.createElement("button");
-      eBtn2.classList.add("dialog-btn");
-      eBtn2.innerHTML = this.option.button2;
-      ele.appendChild(eBtn2);
-      if (this.option.action2 === "cancel"){eBtn2.addEventListener("click",function(){
-        document.body.removeChild(ele);
-        document.body.removeChild(scrim);$().toggleNoScroll();});}
-      else if (typeof this.option.action2 === "function"){
-        eBtn2.addEventListener('click',function(){
-          o.action2(ele.querySelector('.dialog-content'));
-          document.body.removeChild(ele);
-          document.body.removeChild(scrim);$().toggleNoScroll();});
-      }
-      else if($().isValidURL(this.option.action2)){
-        eBtn2.addEventListener('click',function(){
-          window.open(o.action2,'_self');
-          document.body.removeChild(ele);
-          document.body.removeChild(scrim);$().toggleNoScroll();});
-      }
-      else {}
-    }
-    if (this.option.button3 !== undefined){
-      var eBtn3 = document.createElement("button");
-      eBtn3.classList.add("dialog-btn");
-      eBtn3.innerHTML = this.option.button3;
-      ele.appendChild(eBtn3);
-      if (this.option.action3 === "cancel"){eBtn3.addEventListener("click",function(){
-        document.body.removeChild(ele);
-        document.body.removeChild(scrim);$().toggleNoScroll();});}
-      else if (typeof this.option.action3 === "function"){
-        eBtn3.addEventListener('click',function(){
-          o.action3(ele.querySelector('.dialog-content'));
-          document.body.removeChild(ele);
-          document.body.removeChild(scrim);$().toggleNoScroll();});
-      }
-      else if($().isValidURL(this.option.action3)){
-        eBtn3.addEventListener('click',function(){
-          window.open(o.action3,'_self');
-          document.body.removeChild(ele);
-          document.body.removeChild(scrim);$().toggleNoScroll();});
-      }
-      else {}
-    }
-    if (ele.querySelectorAll(".dialog-btn")){
-    Array.prototype.forEach.call(ele.querySelectorAll(".dialog-btn"),function(e){
-      e.style.color = cButton;
-    });
-    }
+  }
     document.body.appendChild(ele);
     return self;
   };
+
   self.isValidURL = function(str) {
-    var pattern = new RegExp('^(https?:\\/\\/)?'+'((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.?)+[a-z]{2,}|'+'((\\d{1,3}\\.){3}\\d{1,3}))'+'(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+'(\\?[;&a-z\\d%_.~+=-]*)?'+'(\\#[-a-z\\d_]*)?$','i');
-    return pattern.test(str);
-};
+      var pattern = new RegExp('^(https?:\\/\\/)?'+'((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.?)+[a-z]{2,}|'+'((\\d{1,3}\\.){3}\\d{1,3}))'+'(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+'(\\?[;&a-z\\d%_.~+=-]*)?'+'(\\#[-a-z\\d_]*)?$','i');
+      return pattern.test(str);
+  };
   self.getcss = function(prop){
     var style, val;
     val = new Array();
@@ -908,6 +920,7 @@ for (i in eventReplacement) {
     } 
     else {
         __sp_eventMap[i] = eventReplacement[i][1];
+        console.log('hey');
     };
  };
 })();

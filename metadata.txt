@@ -1,0 +1,469 @@
+normalize.css {
+    @initialisation of sheet!
+}
+
+classes [
+    noscroll
+    container
+    page
+    padding-auto
+    <>small, small
+    <>blockquote, blockquote
+    scrim
+    scrollbar
+
+    {
+        bootstrap grid
+    }
+
+    btn {
+        btn
+        text-btn
+        toggle-btn
+        btn-lg
+        clickable
+        {
+            $colors : [
+                yellow
+                white
+                black
+                green
+                teal
+                indigo
+                red
+                steelblue
+                pink
+                purple
+                deeppurple
+                blue
+                skyblue
+                orange
+                brown
+                bluegrey
+                default
+                primary
+                warning
+                info
+                success
+                danger
+                grey
+            ]
+        }
+    }
+
+    ripple
+    ripple-dark
+    ripple-auto
+    cssripple
+
+    badge {
+        badge
+        badge-rect
+        badge-up
+        badge-lg
+        badge-overlap
+        badge-${{colors}}
+        badge-nocolor
+    }
+
+    box-shadow {
+        [shadow1, inset.shadow1]
+        [shadow2, inset.shadow2]
+        [shadow3, inset.shadow3]
+        [shadow4, inset.shadow4]
+        [shadow5, inset.shadow5]
+    }
+
+    fab {
+        fab -> fab-btn {
+            fab-center
+            fab-extended
+            fab-top-left
+            fab-mini
+            btn-${{colors}}
+        }
+
+        fab-content
+    }
+
+    material-nav {
+        material-nav
+        material-nav_opener
+        material-nav_header
+        material-nav_cover
+        material-nav_avatar
+        material-nav_title
+        material-nav_content
+        material-nav.autoopen
+    }
+
+    material-input {
+        material-input {
+            <>label
+            <>input
+            <>textarea
+            <>span.bar
+            ${{colors}}
+        }
+    }
+
+    form
+    input
+    <>textarea.input
+    toggle (${{colors}})
+    checkbox
+    tooltip {
+        tooltip
+        tooltiptext
+        tooltip-${{top,bottom,right,left}}
+    }
+
+    slider (${{colors}})
+
+    chip {
+        chip
+        input-chip
+        filter-chip
+        action-chip
+        ~chips-group .chip
+        .chip .chip-icon
+        .chip .close
+    }
+
+    breadcrumb
+    article
+    header {
+        header
+        header.bottom
+        header.extended
+        right-icon [
+            right-icon
+            right-icon.second
+            right-icon.third
+            right-icon.fourth
+        ]
+        left-icon [
+            left-icon
+            left-icon.second
+            left-icon.third
+            left-icon.fourth
+        ]
+    }
+
+    autohide-top
+    autohide-bottom
+
+    youtube-video
+    youtube-video iframe
+
+    table {
+        table
+        responsive
+        bordered
+        borderless
+        striped
+        hover
+    }
+
+    material-table {
+        material-table
+        bordered
+    }
+    
+    list {
+        list
+        list-item
+        active
+        disabled
+    }
+
+    material-list {
+        one-line-list {
+            icon-list
+            avatar-list
+            form-list
+                list-item [
+                    material-icons::first child
+                    <>img
+                    list-text
+                    
+                ]
+            thumbnail-list
+            large-thumbnail-list
+        }
+        two-line-list {
+            overline-list
+            icon-list
+            avatar-list
+            thumbnail-list
+            large-thumbnail-list
+             
+                list-item [
+                    <>img
+                    list-text
+                    overline-text
+                    secondary-text
+                ]
+
+        }
+        three-line-list {
+            overline-list
+            avatar-list
+            icon-list
+            thumbnail-list
+            large-thumbnail-list
+
+                list-item [
+                    <>img
+                    overline-text
+                    secondary-text
+                ]
+        }
+        divider-list
+    }
+
+    image-list {
+        image [
+            <>img
+            image-title.right.top
+        ]
+    }
+
+    dropdown {
+        dropdown
+        dropdown-content
+    }
+
+    menu {
+        menu.more-width [
+            ul
+                li
+        ]
+        menu.auto-desktop
+    }
+
+    collapsible {
+        collapsible
+        collapsible-btn
+    }
+
+    card {
+        card [
+            topright
+            <>img.bottom
+            <>video
+            title
+            text
+            hoverable
+            <>button
+        ]
+    }
+
+    tabs {
+        tabs
+        <>button.active
+        tabcontent
+    }
+
+    dialog {
+        dialog
+        dialog-title
+        dialog-text
+        dialog-content
+        dialog-btn
+    }
+
+    bottom-navigation {
+        bottom-navigation
+        wrapper [
+            element.active
+            title
+        ]
+    }
+
+    border {
+        border-none
+        border.(left || right || top || bottom || all) [
+            w1 ... w10
+            solid
+            dashed
+            dotted
+            doubled
+            ${{colors}}
+        ]
+    }
+
+    outline {
+        outline-${{colors}}
+    }
+
+    background {
+        bg-${{colors}}
+        lighten1 ... lighten4
+        darken1 ... darken4
+    }
+
+    text {
+        text-center
+        text-right
+        text-left
+        text-shadow_white
+        text-shadow_black
+        text-shadow
+        text-${{colors}}
+    }
+
+    full-width, !tag full-width
+    full-height
+    no-margin
+    no-margin-top
+    center, !tag center
+    pull-left
+    pull-right
+    position-(right, top, left, bottom)
+    no-shadow
+    no-text-shadow
+    box-200
+    box-300
+    font-2x ... font-5x
+    font-20
+    font-10
+    font-100 ... font-900
+    size2x ... size5x
+    small 2x ... small5x
+    divider
+    float-right
+    float-left
+    curved, !tag curved
+    no-curved
+    circle
+    bold, !tag bold
+    padding, !tag padding
+    fixed, !tag fixed
+    absolute, !tag absolute
+    relative, !tag relative
+    block, !tag block
+    none, !tag none
+    visible, !tag visible
+    hidden, !tag hidden
+    inline-block, !tag inline-block
+    inline, !tag inline
+    underline, !tag underline
+    overline, !tag overline
+    line-through, !tag line-through
+    list-style-none
+    vertical-space
+    vertical-space-bottom
+    margin
+    vertical-margin
+    z1 ... z10
+    
+]
+
+elements [
+    hr
+    small
+    blockquote
+    code
+    kbd
+    pre
+    p
+    a
+]
+
+data-elements [
+    hover   : fn toggle class names
+    active  : fn toggle class names
+    target  : fn (used in tabs and material-nav)
+]
+
+SP~$ methods [
+    maxZ()
+    createToast(text, duration, option: {
+        animate !translate || fade
+        background
+        color
+        width
+        maxWidth
+        borderRadius
+        boxShadow
+        swipeable !true || false ~ swiperight to remove
+        button ! {
+            background
+            color
+            borderRadius
+            boxShadow
+            text
+        }
+    })
+
+    selector.click(callback())
+    selector.rightclick(callback())
+    selector.dblclick(callback())
+    selector.on([
+        swiperight || swipeleft || swipetop || swipebottom
+        rightclick || dblclick
+        ::default
+    ], callback)
+    selector.swipe(direction, callback, {
+        minLength !default 150
+        doWhileSwipe    : fn ({x:{initial, final, traveled}, y:{initial:yi,final:yf,traveled:y},angle:angle,direction:direction,time:t)
+        onstart         : fn (x,y,t)
+    })
+
+    selector.offset : top, scrollTop, left, scrollLeft
+    selector.toggleClass
+    selector.addClass
+    selector.removeClass
+    toggleNoScroll()
+
+    createDialog(option:{
+        title
+        text
+        content
+        button1
+        button2
+        button3
+        action1
+        action2
+        action3
+        titleColor
+        textColor
+        contentColor
+        buttonColor
+        background
+        contentBorder
+        scrimColor
+        borderRadius
+    }, scrimEvent : true!false, shadow : true!false)
+
+    isValidURL(url)
+    getcss(property)
+
+    selector.scrollHeight()
+    selector.scrollWidth()
+    selector.fullscreen()
+    exitfullscreen()
+    selector.width(?width)
+    selector.height(?height)
+    selector.position(?position)
+    selector.background(?background)
+    selector.color(?color)
+    selector.x(?x)
+    selector.y(?y)
+    selector.display(?display)
+
+    vibrate(t in milliseconds)
+    
+    selector.addChild(element)
+    selector.removeChild(element)
+    selector.toggleChild(element)
+
+    colors : Object {} <>contains html supported all colors --- soon material colors too
+
+    selector.css(Object : {})
+
+    rgbToHex(rgb)
+    ld(color, amount)
+    
+]
