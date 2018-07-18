@@ -4001,33 +4001,41 @@ transition: all 0.1s ease-in-out;
 }
 .header .right-icon {
 position:absolute;
-right: 16px;
-top: 16px;
+right: 0px;
+top: 0px;
 font-size: 24px;
+height: 56px;
+width: 56px;
+text-align: center;
+display: inline-block;
 }
 .header .right-icon.second {
-right: 64px;
+right: 48px;
 }
 .header .right-icon.third {
-right: 112px;
+right: 96px;
 }
 .header .right-icon.fourth {
-right: 160px;
+right: 144px;
 }
 .header .left-icon {
 position:absolute;
-left:16px;
-top: 16px;
+left: 0px;
+top: 0px;
 font-size: 24px;
+width: 56px;
+height: 56px;
+text-align: center;
+display: inline-block;
 }
 .header .left-icon.second {
-left: 64px;
+left: 48px;
 }
 .header .left-icon.third {
-left: 112px;
+left: 96px;
 }
 .header .left-icon.fourth {
-left: 160px;
+left: 144px;
 }
 .autohideTop {
   transition: 0.3s top ease;
@@ -4218,7 +4226,7 @@ text-overflow: ellipsis;
 overflow: hidden;
 white-space: nowrap;
 }
-.material-list.icon-list.one-line-list .list-item .material-icons:first-of-type {
+.material-list.icon-list.one-line-list .list-item .material-icons:first-of-type,.material-list.icon-list.one-line-list .list-item .fa:first-of-type,.material-list.icon-list.one-line-list .list-item .fas:first-of-type,.material-list.icon-list.one-line-list .list-item .icon:first-of-type {
 float: left;
 }
 .material-list.avatar-list.one-line-list .list-item img {
@@ -4310,7 +4318,7 @@ white-space: nowrap;
 position: absolute;
 bottom: 16px;
 }
-.material-list.icon-list.two-line-list .list-item .material-icons:first-of-type {
+.material-list.icon-list.two-line-list .list-item .material-icons:first-of-type,.material-list.icon-list.two-line-list .list-item .fa:first-of-type,.material-list.icon-list.two-line-list .list-item .fas:first-of-type,.material-list.icon-list.two-line-list .list-item .icon:first-of-type {
 float: left;
 }
 .material-list.avatar-list.two-line-list .list-item img, .material-list.thumbnail-list.two-line-list .list-item img {
@@ -4406,7 +4414,7 @@ white-space: nowrap;
 position: absolute;
 top: 44px;
 }
-.material-list.icon-list.three-line-list .list-item .material-icons:first-of-type {
+.material-list.icon-list.three-line-list .list-item .material-icons:first-of-type,.material-list.icon-list.three-line-list .list-item .fa:first-of-type,.material-list.icon-list.three-line-list .list-item .fas:first-of-type,.material-list.icon-list.three-line-list .list-item .icon:first-of-type {
 float: left;
 }
 .material-list.avatar-list.three-line-list .list-item img, .material-list.thumbnail-list.three-line-list .list-item img {
