@@ -4008,6 +4008,7 @@ height: 56px;
 width: 56px;
 text-align: center;
 display: inline-block;
+line-height: 56px;
 }
 .header .right-icon.second {
 right: 48px;
@@ -4027,6 +4028,7 @@ width: 56px;
 height: 56px;
 text-align: center;
 display: inline-block;
+line-height: 56px;
 }
 .header .left-icon.second {
 left: 48px;
