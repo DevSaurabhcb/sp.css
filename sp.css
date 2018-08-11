@@ -1,9 +1,8 @@
-/* ! sp.css v0.9 under released version for testing purpose |
-  MIT License | github.com/devsaurabhcb/sp.css
+/* ! sp.css v0.1 under released version for testing purpose |
+  MIT License | github.com/devsaurabhcb/sp.css/
 */
 
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
-@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
 /*! normalize.css v7.0.0 | MIT License | github.com/necolas/normalize.css */
@@ -551,7 +550,7 @@ color: blue;
   position: fixed;
   left: 0;
   top: 0;
-  z-index: 24;
+  z-index: 252;
   background: rgba(0,0,0,0.4);
 }
 /*grid system*/
@@ -2643,10 +2642,10 @@ position:relative;
 width:0;
 height:0;
 position:absolute;
-transform:scale(0);
+transform:scale(0.1);
 border-radius:100%;
 opacity:1;
-animation:rippler 0.6s linear;
+animation:rippler 0.7s linear;
 }
 @keyframes rippler {
 100%{
@@ -3008,7 +3007,7 @@ overflow-x:hidden;
 overflow-y:auto;
 left:-290px;
 top:0;
-z-index:260;
+z-index:255;
 transition:left 0.2s ease-out;
 }
 .material-nav_opener {
@@ -3874,7 +3873,7 @@ font-size: 14px;
 line-height: 36px;
 padding: 6px 16px;
 position: fixed;
-z-index:  250;
+z-index:  251;
 bottom: 0px;
 left: 50%;
 transform: translateX(-50%);
@@ -3984,7 +3983,7 @@ min-height:56px;
 line-height:56px;
 padding:0px 16px;
 font-size:20px;
-z-index:240;
+z-index:248;
 margin:0;
 font-weight: 500;
 }
@@ -4509,7 +4508,7 @@ border-bottom: 1px solid #ccc;
   border:none;
   padding: 0;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-  z-index: 252;
+  z-index: 253;
 }
 .menu.more-width {
   width: 280px;
@@ -4529,6 +4528,21 @@ border-bottom: 1px solid #ccc;
 }
 .menu li:hover {
   background-color: #eee;
+}
+/*bottom sheet*/
+#bottomsheet {
+  min-height: 56px;
+  max-height: 50vh;
+  width: 360px;
+  max-width: 360px;
+  background: #fff;
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 256;
+  transition: height 0.2s linear,max-height 0.2s linear;
+  overflow: hidden;
 }
 /*accordian*/
 .collapsible {
@@ -4667,7 +4681,7 @@ top: 50%;
 left: 50%;
 transform: translate(-50%,-50%);
 max-height: 80%;
-z-index: 25;
+z-index: 254;
 }
 .dialog-title {
   font-weight: 900;
@@ -6250,43 +6264,61 @@ color:#4682b4!important;
 color: grey!important;
 }
 /*the basic properties codes*/
-.full-width , [full-width]{
+.full-width, [full-width]{
 width: calc(100% + 32px);
 margin-left: -16px;
 margin-right: -16px;
 }
-.full-height {
-  height: 100%;
+.full-height,[full-height] {
+  height: 100%!important;
   margin: 0px;
 }
+.margin, [margin] {
+  margin: 16px;
+}
+.margin-top {
+  margin-top: 16px!important;
+}
+.margin-bottom {
+  margin-bottom: 16px!important;
+}
+.margin-left {
+  margin-left: 16px!important;
+}
+.margin-right {
+  margin-right: 16px!important;
+}
 .no-margin {
-  margin-left: -16px;
-  margin-right: -16px;
+  margin-left: -16px!important;
+  margin-right: -16px!important;
 }
 .no-margin-top {
   margin-top: -16px;
 }
+.zero-margin {
+  margin: 0px!important;
+}
 .center , [center]{
-display:block;
-margin:auto;
+display:block!important;
+margin:auto!important;
 }
 .pull-left{
-margin-left:0;
+margin-left:0!important;
 }
 .pull-right{
-margin-right:0;
+margin-right:0!important;
 }
-.position-right {
-right: 0;
+.right, [right] {
+right: 0!important;
 }
-.position-top {
-top: 0;
+.top, [top] {
+top: 0!important;
 }
-.position-left {
-left: 0;
+.left, [left] {
+left: 0!important;
 }
-.position-bottom {
-bottom: 0;
+.bottom, [bottom] {
+bottom: 0!important;
 }
 .no-shadow {
 box-shadow: none!important;
@@ -6302,50 +6334,60 @@ div.box-300 {
 width:300px;
 height:300px;
 }
+.unselectable {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select:none;
+  user-select:none;
+  -o-user-select:none;
+}
+.font-1x {
+font-size:14px!important;
+}
 .font-2x {
-font-size:28px;
+font-size:28px!important;
 }
 .font-3x {
-font-size:42px;
+font-size:42px!important;
 }
 .font-4x {
-font-size:56px;
+font-size:56px!important;
 }
 .font-5x {
-font-size:70px;
+font-size:70px!important;
 }
 .font-20 {
-font-size: 20px;
+font-size:20px!important;
 }
 .font-10 {
-font-size: 10px;
+font-size:10px!important;
 }
 .font-100 {
-font-weight: 100;
+font-weight: 100!important;
 }
 .font-200 {
-font-weight: 200;
+font-weight: 200!important;
 }
 .font-300 {
-font-weight: 300;
+font-weight: 300!important;
 }
 .font-400 {
-font-weight: 400;
+font-weight: 400!important;
 }
 .font-500 {
-font-weight: 500;
+font-weight: 500!important;
 }
 .font-600 {
-font-weight: 600;
+font-weight: 600!important;
 }
 .font-700 {
-font-weight: 700;
+font-weight: 700!important;
 }
 .font-800 {
-font-weight: 800;
+font-weight: 800!important;
 }
 .font-900 {
-font-weight: 900;
+font-weight: 900!important;
 }
 .size2x {
   transform: scale(2);
@@ -6371,75 +6413,97 @@ font-weight: 900;
 .small5x {
   transform: scale(0.2);
 }
-.divider {
+.divider, [divider] {
   width: 100%;
   height: 0px;
   border: none;
   border-top: 1px solid #ccc;
   margin: 0px;
 }
-.float-right {
-float: right;
+.float-right, [float-right] {
+float: right!important;
 }
-.float-left {
-float: left;
+.float-left, [float-left] {
+float: left!important;
 }
 .curved , [curved] {
-border-radius:4px;
+border-radius:4px!important;
 }
-.no-curved {
+.not-curved {
 border-radius:0!important;
 }
-.circle {
-border-radius:100%;
+.circle, [circle] {
+border-radius:100%!important;
 }
-[bold] , .bold {
-font-weight:bold;
+.bold, [bold] {
+font-weight:bold!important;
 }
-.padding , [padding]{
-padding:5px;
+.padding, [padding]{
+padding: 16px;
 }
-.fixed ,[fixed]{
-position:fixed;
+.padding-small {
+padding: 5px;
 }
-.absolute ,[absolute] {
-position:absolute;
+.padding-left {
+padding-left: 16px!important;
 }
-.relative ,[relative] {
-position:relative;
+.padding-top {
+padding-top: 16px!important;
 }
-.block , [block] {
-display:block;
+.padding-bottom {
+padding-bottom: 16px!important;
+}
+.padding-right {
+padding-right: 16px!important;
+}
+.no-padding, [no-padding] {
+padding: 0px!important;
+}
+.fixed, [fixed]{
+position:fixed!important;
+}
+.absolute, [absolute] {
+position:absolute!important;
+}
+.relative, [relative] {
+position:relative!important;
+}
+.block, [block] {
+display:block!important;
 }
 .none, [none] {
-display: none;
+display: none!important;
 }
 .visible, [visible] {
-visibility: visible;
+visibility: visible!important;
 }
 .hidden,[hidden] {
-visibility: hidden;
+visibility: hidden!important;
 }
 .inline-block, [inline-block]{
-display:inline-block;
+display:inline-block!important;
 }
 .inline, [inline] {
-display:inline;
+display:inline!important;
 }
 .underline, [underline] {
-text-decoration:underline;
+text-decoration:underline!important;
 }
 .overline, [overline] {
-text-decoration:overline;
+text-decoration:overline!important;
 }
 .line-through, [line-through]{
-text-decoration:line-through;
+text-decoration:line-through!important;
 }
 .list-style-none {
-  list-style-type: none;
+  list-style-type: none!important;
 }
 .vertical-space {
-margin-top: 5px;
+margin-top: 5px!important;
+margin-bottom: 5px!important;
+}
+.vertical-space-top{
+  margin-top: 5px;
 }
 .vertical-space-bottom{
   margin-bottom: 5px;
@@ -6452,35 +6516,56 @@ margin-top: 5px;
   margin-top: 16px;
   margin-bottom: 16px;
 }
+.transition {
+  transition: all 0.3s linear;
+}
+.transition.slow {
+  transition-duration: 0.5s;
+}
+.transition.fast {
+  transition-duration: 0.15s;
+}
+.transition.ease {
+  transition-timing-function: ease;
+}
+.transition.ease-in {
+  transition-timing-function: ease-in;
+}
+.transition.ease-out {
+  transition-timing-function: ease-out;
+}
+.transition.ease-in-out {
+  transition-timing-function: ease-in-out;
+}
 .z1 {
-  z-index: 1;
+  z-index: 1!important;
 }
 .z2 {
-  z-index: 2;
+  z-index: 2!important;
 }
 .z3 {
-  z-index: 3;
+  z-index: 3!important;
 }
 .z4 {
-  z-index: 4;
+  z-index: 4!important;
 }
 .z5 {
-  z-index: 5;
+  z-index: 5!important;
 }
 .z6 {
-  z-index: 6;
+  z-index: 6!important;
 }
 .z7 {
-  z-index: 7;
+  z-index: 7!important;
 }
 .z8 {
-  z-index: 8;
+  z-index: 8!important;
 }
 .z9 {
-  z-index: 9;
+  z-index: 9!important;
 }
 .z10 {
-  z-index: 10;
+  z-index: 10!important;
 }
 
 /*responsiveness comes here*/
