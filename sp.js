@@ -133,15 +133,16 @@
     var t = (typeof title == "undefined") ? '' : title;
     var c = (typeof color == "undefined") ? 'bg-white' : color;
     document.body.innerHTML += `
-    <div class="scrim"></div>
+    <div class="scrim" id="sheetScrim"></div>
       <div class="bottomsheet unselectable" unselectable="on" id="bottomsheet">
         <div class="header fixed none ${c}" id="bottomsheetBar" style="padding-left:72px">
-          <i class="material-icons left-icon ripple">close</i>
+          <i class="material-icons left-icon ripple" id="bottomsheetClose">close</i>
           ${t}
         </div>
         ${content}
       </div>`;
   __sp_bottomsheet();
+  $('#sheetScrim').click(function(e){e.target.parentElement.removeChild(e.target);document.getElementById('bottomsheet').parentElement.removeChild(document.getElementById('bottomsheet'));});
   }
   /*events*/
   self.click = function(callback){
@@ -216,15 +217,19 @@
     }
     if (self.sType == "s"){
       self.elements.forEach(function(r){
-        $(r).swipe("any",function(o){
-         if(o.time > t && o.x.traveled == 0 && o.y.traveled == 0){callback();}
-        });
+        $(r).swipe("any",function(){
+        return false;
+        },{whileSwipe:function(o){
+          if(o.time >= t && (o.x.traveled <= 2 || o.x.traveled >= -2) && (o.y.traveled <= 2 || o.y.traveled >= -2)){callback();}
+        }});
       });
     }
     else if(self.sType == "e"){
-      $(self.selector).swipe("any",function(o){
-        if(o.time > t && o.x.traveled == 0 && o.y.traveled == 0){callback();}
-      });
+      $(self.selector).swipe("any",function(){
+        return false;
+      },{whileSwipe:function(o){
+          if(o.time >= t && o.x.traveled == 0 && o.y.traveled == 0){callback();}
+        }});
     }
   };
   self.on = function(e,callback,options = {}){
@@ -259,10 +264,10 @@
   
   /*now swipe function*/
   self.swipe = function(dir, callback, options){
-  var ismousedown = false, xi, yi, xf, yf, x, y, direction, da1, da2, t1, t2, t, o, minLength, doWhileSwipe, onstart;
+  var ismousedown = false, xi, yi, xf, yf, x, y, direction, da1, da2, t1, t2, t, o, minLength, whileSwipe, onstart;
 
   if (typeof options == "undefined"){
-    o = {minLength : 150, doWhileSwipe : undefined};
+    o = {minLength : 150, whileSwipe : undefined};
   }
   else {
     o = options;
@@ -273,11 +278,11 @@
   else {
     minLength = o.minLength;
   }
-  if (typeof o.doWhileSwipe == "undefined"){
-    doWhileSwipe = undefined;
+  if (typeof o.whileSwipe == "undefined"){
+    whileSwipe = undefined;
   }
   else {
-    doWhileSwipe = o.doWhileSwipe;
+    whileSwipe = o.whileSwipe;
   }
   if (typeof o.onstart == "undefined"){
     onstart = undefined;
@@ -317,13 +322,14 @@
       xf = e.touches[0].clientX;
       yf = e.touches[0].clientY;
     }
-    if(typeof doWhileSwipe == "function"){
+    if(typeof whileSwipe == "function"){
       x = xf-xi;
       y = yf-yi;
       angle = Math.atan2(y,x)*(180/Math.PI);
       t = t2 - t1;
+      console.log(xf,yf,x,y,t);
 //{initial:xi,final:xf,traveled:x},{initial:yi,final:yf,traveled:y},angle = -1*angle [it is because the origin or 0,0 is located at top left corner of screen and y is in downward],direction,t
-      doWhileSwipe({x:{initial:xi,final:xf,traveled:x},y:{initial:yi,final:yf,traveled:y},angle:-1*angle,direction:direction,time:t});
+      whileSwipe({x:{initial:xi,final:xf,traveled:x},y:{initial:yi,final:yf,traveled:y},angle:-1*angle,direction:direction,time:t});
     }
   }
   }
@@ -423,7 +429,7 @@
     $(self.selector).swipe("any",function(result){
       return false;
     },{
-      'doWhileSwipe': function(r){
+      'whileSwipe': function(r){
       callback(r);
       $(t).css({c: _l + r[xy].traveled + "px"});
       },
@@ -943,17 +949,21 @@ self.toggleChild = function(e){
   else {return false;}
 };
 self.materialNav = function(){
-  var n = document.querySelector(".material-nav");
-  if (n.style.left == "0px"){
-    n.style.left = "-290px";
+  console.log($(".material-nav").left());
+  if ($(".material-nav").left() == "0px"){
+    $(".material-nav").left(-290);
     var s = document.querySelector(".scrim");
     s.parentElement.removeChild(s);
   }
-  else{
+  else {
     var s = document.createElement("div");
     s.classList.add("scrim");
     document.body.appendChild(s);
-    n.style.left = "0px";
+    $(".material-nav").left(0);
+    s.addEventListener('click',function(){
+      $(".material-nav").left(-290);
+      s.parentElement.removeChild(s);
+    });
   }
   return self;
 };
@@ -2071,17 +2081,19 @@ function __sp_bottomsheet(){
       $('.bottomsheet').css({height:'100vh','max-height':'100vh',overflow:'auto'});
       $('#bottomsheetBar').replaceClass('none','block');
     },{minLength: 10});
+    $('#bottomsheetClose').click(function(){
+      s.parentElement.removeChild(s);document.querySelector('.scrim').parentElement.removeChild(document.querySelector('.scrim'));
+    });
     $('.bottomsheet').swipe('down',function(){
       if (parseInt($('.bottomsheet').height()) <= 56){
       $('.bottomsheet').css({height:'0','max-height':'0'});
       setTimeout(function(){s.parentElement.removeChild(s);document.querySelector('.scrim').parentElement.removeChild(document.querySelector('.scrim'));},320);
       }
     },{minLength: 5});
-  }
     $('#bottomsheetBar').swipe('down',function(){
       if (parseInt($('.bottomsheet').height()) > 56){
       $('#bottomsheetBar').replaceClass('block','none');
         $('.bottomsheet').css({height:'56px','max-height':'56px',overflow:'hidden'});
       }
     },{minLength: 5});
-// }
+}
