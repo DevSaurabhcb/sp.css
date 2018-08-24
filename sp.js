@@ -327,7 +327,6 @@
       y = yf-yi;
       angle = Math.atan2(y,x)*(180/Math.PI);
       t = t2 - t1;
-      console.log(xf,yf,x,y,t);
 //{initial:xi,final:xf,traveled:x},{initial:yi,final:yf,traveled:y},angle = -1*angle [it is because the origin or 0,0 is located at top left corner of screen and y is in downward],direction,t
       whileSwipe({x:{initial:xi,final:xf,traveled:x},y:{initial:yi,final:yf,traveled:y},angle:-1*angle,direction:direction,time:t});
     }
@@ -947,7 +946,6 @@ self.toggleChild = function(e){
   else {return false;}
 };
 self.materialNav = function(){
-  console.log($(".material-nav").left());
   if ($(".material-nav").left() == "0px"){
     $(".material-nav").left(-290);
     var s = document.querySelector(".scrim");
