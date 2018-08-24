@@ -590,7 +590,14 @@
     this.shadow = shadow;
     this.option =  o;
     var cLoad = (typeof this.option.load !== 'undefined') ? this.option.load : "not given";
-  
+    var cTitle = (typeof this.option.titleColor !== 'undefined') ? this.option.titleColor : "#000";
+    var cText = (typeof this.option.textColor !== 'undefined') ? this.option.textColor : "grey";
+    var cContent = (typeof this.option.contentColor !== 'undefined') ? this.option.contentColor : "#000";
+    var cButton = (typeof this.option.buttonColor !== 'undefined') ? this.option.buttonColor : "#007bff";
+    var cBackground = (typeof this.option.background !== 'undefined') ? this.option.background : "#fff";
+    var cContentBorder = (typeof this.option.contentBorder !== 'undefined') ? this.option.contentBorder : "1px solid #eee";
+    var cScrim = (typeof this.option.scrimColor !== 'undefined') ?  this.option.scrimColor : "rgba(0,0,0,0.4)";
+    var cBorderRadius = (typeof this.option.borderRadius !== 'undefined') ? this.option.borderRadius : "4px";
     var ele = document.createElement("div");
     ele.classList.add("dialog");
     ele.style.borderRadius = cBorderRadius;
@@ -609,15 +616,6 @@
     document.body.appendChild(scrim);
     
     if (cLoad == "not given"){
-      var cTitle = (typeof this.option.titleColor !== 'undefined') ? this.option.titleColor : "#000";
-      var cText = (typeof this.option.textColor !== 'undefined') ? this.option.textColor : "grey";
-      var cContent = (typeof this.option.contentColor !== 'undefined') ? this.option.contentColor : "#000";
-      var cButton = (typeof this.option.buttonColor !== 'undefined') ? this.option.buttonColor : "#007bff";
-      var cBackground = (typeof this.option.background !== 'undefined') ? this.option.background : "#fff";
-      var cContentBorder = (typeof this.option.contentBorder !== 'undefined') ? this.option.contentBorder : "1px solid #eee";
-      var cScrim = (typeof this.option.scrimColor !== 'undefined') ?  this.option.scrimColor : "rgba(0,0,0,0.4)";
-      var cBorderRadius = (typeof this.option.borderRadius !== 'undefined') ? this.option.borderRadius : "4px";
-
       if (this.option.title !== undefined){
         var eTitle = document.createElement("div");
         eTitle.classList.add("dialog-title");
