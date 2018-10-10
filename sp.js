@@ -1,12 +1,12 @@
-(function (root, factory) {
+(function (root, factory){
   "use strict";
-  if(typeof module === "object" && typeof module.exports === "object" ){
+  if(typeof module === "object" && typeof module.exports === "object"){
 
   module.exports = root.document ?
-  factory( root, true ) :
-  function( w ) {
-  if ( !w.document ) {
-  throw new Error( "Required a window with a documentElement" );
+  factory(root, true) :
+  function(w){
+  if (!w.document){
+  throw new Error("Required a window with a documentElement");
   }
   return factory( w );
   };
@@ -124,8 +124,7 @@
   /*End sp toast*/
   // custom toast
   self.customToast = function(c,t){
-    var toast = document.createElement("div");
-    toast.innerHTML = c;
+    document.body.innerHTML += c;
     setTimeout(document.removeChild(toast),t*1000);
   };
   // action sheet
@@ -579,12 +578,110 @@
     $(self.selector).addClass(b);
     $(self.selector).removeClass(a);
   }
+  self.hasClass = function(cls){
+    if (self.sType == "s"){
+      var _count = 0;
+      self.elements.forEach(function(r){
+        if (cls.indexOf(" ") > -1){
+          var clsnames = cls.split(" ");
+          var count = 0;
+          for(var x = 0; x < clsnames.length; x++){
+            if(r.classList.contains(clsnames[x])){count++;};
+          }
+          if (count == clsnames.length){_count++;}
+        }
+        else{
+          return r.classList.contains(cls);
+        }
+      });
+      if (_count == self.elements.length){return true;}else {return false;}
+    }
+    else if (self.sType == "e"){
+      if (cls.indexOf(" ") > -1){
+          var clsnames = cls.split(" ");
+          var count = 0;
+          for(var x = 0; x < clsnames.length; x++){
+            if(self.elements.classList.contains(clsnames[x])){count++;};
+          }
+          if (count == clsnames.length){return true;}else{return false;}
+        }
+        else{
+          return self.elements.classList.contains(cls);
+        }
+    }
+    else {
+      return false;
+    }
+  };
+  self.attr = function(a,b){
+    if (typeof b != "undefined"){
+      if (self.sType == "s"){
+        self.elements.forEach(function(r){
+        r.setAttribute(a,b);
+        });
+        return self;
+      }
+      else if (self.sType == "e"){
+        self.elements.setAttribute(a,b);
+        return self;
+      }
+      else {
+        return false;
+      }
+    }
+    else {
+      if (self.sType == "s"){
+        var arr = [];
+        self.elements.forEach(function(r){
+        arr.push(r.getAttribute(a));
+        });
+        return arr;
+      }
+      else if (self.sType == "e"){
+        return self.elements.getAttribute(a);
+      }
+      else {
+        return false;
+      }
+    }
+  };
+  self.removeAttr = function(a){
+    if (self.sType == "s"){
+        self.elements.forEach(function(r){
+        r.removeAttribute(a);
+        });
+        return self;
+      }
+      else if (self.sType == "e"){
+        self.elements.removeAttribute(a);
+        return self;
+      }
+      else {
+        return false;
+      }
+  };
+  self.val = function(){
+    if (self.sType == "s"){
+      var _v = [];
+      self.elements.forEach(function(r){
+        _v.push(r.value());
+      });
+      return _v;
+      }
+      else if (self.sType == "e"){
+        return self.elements.value();
+      }
+      else {
+        return false;
+      }
+  };
   self.toggleNoScroll = function(){
     document.body.classList.toggle("noscroll");
   };
   /*custom material dialog box*/
   self.createDialog = function(o,scrimEvt,shadow){
     $().toggleNoScroll();
+    window.location.hash += "#dialog";
     this.scrimEvt = scrimEvt;
     this.shadow = shadow;
     this.option =  o;
@@ -609,8 +706,22 @@
     scrim.style.background = cScrim;
     if (typeof this.scrimEvt === "undefined" || this.scrimEvt === true){
       scrim.addEventListener('click',function(){
-        document.body.removeChild(ele);
-        document.body.removeChild(scrim);$().toggleNoScroll();});
+        _$_cancel();
+      });
+      window.addEventListener("popstate",function(){
+        if (document.querySelector('.dialog')){
+          _$_cancel();
+        }
+      });
+    }
+    else {
+        window.addEventListener("popstate",function(e){
+          if (document.querySelector('.dialog')){
+            history.pushState("#back","The dialog");
+            e = e || window.event;
+            e.preventDefault(); 
+          }
+        }); 
     }
     document.body.appendChild(scrim);
     
@@ -641,78 +752,85 @@
       if (this.option.button1 !== undefined){
         var eBtn1 = document.createElement("button");
         eBtn1.classList.add("dialog-btn");
+        eBtn1.classList.add("ripple-dark");
         eBtn1.innerHTML = this.option.button1;
         ele.appendChild(eBtn1);
-        if (this.option.action1 === "cancel"){eBtn1.addEventListener("click",function(){
-          document.body.removeChild(ele);
-          document.body.removeChild(scrim);$().toggleNoScroll();});}
+        if (this.option.action1 === "cancel"){
+          eBtn1.addEventListener("click",_$_cancel);
+      }
         else if (typeof this.option.action1 === "function"){
-          eBtn1.addEventListener('click',function(){
-            o.action1(ele.querySelector('.dialog-content'));
-            document.body.removeChild(ele);
-            document.body.removeChild(scrim);$().toggleNoScroll();});
+          eBtn1.addEventListener('click',_$_function);
         }
         else if($().isValidURL(this.option.action1)){
-          eBtn1.addEventListener('click',function(){
-            window.open(o.action1,'_self');
-            document.body.removeChild(ele);
-            document.body.removeChild(scrim);$().toggleNoScroll();});
+          eBtn1.addEventListener('click',_$_visit);
         }
         else {}
       }
       if (this.option.button2 !== undefined){
         var eBtn2 = document.createElement("button");
         eBtn2.classList.add("dialog-btn");
+        eBtn2.classList.add("ripple-dark");
         eBtn2.innerHTML = this.option.button2;
         ele.appendChild(eBtn2);
-        if (this.option.action2 === "cancel"){eBtn2.addEventListener("click",function(){
-          document.body.removeChild(ele);
-          document.body.removeChild(scrim);$().toggleNoScroll();});}
+        if (this.option.action2 === "cancel"){
+          eBtn2.addEventListener("click",_$_cancel);
+        }
         else if (typeof this.option.action2 === "function"){
-          eBtn2.addEventListener('click',function(){
-            o.action2(ele.querySelector('.dialog-content'));
-            document.body.removeChild(ele);
-            document.body.removeChild(scrim);$().toggleNoScroll();});
+          eBtn2.addEventListener('click',_$_function);
         }
         else if($().isValidURL(this.option.action2)){
-          eBtn2.addEventListener('click',function(){
-            window.open(o.action2,'_self');
-            document.body.removeChild(ele);
-            document.body.removeChild(scrim);$().toggleNoScroll();});
+          eBtn2.addEventListener('click',_$_visit);
         }
         else {}
       }
       if (this.option.button3 !== undefined){
         var eBtn3 = document.createElement("button");
         eBtn3.classList.add("dialog-btn");
+        eBtn3.classList.add("ripple-dark");
         eBtn3.innerHTML = this.option.button3;
         ele.appendChild(eBtn3);
-        if (this.option.action3 === "cancel"){eBtn3.addEventListener("click",function(){
-          document.body.removeChild(ele);
-          document.body.removeChild(scrim);$().toggleNoScroll();});}
+        if (this.option.action3 === "cancel"){
+          eBtn3.addEventListener("click",_$_cancel);
+        }
         else if (typeof this.option.action3 === "function"){
-          eBtn3.addEventListener('click',function(){
-            o.action3(ele.querySelector('.dialog-content'));
-            document.body.removeChild(ele);
-            document.body.removeChild(scrim);$().toggleNoScroll();});
+          eBtn3.addEventListener('click',_$_function);
         }
         else if($().isValidURL(this.option.action3)){
-          eBtn3.addEventListener('click',function(){
-            window.open(o.action3,'_self');
-            document.body.removeChild(ele);
-            document.body.removeChild(scrim);$().toggleNoScroll();});
+          eBtn3.addEventListener('click',_$_visit);
         }
         else {}
       }
-      if (ele.querySelectorAll(".dialog-btn")){
-      Array.prototype.forEach.call(ele.querySelectorAll(".dialog-btn"),function(e){
-        e.style.color = cButton;
-      });
+        if (ele.querySelectorAll(".dialog-btn")){
+        Array.prototype.forEach.call(ele.querySelectorAll(".dialog-btn"),function(e){
+          e.style.color = cButton;
+        });
+      }
+      // functions to handle clicks
+      function _$_cancel(){
+        _$_delete();
+        if (document.location.hash.indexOf("#dialog") > -1){
+          document.location.hash = document.location.hash.replace("#dialog","");
+        }
+      }
+
+      function _$_visit(){
+        window.open(o.action3,'_self');
+        _$_delete();
+      }
+
+      function _$_function(){
+        o.action3(ele.querySelector('.dialog-content'));
+        _$_delete();
+      }
+      function _$_delete(){
+        document.body.removeChild(ele);
+        document.body.removeChild(scrim);
+        $().toggleNoScroll();
+      }
     }
     else {
       ele.innerHTML = cLoad;
     }
-  }
     document.body.appendChild(ele);
     return self;
   };
@@ -1430,6 +1548,7 @@ self.materialNav = function(){
     self.elements.style[p] = o[prop];
     }
     }
+    return self;
   }
   else {return false;}
   }
@@ -1476,8 +1595,10 @@ self.materialNav = function(){
   return self;
   };
   
+
+  self.get = function(){return self.elements;};
   return self;
-  };
+};
 
 
 SP.noConflict = function(c){
