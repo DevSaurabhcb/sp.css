@@ -123,11 +123,21 @@
   };
   /*End sp snackbar*/
   self.createToast = function(text,duration,options){
-    var t = text;
-    var d = duration;
-    var o = options;
-    var
+    var t = (typeof text != "undefined") ? text : "";
+    var d = (typeof duration != "undefined") ? duration : 1.5;
+    var o = (typeof options != "undefined") ? options : {background: "#eee",color:'#000'};
+    var b = (typeof o.background != "undefined") ? o.background : "#eee";
+    var c = (typeof o.color != "undefined") ? o.color : "#000";
+    var toast = document.createElement("div");
+    toast.innerText = t;
+    $(toast).addClass("spToast");
+    $(toast).css({zIndex: $().maxZ() + 10,background:b,color:c});
+    document.body.appendChild(toast);
+    setTimeout(function(){
+      document.body.removeChild(toast);
+    },d*1000);
   };
+
   // custom sb
   self.customsb = function(c,t){
     document.body.innerHTML += c;
