@@ -375,11 +375,12 @@ data-elements [
     hover   : fn toggle class names
     active  : fn toggle class names
     target  : fn (used in tabs and material-nav)
+    load    : static (loads text of given url)
 ]
 
 SP~$ methods [
     maxZ()
-    createToast(text, duration, option: {
+    createSnackbar(text, duration, option: {
         animate !translate || fade
         background
         color
@@ -436,6 +437,17 @@ SP~$ methods [
         scrimColor
         borderRadius
     }, scrimEvent : true!false, shadow : true!false)
+
+
+    createFullscreenDialog(option:{
+        title
+        background
+        color
+        button
+        action ?? returns the content element
+        content
+    }, backEvent : true!false)
+
 
     isValidURL(url)
     getcss(property)

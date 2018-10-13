@@ -63,25 +63,25 @@
   return largest;
   };
   /*max z end*/
-  /*sp toast*/
-  self.createToast = function(text,duration,option){
-    var toast = document.createElement('div');
+  /*sp snackbar*/
+  self.createSnackbar = function(text,duration,option){
+    var sb = document.createElement('div');
     this.text = text ;
     this.duration = (typeof duration !== 'undefined') ?  duration : 2.5;
     var dur = this.duration;
     this.option = (typeof option !== 'undefined') ?  option : {};
     var opt = this.option;
-    toast.classList.add("sp-toast");
+    sb.classList.add("sp-snackbar");
     this.animType = (typeof this.option.animate !== 'undefined') ?  this.option.animate : 'translate';
-    toast.style.background = (typeof this.option.background !== 'undefined') ?  this.option.background : '#000';
-    toast.style.color = (typeof this.option.color !== 'undefined') ?  this.option.color : '#fff';
-    toast.innerHTML = this.text;
+    sb.style.background = (typeof this.option.background !== 'undefined') ?  this.option.background : '#000';
+    sb.style.color = (typeof this.option.color !== 'undefined') ?  this.option.color : '#fff';
+    sb.innerHTML = this.text;
     
-    toast.style.width = (typeof this.option.width !== 'undefined') ?  this.option.width : '100%';
-    toast.style.maxWidth = (typeof this.option.maxWidth !== 'undefined') ?  this.option.maxWidth : '100%';
-    toast.style.borderRadius = (typeof this.option.borderRadius !== 'undefined') ?  this.option.borderRadius : '0px';
-    toast.style.boxShadow = (typeof this.option.boxShadow !== 'undefined') ?  this.option.boxShadow : '0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)';
-    document.body.appendChild(toast);
+    sb.style.width = (typeof this.option.width !== 'undefined') ?  this.option.width : '100%';
+    sb.style.maxWidth = (typeof this.option.maxWidth !== 'undefined') ?  this.option.maxWidth : '100%';
+    sb.style.borderRadius = (typeof this.option.borderRadius !== 'undefined') ?  this.option.borderRadius : '0px';
+    sb.style.boxShadow = (typeof this.option.boxShadow !== 'undefined') ?  this.option.boxShadow : '0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)';
+    document.body.appendChild(sb);
 
     if (typeof this.option.button !== 'undefined') {
       var button = document.createElement('button');
@@ -90,42 +90,48 @@
       button.style.borderRadius = (typeof this.option.button.borderRadius !== 'undefined') ?  this.option.button.borderRadius : '2px';
       button.style.boxShadow = (typeof this.option.button.boxShadow !== 'undefined') ?  this.option.button.boxShadow : 'none';
       button.innerHTML = (typeof this.option.button.text !== 'undefined') ?  this.option.button.text : 'Button';
-      toast.appendChild(button);
+      sb.appendChild(button);
       if(option.button.callback){
       button.addEventListener('click',function(){option.button.callback();});
       }
     }
 
     if (this.option.swipeable != false) {
-      $('.sp-toast').swipe('right',function(){
-        document.body.removeChild(toast);
+      $('.sp-snackbar').swipe('right',function(){
+        document.body.removeChild(sb);
       });
     }
     if (this.animType == 'translate'){
-      toast.style.bottom = "-1000px";
-      setTimeout(function(){toast.style.bottom = (typeof opt.bottom !== 'undefined') ?  opt.bottom : '0';},300);  
+      sb.style.bottom = "-1000px";
+      setTimeout(function(){sb.style.bottom = (typeof opt.bottom !== 'undefined') ?  opt.bottom : '0';},300);  
       setTimeout(function(){
-      toast.style.bottom = "-58px";
+      sb.style.bottom = "-58px";
       setTimeout(function(){
-      document.body.removeChild(toast);},300);
+      document.body.removeChild(sb);},300);
       },dur*1000);
     }
     else {
-        toast.style.opacity = '0';
-        toast.style.bottom = (typeof opt.bottom !== 'undefined') ?  opt.bottom : '0';
-        setTimeout(function(){toast.style.opacity = '1';},300);
-        setTimeout(function(){toast.style.opacity = '0';
-        setTimeout(function(){document.body.removeChild(toast);},300);
+        sb.style.opacity = '0';
+        sb.style.bottom = (typeof opt.bottom !== 'undefined') ?  opt.bottom : '0';
+        setTimeout(function(){sb.style.opacity = '1';},300);
+        setTimeout(function(){sb.style.opacity = '0';
+        setTimeout(function(){document.body.removeChild(sb);},300);
         },dur*1000);
     }
 
     return self;
   };
-  /*End sp toast*/
-  // custom toast
-  self.customToast = function(c,t){
+  /*End sp snackbar*/
+  self.createToast = function(text,duration,options){
+    var t = text;
+    var d = duration;
+    var o = options;
+    var
+  };
+  // custom sb
+  self.customsb = function(c,t){
     document.body.innerHTML += c;
-    setTimeout(document.removeChild(toast),t*1000);
+    setTimeout(document.removeChild(sb),t*1000);
   };
   // action sheet
   self.createSheet = function(content,title,color){
@@ -459,6 +465,187 @@
     });
   };
   /*End of swipe*/
+  // sp ripple binding methods
+  self.bindRipple = function(){
+    if (self.sType = "s"){
+      Array.prototype.forEach.call(self.elements,function(r){
+      r.addEventListener("click",_sp_rippleIt);
+      });
+    }
+    else if (self.sType = "s"){
+      self.elements.addEventListener("click",_sp_rippleIt);
+    }
+    return self;
+  };
+  self.bindDarkRipple = function(){
+    if (self.sType = "s"){
+      Array.prototype.forEach.call(self.elements,function(r){
+      r.addEventListener("click",_sp_rippleIt_dark);
+      });
+    }
+    else if (self.sType = "s"){
+      self.elements.addEventListener("click",_sp_rippleIt_dark);
+    }
+    return self;
+  };
+  self.bindAutoRipple = function(){
+    if (self.sType = "s"){
+      Array.prototype.forEach.call(self.elements,function(r){
+      r.addEventListener("click",_sp_rippleIt_auto);
+      });
+    }
+    else if (self.sType = "s"){
+      self.elements.addEventListener("click",_sp_rippleIt_auto);
+    }
+    return self;
+  };
+  // sp bind a method or a function to selector
+  self.bind = function(event,callback){
+    if (self.sType == "s"){
+      self.elements.forEach(function(r){
+        r.addEventListener(event,callback);
+      });
+    }
+    if (self.sType == "e"){
+        self.elements.addEventListener(event,callback);
+    }
+    return self;
+  };
+  // innerhtml and innertext method
+  self.html = function(a){
+    if (typeof a != "undefined"){
+      if(typeof a == 'string' || typeof a == "number"){
+        if (self.sType = "s"){
+          self.elements.forEach(function(r){
+            r.innerHTML = a;
+          });
+        }
+        else if (self.sType = "e"){
+          self.elements.innerHTML = a;
+        }
+      }
+      else {
+        console.log("Didn't receive string or number as parameter for HTML method");
+      }
+      return self;
+    }
+    else {
+      if (self.sType == "s"){
+        if (self.eleLength == 1){
+          return String(self.elements.forEach(function(r){return r.innerHTML;}));
+        }
+        else {
+          var arr = [];
+          self.elements.forEach(function(r){
+            arr.push(r.innerHTML);
+          });
+          return arr;
+        }
+      }
+      else if (self.sType == "e"){
+        return self.elements.innerHTML;
+      }
+    }
+  };
+  self.text = function(a){
+    if (typeof a != "undefined"){
+      if(typeof a == 'string' || typeof a == "number"){
+        if (self.sType = "s"){
+          self.elements.forEach(function(r){
+            r.innerText = a;
+          });
+        }
+        else if (self.sType = "e"){
+          self.elements.innerText = a;
+        }
+      }
+      else {
+        console.log("Didn't receive string or number as parameter for text method");
+      }
+      return self;
+    }
+    else {
+      if (self.sType == "s"){
+        if (self.eleLength == 1){
+          return String(self.elements.forEach(function(r){return r.innerText;}));
+        }
+        else {
+          var arr = [];
+          self.elements.forEach(function(r){
+            arr.push(r.innerText);
+          });
+          return arr;
+        }
+      }
+      else if (self.sType == "e"){
+        return self.elements.innerText;
+      }
+    }
+  };
+  self.appendHTML = function(a){
+  if(typeof a == 'string' || typeof a == "number"){
+    if (self.sType = "s"){
+      self.elements.forEach(function(r){
+        r.innerHTML += a;
+      });
+    }
+    else if (self.sType = "e"){
+      self.elements.innerHTML += a;
+    }
+  }
+  else {
+    console.log("Didn't receive string or number as parameter for appendHTML");
+  }
+    return self;
+  };
+  self.appendText = function(a){
+  if(typeof a == 'string' || typeof a == "number"){
+    if (self.sType = "s"){
+      self.elements.forEach(function(r){
+        r.innerText += a;
+      });
+    }
+    else if (self.sType = "e"){
+      self.elements.innerText += a;
+    }
+  }
+  else {
+    console.log("Didn't receive string or number as parameter for appendText");
+  }
+    return self;
+  };
+  self.prependHTML = function(a){
+  if(typeof a == 'string' || typeof a == "number"){
+    if (self.sType = "s"){
+      self.elements.forEach(function(r){
+        r.innerHTML = a + r.innerHTML;
+      });
+    }
+    else if (self.sType = "e"){
+      self.elements.innerHTML = a + self.elements.innerHTML;
+    }
+  }
+  else {
+    console.log("Didn't receive string or number as parameter for appendHTML");
+  }
+    return self;
+  };
+  self.appendText = function(a){
+  if(typeof a == 'string' || typeof a == "number"){
+    if (self.sType = "s"){
+      self.elements.forEach(function(r){
+        r.innerText = a + r.innerText;
+      });
+    }
+    else if (self.sType = "e"){
+      self.elements.innerText = a + self.elements.innerText;
+    }
+  }
+  else {
+    console.log("Didn't receive string or number as parameter for appendText");
+  }
+    return self;
+  };
   /*offset*/
   self.offset = function(ask){
     var toreturn = undefined;
@@ -687,7 +874,7 @@
     this.option =  o;
     var cLoad = (typeof this.option.load !== 'undefined') ? this.option.load : "not given";
     var cTitle = (typeof this.option.titleColor !== 'undefined') ? this.option.titleColor : "#000";
-    var cText = (typeof this.option.textColor !== 'undefined') ? this.option.textColor : "grey";
+    var cText = (typeof this.option.textColor !== 'undefined') ? this.option.textColor : "#000";
     var cContent = (typeof this.option.contentColor !== 'undefined') ? this.option.contentColor : "#000";
     var cButton = (typeof this.option.buttonColor !== 'undefined') ? this.option.buttonColor : "#007bff";
     var cBackground = (typeof this.option.background !== 'undefined') ? this.option.background : "#fff";
@@ -834,7 +1021,80 @@
     document.body.appendChild(ele);
     return self;
   };
+  self.create = function(a){
+    if(typeof a != undefined && typeof a == "string") return document.createElement(a);
+    else return document.createElement('div');
+  };
+  self.createFullscreenDialog = function(o,back){
+    var opt = o;
+    document.location.hash = "dialog";
+    var t = (typeof opt.title != "undefined") ? opt.title : "";
+    var bg = (typeof opt.background != "undefined") ? opt.background : "white";
+    var c = (typeof opt.color != "undefined") ? opt.color : "black";
+    var b = (typeof opt.button != "undefined") ? opt.button : "not given";
+    var a = (typeof opt.action != "undefined") ? opt.action : "not given";
+    var cnt = (typeof opt.content != "undefined") ? opt.content : "";
+    
+    var d = document.createElement("div");
+    $(d).addClass("fullscreendialog");
+    $(d).css({position:'fixed',left:'0',top:'0',width:"100%",height:'100%',zIndex:$().maxZ() + 10});
+    var h = document.createElement("div");
+    $(h).addClass('header fixed shadow2');
+    h.innerHTML = t;
+    $(h).css({background:bg,color:c,paddingLeft:'72px'});
+    var i = document.createElement("i");
+    $(i).addClass("material-icons left-icon");
+    $(i).bindRipple();
+    i.addEventListener('click',_$_cancel);
+    i.innerHTML = "close";
+    h.appendChild(i);
+    d.appendChild(h);
+    var p = document.createElement("div");
+    if (typeof cnt == "object"){p.appendChild(cnt);}
+    else {
+      $(p).css({height: "calc(100% - 56px)",position:"absolute",left:"0",top:'56px',background:'white',color:'black',width:'100%',padding:'16px 24px'});
+      p.innerHTML = cnt;
+    }
+    d.appendChild(p);
+    if (b != "not given"){
+      var btn = $().create('button');
+      $(btn).addClass("fsDialogBtn");
+      $(btn).css({background:bg,color:c});
+      btn.innerText = b;
+      btn.addEventListener("click",function(){
+        _$_cancel();
+        a(p);
+      });
+      h.appendChild(btn);
+    }
+    document.body.appendChild(d);
 
+    // back button event
+    if (typeof this.back === "undefined" || this.back === true){
+      window.addEventListener("popstate",function(){
+        if (document.querySelector('.fullscreendialog')){
+          _$_cancel();
+        }
+      });
+    }
+    else {
+      window.addEventListener("popstate",function(e){
+          if (document.querySelector('.fullscreendialog')){
+            history.pushState("#back","The Full screen dialog");
+            e = e || window.event;
+            e.preventDefault(); 
+          }
+      });
+    }
+
+    function _$_cancel(){
+      document.body.removeChild(d);
+      if (document.location.hash.indexOf("#dialog") > -1){
+          document.location.hash = document.location.hash.replace("#dialog","");
+      }
+    }
+    return self;
+  };
   self.isURL = function(str) {
       var pattern = new RegExp('^(https?:\\/\\/)?'+'((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.?)+[a-z]{2,}|'+'((\\d{1,3}\\.){3}\\d{1,3}))'+'(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+'(\\?[;&a-z\\d%_.~+=-]*)?'+'(\\#[-a-z\\d_]*)?$','i');
       return pattern.test(str);
@@ -1633,7 +1893,12 @@ var __sp_eventMap = {};
 
 (function(){
 _sp_init();
-//to ripple
+// to load
+var _toLoad = document.querySelectorAll("[data-load]");
+Array.prototype.forEach.call(_toLoad,function(r){
+  fetch(r.getAttribute("data-load")).then(function(a){return a.text();}).then(function(b){r.innerHTML = b;});
+});
+// to ripple
 var _toRipple = document.getElementsByClassName("ripple");
 Array.prototype.forEach.call(_toRipple,function(r){
 r.addEventListener("click",_sp_rippleIt);
@@ -2036,111 +2301,109 @@ document.body.appendChild(navcover);
 
 /*sp ripple function*/
 function _sp_rippleIt(e){
-var color;
-var cColor = this.getAttribute("data-ripple");
-if(cColor){
-if(cColor[0] != "#"){
-color = "#"+cColor;
-}
-else{
-color = cColor;
-}
-}
-else{
-color = "rgba(255,255,255,0.9)";
-}
-var circle = document.createElement('span');
-this.appendChild(circle);
-
-var d,
-    width = this.clientWidth,
-    height = this.clientHeight;
-if(width >= height) {
-    d = width;
-  } else {
-    d = height; 
+  var color;
+  var cColor = this.getAttribute("data-ripple");
+  if(cColor){
+  if(cColor[0] != "#"){
+  color = "#"+cColor;
   }
-circle.classList.add("sp-ripple");
+  else{
+  color = cColor;
+  }
+  }
+  else{
+  color = "rgba(255,255,255,0.9)";
+  }
+  var circle = document.createElement('span');
+  this.appendChild(circle);
 
-circle.style.backgroundColor= color;
+  var d,
+      width = this.clientWidth,
+      height = this.clientHeight;
+  if(width >= height) {
+      d = width;
+    } else {
+      d = height; 
+    }
+  circle.classList.add("sp-ripple");
 
-var scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
-scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-var coordX = scrollLeft + this.getBoundingClientRect().x;
-var coordY = scrollTop + this.getBoundingClientRect().y;
-var x = e.pageX - coordX - d / 2;
-var y = e.pageY - coordY - d / 2;
-circle.style.height = d+"px";
-circle.style.width = d+"px";
-circle.style.left = x + "px";
-circle.style.top = y + "px";
+  circle.style.backgroundColor= color;
+
+  var scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
+  scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  var coordX = scrollLeft + this.getBoundingClientRect().x;
+  var coordY = scrollTop + this.getBoundingClientRect().y;
+  var x = e.pageX - coordX - d / 2;
+  var y = e.pageY - coordY - d / 2;
+  circle.style.height = d+"px";
+  circle.style.width = d+"px";
+  circle.style.left = x + "px";
+  circle.style.top = y + "px";
 setTimeout(function(){circle.style.display="none";},600);
 }
 
 function _sp_rippleIt_dark(e){
+  var circle = document.createElement('span');
+  this.appendChild(circle);
 
-var circle = document.createElement('span');
-this.appendChild(circle);
+  var d,
+      width = this.clientWidth,
+      height = this.clientHeight;
+  if(width >= height) {
+      d = width;
+    } else {
+      d = height; 
+    }
+  circle.classList.add("sp-ripple");
 
-var d,
-    width = this.clientWidth,
-    height = this.clientHeight;
-if(width >= height) {
-    d = width;
-  } else {
-    d = height; 
-  }
-circle.classList.add("sp-ripple");
+  circle.style.backgroundColor="rgba(0,0,0,0.5)";
 
-circle.style.backgroundColor="rgba(0,0,0,0.5)";
+  var scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
+  scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  var coordX = scrollLeft + this.getBoundingClientRect().x;
+  var coordY = scrollTop + this.getBoundingClientRect().y;
+  var x = e.pageX - coordX - d / 2;
+  var y = e.pageY - coordY - d / 2;
 
-var scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
-scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-var coordX = scrollLeft + this.getBoundingClientRect().x;
-var coordY = scrollTop + this.getBoundingClientRect().y;
-var x = e.pageX - coordX - d / 2;
-var y = e.pageY - coordY - d / 2;
-
-circle.style.height = d+"px";
-circle.style.width = d+"px";
-circle.style.left = x + "px";
-circle.style.top = y + "px";
-setTimeout(function(){circle.style.display="none";},600);
+  circle.style.height = d+"px";
+  circle.style.width = d+"px";
+  circle.style.left = x + "px";
+  circle.style.top = y + "px";
+  setTimeout(function(){circle.style.display="none";},600);
 }
 function _sp_rippleIt_auto(e){
+  var circle = document.createElement('span');
+  this.appendChild(circle);
 
-var circle = document.createElement('span');
-this.appendChild(circle);
+  var d,
+      width = this.clientWidth,
+      height = this.clientHeight;
+  if(width >= height) {
+      d = width;
+    } else {
+      d = height; 
+    }
+  circle.classList.add("sp-ripple");
 
-var d,
-    width = this.clientWidth,
-    height = this.clientHeight;
-if(width >= height) {
-    d = width;
-  } else {
-    d = height; 
-  }
-circle.classList.add("sp-ripple");
+  var style = window.getComputedStyle(e.target),
+      bg = style.getPropertyValue("background-color");
 
-var style = window.getComputedStyle(e.target),
-    bg = style.getPropertyValue("background-color");
+  circle.style.background = $().ld(bg,90);
 
-circle.style.background = $().ld(bg,90);
+  var scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
+  scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  var coordX = scrollLeft + this.getBoundingClientRect().x;
+  var coordY = scrollTop + this.getBoundingClientRect().y;
+  var x = e.pageX - coordX - d / 2;
+  var y = e.pageY - coordY - d / 2;
 
-var scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
-scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-var coordX = scrollLeft + this.getBoundingClientRect().x;
-var coordY = scrollTop + this.getBoundingClientRect().y;
-var x = e.pageX - coordX - d / 2;
-var y = e.pageY - coordY - d / 2;
-
-circle.style.height = d+"px";
-circle.style.width = d+"px";
-circle.style.left = x + "px";
-circle.style.top = y + "px";
-setTimeout(function(){circle.style.display="none";},600);
+  circle.style.height = d+"px";
+  circle.style.width = d+"px";
+  circle.style.left = x + "px";
+  circle.style.top = y + "px";
+  setTimeout(function(){circle.style.display="none";},600);
 }
-window.onscroll = function(){
+window.addEventListener("scroll",function(){
   if (typeof atScroll === "function"){atScroll();}
   if (__sEles){
     for (var i = 0; i < __sp_ot.length; i++){
@@ -2187,7 +2450,7 @@ window.onscroll = function(){
       _s.lineHeight = 'initial';
     }
   }
-};
+});
 // function to control bottom sheet
 function __sp_bottomsheet(){
   var s = document.getElementById('bottomsheet');
