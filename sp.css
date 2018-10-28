@@ -3941,7 +3941,6 @@ transition: 0.3s ease-out all;
 /* sp toast */
 .spToast {
   position: fixed;
-  bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
   min-height: 16px;
@@ -6430,6 +6429,11 @@ box-shadow: none!important;
 }
 .no-text-shadow {
 text-shadow: none!important;
+}
+.parent-center {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
 }
 div.box-200 {
 width:200px;

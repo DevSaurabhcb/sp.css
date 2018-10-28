@@ -51,16 +51,21 @@
     eles.forEach(function(r){
       var style = window.getComputedStyle(r);
       if(style.getPropertyValue('z-index')){
-      z.push(style.getPropertyValue('z-index'));
-    }
-    });
-    var largest= -999999;
-    for (i=0; i<=z.length;i++){
-      if (parseInt(z[i])>largest) {
-          var largest=parseInt(z[i]);
+        z.push(style.getPropertyValue('z-index'));
       }
-  }
-  return largest;
+      });
+      var largest= -999999;
+      for (i=0; i<=z.length;i++){
+        if (parseInt(z[i])>largest) {
+            var largest=parseInt(z[i]);
+        }
+      }
+    
+    if(self.selector != "none"){
+      $(self.elements).css({zIndex:largest+1});
+      return self;
+    }
+    else {return largest;}
   };
   /*max z end*/
   /*sp snackbar*/
@@ -125,36 +130,43 @@
   self.createToast = function(text,duration,options){
     var t = (typeof text != "undefined") ? text : "";
     var d = (typeof duration != "undefined") ? duration : 1.5;
-    var o = (typeof options != "undefined") ? options : {background: "#eee",color:'#000'};
+    var o = (typeof options != "undefined") ? options : {background: "#eee",color:'#000',bottom:"20px"};
     var b = (typeof o.background != "undefined") ? o.background : "#eee";
     var c = (typeof o.color != "undefined") ? o.color : "#000";
+    var _b = (typeof o.bottom != "undefined") ? o.bottom : "20px";
+    if(typeof _b == "number"){_b = _b + "px";}
     var toast = document.createElement("div");
     toast.innerText = t;
     $(toast).addClass("spToast");
-    $(toast).css({zIndex: $().maxZ() + 10,background:b,color:c});
+    $(toast).css({zIndex: $().maxZ() + 10,background:b,color:c,bottom:_b});
     document.body.appendChild(toast);
     setTimeout(function(){
       document.body.removeChild(toast);
     },d*1000);
   };
 
-  // custom sb
-  self.customsb = function(c,t){
-    document.body.innerHTML += c;
-    setTimeout(document.removeChild(sb),t*1000);
+  // custom toast
+  self.customToast = function(c,t){
+    document.body.appendChild(c);
+    var _t = (typeof t != "undefined") ? t : 2;
+    setTimeout(function(){document.body.removeChild(c);},_t*1000);
   };
   // action sheet
-  self.createSheet = function(content,title,color){
-    var t = (typeof title == "undefined") ? '' : title;
-    var c = (typeof color == "undefined") ? 'bg-white' : color;
+  self.createSheet = function(o){
+    var t = (typeof o.title == "undefined") ? '' : o.title;
+    var cnt = (typeof o.content == "undefined") ? '' : o.content;
+    var b = (typeof o.background == "undefined") ? 'white' : o.background;
+    var c = (typeof o.color == "undefined") ? 'black' : o.color;
     document.body.innerHTML += `
     <div class="scrim" id="sheetScrim"></div>
       <div class="bottomsheet unselectable" unselectable="on" id="bottomsheet">
-        <div class="header fixed none ${c}" id="bottomsheetBar" style="padding-left:72px">
+        <div class="header fixed" id="bottomsheetBar" style="padding-left:72px;background:${b};color:${c}">
           <i class="material-icons left-icon ripple" id="bottomsheetClose">close</i>
           ${t}
         </div>
-        ${content}
+        <div class="container" style="padding-top:72px">
+          ${cnt}
+        </div>
       </div>`;
   __sp_bottomsheet();
   $('#sheetScrim').click(function(e){e.target.parentElement.removeChild(e.target);document.getElementById('bottomsheet').parentElement.removeChild(document.getElementById('bottomsheet'));});
@@ -956,7 +968,7 @@
           eBtn1.addEventListener("click",_$_cancel);
       }
         else if (typeof this.option.action1 === "function"){
-          eBtn1.addEventListener('click',_$_function);
+          eBtn1.addEventListener('click',_$_function1);
         }
         else if($().isValidURL(this.option.action1)){
           eBtn1.addEventListener('click',_$_visit);
@@ -973,7 +985,7 @@
           eBtn2.addEventListener("click",_$_cancel);
         }
         else if (typeof this.option.action2 === "function"){
-          eBtn2.addEventListener('click',_$_function);
+          eBtn2.addEventListener('click',_$_function2);
         }
         else if($().isValidURL(this.option.action2)){
           eBtn2.addEventListener('click',_$_visit);
@@ -990,7 +1002,7 @@
           eBtn3.addEventListener("click",_$_cancel);
         }
         else if (typeof this.option.action3 === "function"){
-          eBtn3.addEventListener('click',_$_function);
+          eBtn3.addEventListener('click',_$_function3);
         }
         else if($().isValidURL(this.option.action3)){
           eBtn3.addEventListener('click',_$_visit);
@@ -1012,12 +1024,19 @@
 
       function _$_visit(){
         window.open(o.action3,'_self');
-        _$_delete();
+        _$_cancel();
       }
-
-      function _$_function(){
+      function _$_function1(){
+        o.action1(ele.querySelector('.dialog-content'));
+        _$_cancel();
+      }
+      function _$_function2(){
+        o.action2(ele.querySelector('.dialog-content'));
+        _$_cancel();
+      }
+      function _$_function3(){
         o.action3(ele.querySelector('.dialog-content'));
-        _$_delete();
+        _$_cancel();
       }
       function _$_delete(){
         document.body.removeChild(ele);
@@ -1067,13 +1086,18 @@
     }
     d.appendChild(p);
     if (b != "not given"){
+      var _t = b.text;
+      var _b = (typeof b.background != "undefined") ? b.background : bg;
+      var _c = (typeof b.color != "undefined") ? b.color : c;
+      var _br = (typeof b.borderRadius != "undefined") ? b.borderRadius : "none";
+      var _s = (typeof b.boxShadow != "undefined") ? b.boxShadow : "none";
       var btn = $().create('button');
       $(btn).addClass("fsDialogBtn");
-      $(btn).css({background:bg,color:c});
-      btn.innerText = b;
+      $(btn).css({background:_b,color:_c,borderRadius: _br, boxShadow: _s});
+      btn.innerText = _t;
       btn.addEventListener("click",function(){
         _$_cancel();
-        a(p);
+        if(a != "not given") a(p);
       });
       h.appendChild(btn);
     }
@@ -2466,23 +2490,50 @@ function __sp_bottomsheet(){
   var s = document.getElementById('bottomsheet');
   var sb = document.getElementById('bottomsheetBar');
   var h = parseInt($('.bottomsheet').height());
-  // if (s.scrollHeight > parseInt($('.bottomsheet').getcss('max-height'))){
     $('.bottomsheet').swipe('up',function(){
-      $('.bottomsheet').css({height:'100vh','max-height':'100vh',overflow:'auto'});
-      $('#bottomsheetBar').replaceClass('none','block');
-    },{minLength: 10});
+      $('.bottomsheet').css({height:'100vh','max-height':'100vh',overflow:'auto',bottom:'0px'});
+    },{minLength: 5,
+      whileSwipe: function(r){
+        var a = r.y.initial;
+        var b = r.y.final;
+        var c = a - b;
+        if(a > b && parseInt($('.bottomsheet').bottom()) <= 0){
+          if (Math.abs(c) > 25){
+            $('.bottomsheet').css({height:'100vh','max-height':'100vh',overflow:'auto'});
+          }
+          else {
+            $(".bottomsheet").css({bottom: parseInt($('.bottomsheet').getcss("bottom")) + c + "px",height:'100vh','max-height':'100vh'});
+          }
+        }
+      }
+    });
     $('#bottomsheetClose').click(function(){
       s.parentElement.removeChild(s);document.querySelector('.scrim').parentElement.removeChild(document.querySelector('.scrim'));
     });
-    $('.bottomsheet').swipe('down',function(){
-      if (parseInt($('.bottomsheet').height()) <= 56){
+    $('.bottomsheet').swipe('down',function(r){
+      if (parseInt($('.bottomsheet').height()) >= 56){
       $('.bottomsheet').css({height:'0','max-height':'0'});
       setTimeout(function(){s.parentElement.removeChild(s);document.querySelector('.scrim').parentElement.removeChild(document.querySelector('.scrim'));},320);
       }
-    },{minLength: 5});
+    },{minLength: 5,
+      whileSwipe: function(r){
+        var a = r.y.initial;
+        var b = r.y.final;
+        var c = a - b;
+        if(a < b){
+          if (Math.abs(c) > 50){
+            $('.bottomsheet').css({height:'0','max-height':'0'});
+            s.parentElement.removeChild(s);
+            document.querySelector('.scrim').parentElement.removeChild(document.querySelector('.scrim'));
+          }
+          else {
+            $(".bottomsheet").css({bottom: parseInt($('.bottomsheet').getcss("bottom")) + c + "px"});
+          }
+        }
+      }
+    });
     $('#bottomsheetBar').swipe('down',function(){
       if (parseInt($('.bottomsheet').height()) > 56){
-      $('#bottomsheetBar').replaceClass('block','none');
         $('.bottomsheet').css({height:'56px','max-height':'56px',overflow:'hidden'});
       }
     },{minLength: 5});

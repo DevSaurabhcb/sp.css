@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>SP.css demo</title>
+<meta name="viewport" content="width=device-width"/>
+<meta charset="UTF-8">
+<!-- the css file of sp library -->
+<link rel="stylesheet" type="text/css" href="sp.css">
+
+</head>
+<body>
+	<div class="material-nav bg-blue" id="nav">
+		hello
+	</div>
+	<div class="container">
+		<div class="ripple-dark header bg-blue shadow2 material-nav_opener" data-target="nav">
+			Hello world
+		</div>
+		<div class="page">
+			<div class="border w1 red dashed all" data-load="dummy.html">
+				Lorem ipsum doler mit amet
+			</div>
+			<div class="box-300 center shadow3 margin-top"></div>
+		</div>
+	</div>
+
+<!-- JavaScript file of sp library -->
+<script type="text/javascript" src="sp.js"></script>
+<script type="text/javascript">
+var a = [];
+for(var k in $().colors.material){
+	for(var k2 in $().colors.material[k]){
+			a.push($().colors.material[k][k2]);
+	}
+}
+var i = 0;
+setInterval(function(){
+	if(i == a.length) i = 0;
+	$(".box-300").background(a[i]);
+	i++;
+},100);
+$().createSheet({title:"Share",content:"No apps found buddy",background:"white"});
+
+</script>
+</body>
+</html>

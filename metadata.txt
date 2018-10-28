@@ -443,7 +443,13 @@ SP~$ methods [
         title
         background
         color
-        button
+        button: {
+            text
+            background
+            color
+            borderRadius
+            shadow
+        }
         action ?? returns the content element
         content
     }, backEvent : true!false)
