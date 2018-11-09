@@ -157,7 +157,11 @@
     var cnt = (typeof o.content == "undefined") ? '' : o.content;
     var b = (typeof o.background == "undefined") ? 'white' : o.background;
     var c = (typeof o.color == "undefined") ? 'black' : o.color;
-    document.body.innerHTML += `
+
+    var d = document.createElement("div");
+    var s = document.createElement("div");
+    s.id = "sheetScrim";
+    d.innerHTML += `
     <div class="scrim" id="sheetScrim"></div>
       <div class="bottomsheet unselectable" unselectable="on" id="bottomsheet">
         <div class="header fixed" id="bottomsheetBar" style="padding-left:72px;background:${b};color:${c}">
@@ -168,6 +172,8 @@
           ${cnt}
         </div>
       </div>`;
+
+    document.body.appendChild(d);
   __sp_bottomsheet();
   $('#sheetScrim').click(function(e){e.target.parentElement.removeChild(e.target);document.getElementById('bottomsheet').parentElement.removeChild(document.getElementById('bottomsheet'));});
   }
@@ -1364,14 +1370,7 @@ self.materialNav = function(){
     s.parentElement.removeChild(s);
   }
   else {
-    var s = document.createElement("div");
-    s.classList.add("scrim");
-    document.body.appendChild(s);
-    $(".material-nav").left(0);
-    s.addEventListener('click',function(){
-      $(".material-nav").left(-290);
-      s.parentElement.removeChild(s);
-    });
+    _sp_materialnav();
   }
   return self;
 };
@@ -1962,10 +1961,10 @@ else {
 }
 //function to test touch and mouse events
 var eventReplacement = {
-    "mousedown": ["touchstart mousedown", "mousedown"],
-    "mouseup": ["touchend mouseup", "mouseup"],
-    "click": ["touchstart click", "click"],
-    "mousemove": ["touchmove mousemove", "mousemove"]
+    "mousedown": ["touchstart", "mousedown"],
+    "mouseup": ["touchend", "mouseup"],
+    "click": ["touchstart", "click"],
+    "mousemove": ["touchmove", "mousemove"]
 };
 for (i in eventReplacement) {
     if (typeof window["on" + eventReplacement[i][0]] == "object") {
@@ -1975,6 +1974,7 @@ for (i in eventReplacement) {
         __sp_eventMap[i] = eventReplacement[i][1];
     };
  };
+document.getElementById('dem').innerHTML = __sp_eventMap.mousemove;
 })();
 
 function _sp_init(){
@@ -2323,14 +2323,43 @@ $(".chip .close").click(function(e){
 });
 /*material nav opener*/
 function _sp_materialnav(){
-document.getElementById(this.getAttribute("data-target")).style.left="0";
-var navcover = document.createElement('div');
-navcover.classList.add("scrim");
+document.querySelector(".material-nav").style.left="0";
+var navcover;
+if(document.querySelector('.scrim')){
+  navcover = document.querySelector('.scrim');
+}
+else {
+  navcover = document.createElement('div');
+  navcover.classList.add("scrim");
+  document.body.appendChild(navcover);
+}
+
 navcover.addEventListener("click",function(){
 document.querySelector(".material-nav").style.left="-290px";
 document.body.removeChild(navcover);
 });
-document.body.appendChild(navcover);
+$(".material-nav, .scrim").swipe("any",function(r){
+  if(Math.abs(r.x.traveled) > 5 && r.direction == "left"){
+    document.querySelector(".material-nav").style.left="-290px";
+    if (document.querySelector(".scrim")){document.body.removeChild(document.querySelector(".scrim"));}
+  }
+  else {
+    document.querySelector(".material-nav").style.left = "0px";
+    navcover.style.opacity = 1;
+  }
+},{minLength: 5,
+  whileSwipe:function(r){
+    var i = r.x.initial;
+    var f = r.x.final;
+    var t = r.x.traveled;
+    var x = (270 + parseInt(document.querySelector(".material-nav").style.left)) + t;
+    if (x <= 270){
+      document.querySelector(".material-nav").style.left = t + "px";
+      var p = Math.floor(((290 - Math.abs(t))/290) * 100) / 100;
+      navcover.style.opacity = p;
+    }
+  }
+})
 }
 
 /*sp ripple function*/
@@ -2491,21 +2520,20 @@ function __sp_bottomsheet(){
   var sb = document.getElementById('bottomsheetBar');
   var h = parseInt($('.bottomsheet').height());
     $('.bottomsheet').swipe('up',function(){
-      $('.bottomsheet').css({height:'100vh','max-height':'100vh',overflow:'auto',bottom:'0px'});
-    },{minLength: 5,
+      $('.bottomsheet').css({height:'100%','max-height':'100%',overflow:'auto',bottom:'-20px'});
+    },{minLength: 15,
       whileSwipe: function(r){
-        var a = r.y.initial;
-        var b = r.y.final;
-        var c = a - b;
-        if(a > b && parseInt($('.bottomsheet').bottom()) <= 0){
-          if (Math.abs(c) > 25){
-            $('.bottomsheet').css({height:'100vh','max-height':'100vh',overflow:'auto'});
-          }
-          else {
-            $(".bottomsheet").css({bottom: parseInt($('.bottomsheet').getcss("bottom")) + c + "px",height:'100vh','max-height':'100vh'});
-          }
-        }
+    var i = r.y.initial;
+    var f = r.y.final;
+    var t = r.y.traveled;
+    var y = (window.innerHeight - parseInt(document.querySelector(".bottomsheet").style.bottom)) + t;
+    console.log(y)
+    if (y <= window.innerHeight){
+      document.querySelector(".bottomsheet").style.bottom = t + "px";
+      var p = Math.floor(((290 - Math.abs(t))/290) * 100) / 100;
+      document.querySelector('.scrim').style.opacity = p;
       }
+    }
     });
     $('#bottomsheetClose').click(function(){
       s.parentElement.removeChild(s);document.querySelector('.scrim').parentElement.removeChild(document.querySelector('.scrim'));
@@ -2537,4 +2565,44 @@ function __sp_bottomsheet(){
         $('.bottomsheet').css({height:'56px','max-height':'56px',overflow:'hidden'});
       }
     },{minLength: 5});
+}
+
+//for swipe gesture in material nav
+var __sp_shouldDO = false;
+if(document.querySelector(".material-nav")){
+  $("html").swipe("any",function(r){
+    if(r.x.initial <= 20 && r.x.traveled >= 15 && __sp_shouldDO == true && parseInt(document.querySelector(".material-nav").style.left) != 0 && r.direction == "right"){
+      $().materialNav();
+      document.querySelector(".scrim").style.opacity = 1;
+      __sp_shouldDO = false;
+    }
+    else {
+      if(r.x.initial <= 20){
+        document.querySelector(".material-nav").style.left = "-290px";
+        if(document.querySelector(".scrim")) document.body.removeChild(document.querySelector(".scrim"));
+        __sp_shouldDO = false;
+      }
+    }
+  },{ minLength: 5,
+    onstart: function(r){
+    if(r.x < 20 && parseInt($('.material-nav').left()) == -290){
+      var s = document.createElement("div");
+      s.style.display = "none";
+      s.classList.add("scrim");
+      s.style.opacity = 0;
+      s.style.display = "block";
+      document.body.appendChild(s);
+      __sp_shouldDO = true;
+    }
+  },
+    whileSwipe: function(r){
+      var t = r.x.traveled;
+      if (r.x.initial < 20 && t < 290 && __sp_shouldDO == true){
+        document.querySelector(".material-nav").style.left = -290 + t +"px";
+        var p = Math.floor(((Math.abs(t))/290) * 100) / 100;
+            document.querySelector('.scrim').style.opacity = p;
+      }
+    }
+  }
+  );
 }
