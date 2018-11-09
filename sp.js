@@ -976,7 +976,7 @@
         else if (typeof this.option.action1 === "function"){
           eBtn1.addEventListener('click',_$_function1);
         }
-        else if($().isValidURL(this.option.action1)){
+        else if($().isURL(this.option.action1)){
           eBtn1.addEventListener('click',_$_visit);
         }
         else {}
@@ -993,7 +993,7 @@
         else if (typeof this.option.action2 === "function"){
           eBtn2.addEventListener('click',_$_function2);
         }
-        else if($().isValidURL(this.option.action2)){
+        else if($().isURL(this.option.action2)){
           eBtn2.addEventListener('click',_$_visit);
         }
         else {}
@@ -1010,7 +1010,7 @@
         else if (typeof this.option.action3 === "function"){
           eBtn3.addEventListener('click',_$_function3);
         }
-        else if($().isValidURL(this.option.action3)){
+        else if($().isURL(this.option.action3)){
           eBtn3.addEventListener('click',_$_visit);
         }
         else {}
