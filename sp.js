@@ -1974,7 +1974,6 @@ for (i in eventReplacement) {
         __sp_eventMap[i] = eventReplacement[i][1];
     };
  };
-document.getElementById('dem').innerHTML = __sp_eventMap.mousemove;
 })();
 
 function _sp_init(){
