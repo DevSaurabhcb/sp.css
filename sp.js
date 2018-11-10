@@ -976,7 +976,7 @@
           eBtn1.addEventListener('click',_$_function1);
         }
         else if($().isURL(this.option.action1)){
-          eBtn1.addEventListener('click',_$_visit);
+          eBtn1.addEventListener('click',_$_visit1);
         }
         else {}
       }
@@ -993,7 +993,7 @@
           eBtn2.addEventListener('click',_$_function2);
         }
         else if($().isURL(this.option.action2)){
-          eBtn2.addEventListener('click',_$_visit);
+          eBtn2.addEventListener('click',_$_visit2);
         }
         else {}
       }
@@ -1010,7 +1010,7 @@
           eBtn3.addEventListener('click',_$_function3);
         }
         else if($().isURL(this.option.action3)){
-          eBtn3.addEventListener('click',_$_visit);
+          eBtn3.addEventListener('click',_$_visit3);
         }
         else {}
       }
@@ -1027,8 +1027,16 @@
         }
       }
 
-      function _$_visit(){
-        window.open(o.action3,'_self');
+      function _$_visit1(){
+        window.open(o.action1,'_blank');
+        _$_cancel();
+      }
+      function _$_visit2(){
+        window.open(o.action2,'_blank');
+        _$_cancel();
+      }
+      function _$_visit3(){
+        window.open(o.action3,'_blank');
         _$_cancel();
       }
       function _$_function1(){
