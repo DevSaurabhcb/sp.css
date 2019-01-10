@@ -1,3 +1,7 @@
+String.prototype.replaceAll = function(search, replacement) {
+    var target = this;
+    return target.split(search).join(replacement);
+};
 (function (root, factory){
   "use strict";
   if(typeof module === "object" && typeof module.exports === "object"){
@@ -2490,7 +2494,14 @@ window.addEventListener("scroll",function(){
       Array.prototype.forEach.call(document.querySelectorAll(".autohideTop"),function(r){r.style.top = "0"});
       }
       if (__autohideBottom__ele){
-      Array.prototype.forEach.call(document.querySelectorAll(".autohideBottom"),function(r){r.style.bottom = "0"});
+        Array.prototype.forEach.call(document.querySelectorAll(".autohideBottom"),function(r){
+          if(r.classList.contains('fab-btn')){
+            r.style.bottom = "16px";
+          }
+          else {
+            r.style.bottom = "0";
+          }
+        });
       }
     } else {
       if (__autohideTop__ele){
