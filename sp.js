@@ -2,6 +2,16 @@ String.prototype.replaceAll = function(search, replacement) {
     var target = this;
     return target.split(search).join(replacement);
 };
+// this variable _sp_done_by is used to identify actually who dismissed the dialog or anything like that
+var _sp_done_by_hash = true;
+const _sp_self = {
+  doUseCookies: true,
+  blockBackKey: true,
+  hashList: {dialog:'',nav:'',scrim:'',sheet:'',loading:''},
+  allHashes: [],
+  generatedRandoms: [],
+  hashKey: {dialog:'',nav:'',scrim:'',sheet:'',loading:''}
+};
 (function (root, factory){
   "use strict";
   if(typeof module === "object" && typeof module.exports === "object"){
@@ -44,10 +54,15 @@ String.prototype.replaceAll = function(search, replacement) {
     self.sType = "s";
   }
   else {
-    self.selector = "none";
-    self.eleLength = "undefined";
-    self.sType = "undefined";
+    self.selector = "html";
+    self.eleLength = 1;
+    self.sType = "h";
   }
+  // start with disabling use of cookies
+  // use cookies to make location bar look good
+  self.useCookies = function(){_sp_self.doUseCookies = true;};
+  self.notUseCookies = function(){_sp_self.doUseCookies = false;};
+  self.getData = function(){return _sp_self;};
   /*max z value*/
   self.maxZ = function(){
     var z = [],
@@ -181,6 +196,135 @@ String.prototype.replaceAll = function(search, replacement) {
   __sp_bottomsheet();
   $('#sheetScrim').click(function(e){e.target.parentElement.removeChild(e.target);document.getElementById('bottomsheet').parentElement.removeChild(document.getElementById('bottomsheet'));});
   }
+
+  // create loading or waiting whatever you call it
+  self.createWaiting = function(options, callback, condition){
+    var condition = condition || false;
+    if(typeof options !== 'undefined'){
+      var _options = {};
+      _options.loadingAnimation = options.loadingAnimation || true;
+      _options.title = options.title || 'Loading';
+      _options.text = options.text || false;
+      _options.timeout = options.timeout || undefined;
+      _options.scrim = options.scrim || true;
+    }
+    else {
+      var _options = {loadingAnimation: true, title:'Loading', text: false};
+    }
+    if(condition){
+      _destroy();
+    }
+    if(typeof _options.timeout !== 'undefined'){
+      setTimeout(_destroy, options.timeout*1000);
+    }
+
+    function _destroy(){
+      if(document.querySelector('.scrim')) document.body.removeChild(document.querySelector('.scrim'));
+      if(document.querySelector('.sp-waiting')) document.body.removeChild(document.querySelector('.sp-waiting'));
+      if(typeof callback == 'function') callback();
+    }
+
+    if(_options.scrim){
+      if(document.querySelector('.scrim')){
+        document.querySelector('.scrim').parentElement.removeChild(document.querySelector('.scrim'));
+      }
+      var s = document.createElement('div');
+      s.classList.add('scrim');
+      document.body.appendChild(s);
+    }
+    if(document.querySelector('.sp-waiting')){
+      document.body.removeChild(document.querySelector('.sp-waiting'));
+    }
+
+
+    var d = document.createElement('div');
+    d.classList.add('sp-waiting');
+    d.classList.add('shadow3');
+    d.style.zIndex = $().maxZ() + 1;
+    if(_options.loadingAnimation == true){
+      var _d = document.createElement('div');
+      _d.classList.add('sp-waiting-anim');
+      _d.innerHTML = `
+        <div class="_sp_loader_showbox">
+          <div class="_sp_loader_loader">
+            <svg class="_sp_loader_circular" viewBox="25 25 50 50">
+              <circle class="_sp_loader_path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
+            </svg>
+          </div>
+        </div>`;
+      d.appendChild(_d);
+    }
+    var _t = document.createElement('div');
+    _t.classList.add('sp-waiting-title');
+    _t.innerHTML = _options.title;
+    d.appendChild(_t);
+    if(_options.text != false){
+      var _text = document.createElement('div');
+      _text.classList.add('sp-waiting-text');
+      _text.innerHTML = _options.text;
+      d.appendChild(_text);
+    }
+    document.body.appendChild(d);
+
+    if(condition){
+      _destroy();
+    }
+    if(typeof _options.timeout !== 'undefined'){
+      setTimeout(_destroy, _options.timeout*1000);
+    }
+
+    return self;
+  };
+
+  // to destroy the waiting process
+  self.destroyWaiting = function(){
+    document.body.removeChild(document.querySelector('.scrim'));
+    document.body.removeChild(document.querySelector('.sp-waiting'));
+    return self;
+  };
+  // functions to create and remove scrim whenever you want
+  self.createScrim = function(color, backKey){
+    var color = color || false;
+    var backKey = backKey || true;
+    var d = document.createElement('div');
+    d.classList.add('scrim');
+    document.body.appendChild(d);
+    if(color != false){
+      d.style.background = color;
+    }
+    if(backKey == true){
+      self.preventBackKey();
+    }
+
+    return self;
+  };
+  self.removeScrim = function(s){
+    var s = s || document.querySelector('.scrim');
+    if(s){
+      s.parentElement.removeChild(s);
+    }
+    if(_sp_self.blockBackKey) self.defaultBackKey();
+    _sp_self.blockBackKey = false;
+    return self;
+  };
+  // function to block back key event whenever necessary
+  self.preventBackKey = function(){
+    _sp_self.blockBackKey = true;
+    window.location.hash += '_!prvnt';
+    window.addEventListener("popstate",function(e){
+      if (_sp_self.blockBackKey){
+        history.pushState("#preventsback",document.title);
+        e = e || window.event;
+        e.preventDefault();
+        return false;
+      }
+    }); 
+  };
+  self.defaultBackKey = function(){
+    _sp_self.blockBackKey = false;
+    var _h = window.location.hash;
+    window.location.hash = _h.replace(_h.indexOf('!_prvnt')-1,7);
+  };
   /*events*/
   self.click = function(callback){
     if (self.sType == "e"){
@@ -896,12 +1040,81 @@ String.prototype.replaceAll = function(search, replacement) {
   self.toggleNoScroll = function(){
     document.body.classList.toggle("noscroll");
   };
+  // function to generate random text
+  self.getRandomString = function(length,type){
+    var length = length || 5;
+    var type = type || 'default';
+    var text = "";
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    var type = type;
+    switch (type) {
+      case 'caps':
+        possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      break;
+      case 'smalls':
+        possible = "abcdefghijklmnopqrstuvwxyz";
+      break;
+      case 'both':
+        possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+      break;
+      case 'numbers':
+        possible = "0123456789";
+      break;
+      case 'secretKey':
+        possible = possible+'!@$%^&*.';
+      break;
+    }
+    for (var i = 0; i < length; i++)
+      text += possible.charAt(Math.floor(Math.random() * possible.length));
+    _sp_self.generatedRandoms.push(text);
+    return text;
+  }
+  // function to get a hash for scrim
+  self.setLocationHash = function(type){
+    var randStr = self.getRandomString(3);
+    _sp_self.hashKey[type] = randStr;
+    if(_sp_self.doUseCookies){
+      var _hash = 'sp-js_'+type+'_'+ randStr;
+      Cookies.set('_sp_'+type,_hash);
+      window.location.hash += randStr;
+    }
+    else{
+      var _hash = '!__d_'+self.getRandomString(3);
+      window.location.hash += _hash;
+    }
+    _sp_self.allHashes.push(_hash);
+    _sp_self.hashList[type] = _hash;
+    return _hash;
+  };
+  self.getLocationHash = function(type){
+    if(_sp_self.doUseCookies){
+      return Cookies.get('_sp_'+type);
+    }
+    else {
+      return _sp_self.hashList[type];
+    }
+  };
+  self.removeLocationHash = function(type){
+    var index = _sp_self.allHashes.indexOf(_sp_self.hashList[type]);
+    if (index !== -1){_sp_self.allHashes.splice(index, 1)};
+    window.location.hash = window.location.hash.replace(window.location.hash.slice(window.location.hash.indexOf(_sp_self.hashKey[type]), window.location.hash.indexOf(_sp_self.hashKey[type])+3),'');
+    if(_sp_self.doUseCookies){
+      Cookies.remove('_sp_'+type);
+    }
+    else {
+      _sp_self.hashList[type] = '';
+    }
+    return true;
+  };
+  // just connecton to console.log
+  self.l = self.log = console.log;
   /*custom material dialog box*/
-  self.createDialog = function(o,scrimEvt,shadow){
+  self.createDialog = function(o,scrimEvt,scrim,shadow){
+    self.setLocationHash('dialog');
     $().toggleNoScroll();
-    window.location.hash += "#dialog";
     this.scrimEvt = scrimEvt;
     this.shadow = shadow;
+    this.scrim = scrim || true;
     this.option =  o;
     var cLoad = (typeof this.option.load !== 'undefined') ? this.option.load : "not given";
     var cTitle = (typeof this.option.titleColor !== 'undefined') ? this.option.titleColor : "#000";
@@ -919,29 +1132,36 @@ String.prototype.replaceAll = function(search, replacement) {
     if (typeof this.shadow === "undefined" || this.shadow === true){
     ele.classList.add("shadow5");
     }
-    var scrim = document.createElement("div");
-    scrim.classList.add("scrim");
-    scrim.style.background = cScrim;
-    if (typeof this.scrimEvt === "undefined" || this.scrimEvt === true){
-      scrim.addEventListener('click',function(){
-        _$_cancel();
-      });
-      window.addEventListener("popstate",function(){
-        if (document.querySelector('.dialog')){
+    document.body.appendChild(ele);
+    if(this.scrim){
+      var scrim = document.createElement("div");
+      scrim.classList.add("scrim");
+      scrim.style.background = cScrim; 
+      if (typeof this.scrimEvt === "undefined" || this.scrimEvt === true){
+        scrim.addEventListener('click',function(){
           _$_cancel();
-        }
-      });
-    }
-    else {
-        window.addEventListener("popstate",function(e){
-          if (document.querySelector('.dialog')){
-            history.pushState("#back","The dialog");
-            e = e || window.event;
-            e.preventDefault(); 
+        });
+        window.addEventListener('popstate',function(e){
+          e = e || window.event;
+          e.preventDefault();
+          if(_sp_done_by_hash){
+            if (_sp_self.hashList.dialog !== '' && _sp_self.hashList.dialog == $().getLocationHash('dialog')){
+              _$_cancel();
+            }
           }
-        }); 
+        });
+      }
+      else {
+          window.addEventListener("popstate",function(e){
+            if (_sp_done_by_hash == true && _sp_self.hashList.dialog !== '' && _sp_self.hashList.dialog == $().getLocationHash('dialog')){
+              history.pushState("#back",document.title);
+              e = e || window.event;
+              e.preventDefault(); 
+            }
+          }); 
+      }
+      document.body.appendChild(scrim);
     }
-    document.body.appendChild(scrim);
     
     if (cLoad == "not given"){
       if (this.option.title !== undefined){
@@ -1025,10 +1245,10 @@ String.prototype.replaceAll = function(search, replacement) {
       }
       // functions to handle clicks
       function _$_cancel(){
+        _sp_done_by_hash = false;
+        self.removeLocationHash('dialog');
+        _sp_done_by_hash = true;
         _$_delete();
-        if (document.location.hash.indexOf("#dialog") > -1){
-          document.location.hash = document.location.hash.replace("#dialog","");
-        }
       }
 
       function _$_visit1(){
@@ -1056,15 +1276,16 @@ String.prototype.replaceAll = function(search, replacement) {
         _$_cancel();
       }
       function _$_delete(){
-        document.body.removeChild(ele);
-        document.body.removeChild(scrim);
+        if(document.querySelector('.dialog') && document.querySelector('.scrim')){
+          document.querySelector('.dialog').parentElement.removeChild(document.querySelector('.dialog'));
+          document.querySelector('.scrim').parentElement.removeChild(document.querySelector('.scrim'));
+        }
         $().toggleNoScroll();
       }
     }
     else {
       ele.innerHTML = cLoad;
     }
-    document.body.appendChild(ele);
     return self;
   };
   self.create = function(a){
@@ -1072,6 +1293,7 @@ String.prototype.replaceAll = function(search, replacement) {
     else return document.createElement('div');
   };
   self.createFullscreenDialog = function(o,back){
+    self.setLocationHash('dialog');
     var opt = o;
     document.location.hash = "dialog";
     var t = (typeof opt.title != "undefined") ? opt.title : "";
@@ -1122,27 +1344,31 @@ String.prototype.replaceAll = function(search, replacement) {
 
     // back button event
     if (typeof this.back === "undefined" || this.back === true){
-      window.addEventListener("popstate",function(){
-        if (document.querySelector('.fullscreendialog')){
-          _$_cancel();
+      window.addEventListener('popstate',function(e){
+        e = e || window.event;
+        e.preventDefault();
+        if(_sp_done_by_hash){
+          if (_sp_self.hashList.dialog !== '' && _sp_self.hashList.dialog == $().getLocationHash('dialog')){
+            _$_cancel();
+          }
         }
       });
     }
     else {
       window.addEventListener("popstate",function(e){
-          if (document.querySelector('.fullscreendialog')){
-            history.pushState("#back","The Full screen dialog");
-            e = e || window.event;
-            e.preventDefault(); 
-          }
-      });
+        if (_sp_done_by_hash == true && _sp_self.hashList.dialog !== '' && _sp_self.hashList.dialog == $().getLocationHash('dialog')){
+          history.pushState("#back",document.title);
+          e = e || window.event;
+          e.preventDefault(); 
+        }
+      }); 
     }
 
     function _$_cancel(){
+      _sp_done_by_hash = false;
+      self.removeLocationHash('dialog');
+      _sp_done_by_hash = true;
       document.body.removeChild(d);
-      if (document.location.hash.indexOf("#dialog") > -1){
-          document.location.hash = document.location.hash.replace("#dialog","");
-      }
     }
     return self;
   };
@@ -1192,7 +1418,7 @@ String.prototype.replaceAll = function(search, replacement) {
     }
     else {return false;}
   };
-  self.fullscreen = function() {
+  self.fullscreen = function(){
     if(self.sType != "d"){
       var r = document.querySelector(self.selector);
       if(r.requestFullscreen) {
@@ -1374,14 +1600,15 @@ self.toggleChild = function(e){
   }
   else {return false;}
 };
-self.materialNav = function(){
+self.materialNav = function(bool){
+  // this bool tells whether to make scrim or not
   if ($(".material-nav").left() == "0px"){
     $(".material-nav").left(-290);
-    var s = document.querySelector(".scrim");
-    s.parentElement.removeChild(s);
+    var s = document.querySelector(".nav-scrim");
+    if(s) s.parentElement.removeChild(s);
   }
   else {
-    _sp_materialnav();
+    _sp_materialnav('dontmake');
   }
   return self;
 };
@@ -1924,6 +2151,175 @@ window.SP = window.$ = SP;
 
 return SP;
 }));
+// end of init
+// here is Cookie.js
+/*!
+ * JavaScript Cookie v2.2.0
+ * https://github.com/js-cookie/js-cookie
+ *
+ * Copyright 2006, 2015 Klaus Hartl & Fagner Brack
+ * Released under the MIT license
+ */
+;(function (factory) {
+  var registeredInModuleLoader = false;
+  if (typeof define === 'function' && define.amd) {
+    define(factory);
+    registeredInModuleLoader = true;
+  }
+  if (typeof exports === 'object') {
+    module.exports = factory();
+    registeredInModuleLoader = true;
+  }
+  if (!registeredInModuleLoader) {
+    var OldCookies = window.Cookies;
+    var api = window.Cookies = factory();
+    api.noConflict = function () {
+      window.Cookies = OldCookies;
+      return api;
+    };
+  }
+}(function () {
+  function extend () {
+    var i = 0;
+    var result = {};
+    for (; i < arguments.length; i++) {
+      var attributes = arguments[ i ];
+      for (var key in attributes) {
+        result[key] = attributes[key];
+      }
+    }
+    return result;
+  }
+
+  function init (converter) {
+    function api (key, value, attributes) {
+      var result;
+      if (typeof document === 'undefined') {
+        return;
+      }
+
+      // Write
+
+      if (arguments.length > 1) {
+        attributes = extend({
+          path: '/'
+        }, api.defaults, attributes);
+
+        if (typeof attributes.expires === 'number') {
+          var expires = new Date();
+          expires.setMilliseconds(expires.getMilliseconds() + attributes.expires * 864e+5);
+          attributes.expires = expires;
+        }
+
+        // We're using "expires" because "max-age" is not supported by IE
+        attributes.expires = attributes.expires ? attributes.expires.toUTCString() : '';
+
+        try {
+          result = JSON.stringify(value);
+          if (/^[\{\[]/.test(result)) {
+            value = result;
+          }
+        } catch (e) {}
+
+        if (!converter.write) {
+          value = encodeURIComponent(String(value))
+            .replace(/%(23|24|26|2B|3A|3C|3E|3D|2F|3F|40|5B|5D|5E|60|7B|7D|7C)/g, decodeURIComponent);
+        } else {
+          value = converter.write(value, key);
+        }
+
+        key = encodeURIComponent(String(key));
+        key = key.replace(/%(23|24|26|2B|5E|60|7C)/g, decodeURIComponent);
+        key = key.replace(/[\(\)]/g, escape);
+
+        var stringifiedAttributes = '';
+
+        for (var attributeName in attributes) {
+          if (!attributes[attributeName]) {
+            continue;
+          }
+          stringifiedAttributes += '; ' + attributeName;
+          if (attributes[attributeName] === true) {
+            continue;
+          }
+          stringifiedAttributes += '=' + attributes[attributeName];
+        }
+        return (document.cookie = key + '=' + value + stringifiedAttributes);
+      }
+
+      // Read
+
+      if (!key) {
+        result = {};
+      }
+
+      // To prevent the for loop in the first place assign an empty array
+      // in case there are no cookies at all. Also prevents odd result when
+      // calling "get()"
+      var cookies = document.cookie ? document.cookie.split('; ') : [];
+      var rdecode = /(%[0-9A-Z]{2})+/g;
+      var i = 0;
+
+      for (; i < cookies.length; i++) {
+        var parts = cookies[i].split('=');
+        var cookie = parts.slice(1).join('=');
+
+        if (!this.json && cookie.charAt(0) === '"') {
+          cookie = cookie.slice(1, -1);
+        }
+
+        try {
+          var name = parts[0].replace(rdecode, decodeURIComponent);
+          cookie = converter.read ?
+            converter.read(cookie, name) : converter(cookie, name) ||
+            cookie.replace(rdecode, decodeURIComponent);
+
+          if (this.json) {
+            try {
+              cookie = JSON.parse(cookie);
+            } catch (e) {}
+          }
+
+          if (key === name) {
+            result = cookie;
+            break;
+          }
+
+          if (!key) {
+            result[name] = cookie;
+          }
+        } catch (e) {}
+      }
+
+      return result;
+    }
+
+    api.set = api;
+    api.get = function (key) {
+      return api.call(api, key);
+    };
+    api.getJSON = function () {
+      return api.apply({
+        json: true
+      }, [].slice.call(arguments));
+    };
+    api.defaults = {};
+
+    api.remove = function (key, attributes) {
+      api(key, '', extend(attributes, {
+        expires: -1
+      }));
+    };
+
+    api.withConverter = init;
+
+    return api;
+  }
+
+  return init(function () {});
+}));
+// cookie js ends
+
 //here is the declaration of the variables
 var __prevScrollpos = window.pageYOffset;
 var __sEles = document.querySelectorAll('.sticky');
@@ -2332,30 +2728,60 @@ $(".chip .close").click(function(e){
   e.target.parentElement.style.display = 'none';
 });
 /*material nav opener*/
-function _sp_materialnav(){
+function _sp_materialnav(bool){
 document.querySelector(".material-nav").style.left="0";
-var navcover;
-if(document.querySelector('.scrim')){
-  navcover = document.querySelector('.scrim');
-}
-else {
-  navcover = document.createElement('div');
-  navcover.classList.add("scrim");
-  document.body.appendChild(navcover);
-}
 
-navcover.addEventListener("click",function(){
-document.querySelector(".material-nav").style.left="-290px";
-document.body.removeChild(navcover);
-});
-$(".material-nav").swipe("any",function(r){
-  if(Math.abs(r.x.traveled) > 5 && r.direction == "left"){
-    document.querySelector(".material-nav").style.left="-290px";
-    if (document.querySelector(".scrim")){document.body.removeChild(document.querySelector(".scrim"));}
+$().setLocationHash('nav');
+window.addEventListener('popstate',function(e){
+  e = e || window.event;
+  e.preventDefault();
+  if(_sp_done_by_hash){
+    if (_sp_self.hashList.nav !== '' && _sp_self.hashList.nav == $().getLocationHash('nav')){
+      $().materialNav();
+      $().removeLocationHash('nav');
+    }
   }
-  else {
-    document.querySelector(".material-nav").style.left = "0px";
-    navcover.style.opacity = 1;
+});
+
+var navcover;
+if(document.querySelector('.nav-scrim')){
+  navcover = document.querySelector('.nav-scrim');
+}
+else{
+  if(bool && bool != 'dontmake'){
+    navcover = document.createElement('div');
+    navcover.classList.add("scrim");
+    navcover.classList.add("nav-scrim");
+    document.body.appendChild(navcover);
+  }
+}
+if(document.querySelector('.nav-scrim')){
+  navcover.addEventListener("click",function(){
+    if(document.querySelector(".material-nav")){
+      document.querySelector(".material-nav").style.left="-290px";
+      document.body.removeChild(navcover);
+      _sp_done_by_hash = false;
+      $().removeLocationHash('nav');
+      _sp_done_by_hash = true;
+    }
+  });
+}
+$(".material-nav").swipe("any",function(r){
+  var navcover = document.querySelector(".nav-scrim");
+  if(navcover){
+    if(Math.abs(r.x.traveled) > 5 && r.direction == "left"){
+      _sp_done_by_hash = false;
+      $().removeLocationHash('nav');
+      _sp_done_by_hash = true;
+        if(document.querySelector(".material-nav") && document.querySelector(".material-nav").nodeType == 1){
+          document.querySelector(".material-nav").style.left="-290px";
+          document.body.removeChild(navcover);
+        }
+    }
+    else {
+      document.querySelector(".material-nav").style.left = "0px";
+      navcover.style.opacity = 1;
+    }
   }
 },{minLength: 5,
   whileSwipe:function(r){
@@ -2369,7 +2795,7 @@ $(".material-nav").swipe("any",function(r){
       navcover.style.opacity = p;
     }
   }
-})
+});
 }
 
 /*sp ripple function*/
@@ -2589,7 +3015,7 @@ var __sp_shouldDO = false;
 if(document.querySelector(".material-nav")){
   $("html").swipe("right",function(r){
     if(r.x.initial <= 20 && r.x.traveled >= 15 && __sp_shouldDO == true && parseInt(document.querySelector(".material-nav").style.left) != 0 && r.direction == "right"){
-      $().materialNav();
+      $().materialNav(false);
       document.querySelector(".scrim").style.opacity = 1;
       __sp_shouldDO = false;
     }
@@ -2606,6 +3032,7 @@ if(document.querySelector(".material-nav")){
       var s = document.createElement("div");
       s.style.display = "none";
       s.classList.add("scrim");
+      s.classList.add("nav-scrim");
       s.style.opacity = 0;
       s.style.display = "block";
       document.body.appendChild(s);
